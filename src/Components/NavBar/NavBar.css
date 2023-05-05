@@ -1,0 +1,4 @@
+/*Div para centrar los elementos del form, estaban uno abajo del otro*/
+.divBuscador {
+    display: flex;
+}
