@@ -108,12 +108,12 @@ function SideBar() {
               <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
                 <li>
                   <a className="dropdown-item" href="#">
-                    Settings
+                    Configuración
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Profile
+                    Perfil
                   </a>
                 </li>
                 <li>
@@ -121,7 +121,7 @@ function SideBar() {
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Sign out
+                    Cerrar sesión
                   </a>
                 </li>
               </ul>
