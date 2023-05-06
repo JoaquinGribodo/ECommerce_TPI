@@ -1,7 +1,9 @@
-import './App.css';
-import SideBar from './Components/SideBar/SideBar';
-import NavBar from './Components/NavBar/NavBar';
-import Products from './Components/Products/Products';
+import "./App.css";
+import SideBar from "./Components/SideBar/SideBar";
+import NavBar from "./Components/NavBar/NavBar";
+import Products from "./Components/Products/Products";
+import LogIn from "./Components/LogIn/LogIn";
+import SignUp from "./Components/SignUp/SignUp";
 
 const products = [
   {
@@ -41,11 +43,14 @@ const products = [
 function App() {
   return (
     <>
-      <NavBar/>
-      <SideBar/>
-      <Products products={products}/>
+      <NavBar />
+      <div className="mainDiv">
+        <SideBar />
+        <Products products={products} />
+      </div>
+      <LogIn />
+      <SignUp />
     </>
-      
   );
 }
 

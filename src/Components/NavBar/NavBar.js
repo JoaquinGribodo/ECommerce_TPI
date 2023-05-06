@@ -1,21 +1,21 @@
 import React from "react";
 import "./NavBar.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-dark bg-dark justify-content-between">
-      <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <h4 class="text-white">Collapsed content</h4>
-            <span class="text-muted">Toggleable via the navbar brand.</span>
+    <nav classNameName="navbar navbar-dark bg-dark justify-content-between">
+      <div className="pos-f-t">
+        <div className="collapse" id="navbarToggleExternalContent">
+          <div className="bg-dark p-4">
+            <h4 className="text-white">Collapsed content</h4>
+            <span className="text-muted">Toggleable via the navbar brand.</span>
           </div>
         </div>
-        <nav class="navbar navbar-dark bg-dark justify-content-between ">
+        <nav className="navbar navbar-dark bg-dark justify-content-between ">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarToggleExternalContent"
@@ -23,17 +23,27 @@ function NavBar() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-           
         </nav>
       </div>
-      <form className="form-inline" >
-            <div className="divBuscador">
-                <input className="form-control mr-sm-2" type="search" placeholder="¿Qué producto buscas?" aria-label="Search"/>
-                <button type="button" class="btn btn-primary"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-                </div>
-            </form>
+      <form classNameName="form-inline">
+        <div classNameName="searchDiv">
+          <div classNameName="glassDiv">
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              size="xl"
+              style={{ color: "#f9fafb" }}
+            />
+          </div>
+          <input
+            classNameName="form-control mr-sm-2"
+            type="search"
+            placeholder="¿Qué producto buscas?"
+            aria-label="Search"
+          />
+        </div>
+      </form>
     </nav>
   );
 }

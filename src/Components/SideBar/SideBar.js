@@ -1,12 +1,14 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faListUl} from '@fortawesome/free-solid-svg-icons'
-import {faHouse} from '@fortawesome/free-solid-svg-icons'
-import {faCircleInfo} from '@fortawesome/free-solid-svg-icons'
-import {faPhone} from '@fortawesome/free-solid-svg-icons'
-import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faListUl,
+  faHouse,
+  faCircleInfo,
+  faPhone,
+  faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
 
-function SideBar() {
+const SideBar = () => {
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -25,7 +27,10 @@ function SideBar() {
               <li className="nav-item">
                 <a href="#" className="nav-link align-middle px-0">
                   <i className="fs-4 bi-house"></i>{" "}
-                  <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} />
+                  <FontAwesomeIcon
+                    icon={faHouse}
+                    style={{ color: "#ffffff" }}
+                  />
                   <span className="ms-1 d-none d-sm-inline">Inicio</span>
                 </a>
               </li>
@@ -36,9 +41,11 @@ function SideBar() {
                   className="nav-link px-0 align-middle"
                 >
                   <i className="fs-4 bi-speedometer2"></i>{" "}
-                  <FontAwesomeIcon icon={faListUl} style={{color: "#ffffff",}} />
+                  <FontAwesomeIcon
+                    icon={faListUl}
+                    style={{ color: "#ffffff" }}
+                  />
                   <span className="ms-1 d-none d-sm-inline">Categorías</span>{" "}
-                  
                 </a>
                 <ul
                   className="collapse show nav flex-column ms-1"
@@ -68,22 +75,35 @@ function SideBar() {
               <li>
                 <a href="#" className="nav-link px-0 align-middle">
                   <i className="fs-4 bi-table"></i>{" "}
-                  <FontAwesomeIcon icon={faCircleInfo} style={{color: "#ffffff",}} />
+                  <FontAwesomeIcon
+                    icon={faCircleInfo}
+                    style={{ color: "#ffffff" }}
+                  />
                   <span className="ms-1 d-none d-sm-inline">Quiénes somos</span>
                 </a>
               </li>
               <li>
                 <a href="#" className="nav-link px-0 align-middle">
                   <i className="fs-4 bi-people"></i>{" "}
-                  <FontAwesomeIcon icon={faPhone} style={{color: "#fafafa",}} />
-                  <span className="ms-1 d-none d-sm-inline">Cómo encontrarnos</span>{" "}
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    style={{ color: "#fafafa" }}
+                  />
+                  <span className="ms-1 d-none d-sm-inline">
+                    Cómo encontrarnos
+                  </span>{" "}
                 </a>
               </li>
               <li>
                 <a href="#" className="nav-link px-0 align-middle">
                   <i className="fs-4 bi-people"></i>{" "}
-                  <FontAwesomeIcon icon={faCartShopping} style={{color: "#f5f9ff",}} />
-                  <span className="ms-1 d-none d-sm-inline">Carrito de compras</span>{" "}
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    style={{ color: "#f5f9ff" }}
+                  />
+                  <span className="ms-1 d-none d-sm-inline">
+                    Carrito de compras
+                  </span>{" "}
                 </a>
               </li>
             </ul>
@@ -130,7 +150,7 @@ function SideBar() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

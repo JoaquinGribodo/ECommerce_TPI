@@ -1,4 +1,11 @@
 /*Div para centrar los elementos del form, estaban uno abajo del otro*/
-.divBuscador {
-    display: flex;
+.searchDiv {
+  display: flex;
+  padding-right: 10px;
+}
+
+/*Div para acomodar el icono de la lupa*/
+.glassDiv {
+  padding-right: 15px;
+  padding-top: 5px;
 }

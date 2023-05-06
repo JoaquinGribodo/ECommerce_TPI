@@ -3,6 +3,11 @@
   margin-top: 50px;
 }
 
+.mainDiv {
+  display: flex;
+  flex-direction: row;
+}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
