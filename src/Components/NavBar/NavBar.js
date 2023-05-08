@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
   return (
-    <nav classNameName="navbar navbar-dark bg-dark justify-content-between">
+    <nav className="navbar navbar-dark bg-dark justify-content-between">
       <div className="pos-f-t">
         <div className="collapse" id="navbarToggleExternalContent">
           <div className="bg-dark p-4">
@@ -27,9 +27,9 @@ function NavBar() {
           </button>
         </nav>
       </div>
-      <form classNameName="form-inline">
-        <div classNameName="searchDiv">
-          <div classNameName="glassDiv">
+      <form className="form-inline">
+        <div className="searchDiv">
+          <div className="glassDiv">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               size="xl"
@@ -37,7 +37,7 @@ function NavBar() {
             />
           </div>
           <input
-            classNameName="form-control mr-sm-2"
+            className="form-control mr-sm-2"
             type="search"
             placeholder="¿Qué producto buscas?"
             aria-label="Search"

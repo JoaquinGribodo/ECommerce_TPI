@@ -4,7 +4,10 @@ import NavBar from "./Components/NavBar/NavBar";
 import Products from "./Components/Products/Products";
 import LogIn from "./Components/LogIn/LogIn";
 import SignUp from "./Components/SignUp/SignUp";
+import ProductFilter from "./Components/ProductFilter/ProductFilter";
 
+
+// Carga de productos
 const products = [
   {
     id: 1,
@@ -12,7 +15,7 @@ const products = [
     price: "2000",
     color: "Rojo",
     description: "Remera básica",
-    size: "M",
+    size: "S",
   },
   {
     id: 2,
@@ -26,30 +29,30 @@ const products = [
     id: 3,
     name: "Sweater",
     price: "2350",
-    color: "Verde",
+    color: "Gris",
     description: "Sweater básico",
-    size: "M",
+    size: "L",
   },
   {
     id: 4,
-    name: "Zapatillas",
+    name: "Musculosa",
     price: "2000",
     color: "Negro",
-    description: "Zapatillas básicas",
-    size: "40",
+    description: "Musculosa básica",
+    size: "XL",
   },
 ];
+
 
 function App() {
   return (
     <>
       <NavBar />
       <div className="mainDiv">
-        <SideBar />
+        <SideBar/>
         <Products products={products} />
+        <ProductFilter/>
       </div>
-      <LogIn />
-      <SignUp />
     </>
   );
 }
