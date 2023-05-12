@@ -49,7 +49,6 @@ function App() {
     <>
       <NavBar />
       <div className="mainDiv">
-        <SideBar/>
         <Products products={products} />
         <ProductFilter/>
       </div>

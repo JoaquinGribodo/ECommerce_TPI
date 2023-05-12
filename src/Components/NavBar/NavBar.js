@@ -2,9 +2,22 @@ import React from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import SideBar from "../SideBar/SideBar";
 
-function NavBar() {
+//no anda el boton para abrir el SideBar
+//cuando lo cerramos que no se corra todo para la izquierda
+
+const NavBar = ()  =>{
+
+  //const [showSideBar, setShowSideBar] = useState(false);
+
+  
+  // const showHandler = () => {
+  //   setShowSideBar(false);
+  // }
   return (
+    <>
     <nav className="navbar navbar-dark bg-dark justify-content-between">
       <div className="pos-f-t">
         <div className="collapse" id="navbarToggleExternalContent">
@@ -22,6 +35,7 @@ function NavBar() {
             aria-controls="navbarToggleExternalContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            //onClick={showHandler}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -45,7 +59,7 @@ function NavBar() {
         </div>
       </form>
     </nav>
+    </>
   );
-}
-
+  }
 export default NavBar;

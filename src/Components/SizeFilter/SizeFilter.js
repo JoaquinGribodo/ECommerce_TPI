@@ -1,12 +1,14 @@
 import React from 'react'
 import './SizeFilter.css'
 
+//no funciona el subir o bajar del filtro del precio
+//como hacer para cambiar el precio y no tener que apretar las flechas
 const SizeFilter = () =>{
   return (
     <>
     <div className="row justify-content-center" id="basic-example-filters" data-mdb-items=".basic-example-item" data-mdb-auto-filter="true">
         <div className="col-md-6" data-mdb-filter="color">
-          <span className="text-center fa-lg fw-bold">Talles:</span>
+          <span className="text-center fa-lg fw-bold" style={{display: 'block'}}>Talles:</span>
 
           <div className="form-check mt-3">
             <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="black"/>

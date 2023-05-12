@@ -8,7 +8,7 @@ const ColorFilter = () =>{
         <div className="col-md-12 text-center mb-3" data-mdb-filter="color" style={{padding: 20}}>
           <span className="text-center fa-lg fw-bold" style={{display: 'block'}}>Color:</span>
 
-          <div className="form-check form-check-inline" style={{paddingLeft: 3}}>
+          <div className="form-check form-check-inline" style={{paddingLeft: 3, paddingTop: 25}}>
             <input className="btn-check" type="radio" name="colorRadio" value="red"/>
             <label className="btn bg-danger btn-rounded p-3"></label>
           </div>

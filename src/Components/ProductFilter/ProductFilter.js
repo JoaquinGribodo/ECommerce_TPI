@@ -6,6 +6,7 @@ import PriceFilter from '../PriceFilter/PriceFilter'
 import ButtonFilter from '../ButtonFilter/ButtonFilter'
 
 
+//no andan los filtros para seleccionar
 const ProductFilter = () =>{
   return (
     <div className='divFilters'>
