@@ -10,12 +10,13 @@ import SideBar from "../SideBar/SideBar";
 
 const NavBar = ()  =>{
 
-  //const [showSideBar, setShowSideBar] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(false);
+  
 
   
-  // const showHandler = () => {
-  //   setShowSideBar(false);
-  // }
+  const showHandler = () => {
+    setShowSideBar(prevShowSidebar => !prevShowSidebar);
+   }
   return (
     <>
     <nav className="navbar navbar-dark bg-dark justify-content-between">
@@ -35,7 +36,7 @@ const NavBar = ()  =>{
             aria-controls="navbarToggleExternalContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            //onClick={showHandler}
+            onClick={showHandler}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -59,6 +60,10 @@ const NavBar = ()  =>{
         </div>
       </form>
     </nav>
+    <div>
+    {showSideBar && <SideBar/>}
+    </div>
+
     </>
   );
   }
