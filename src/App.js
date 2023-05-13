@@ -1,59 +1,42 @@
-import "./App.css";
-import SideBar from "./Components/SideBar/SideBar";
-import NavBar from "./Components/NavBar/NavBar";
-import Products from "./Components/Products/Products";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import DashBoard from "./Components/DashBoard/DashBoard";
 import LogIn from "./Components/LogIn/LogIn";
 import SignUp from "./Components/SignUp/SignUp";
-import ProductFilter from "./Components/ProductFilter/ProductFilter";
+import PageNotFound from "./Components/PageNotFound/PageNotFound";
+import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
+import "./App.css";
+import ContactUs from "./Components/ContactUs/ContactUs";
 
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/home",
+      element: <DashBoard />,
+    },
+    {
+      path: "/login",
+      element: <LogIn />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
+    },
+    {
+      path: "/shoppingcart",
+      element: <ShoppingCart />,
+    },
+    {
+      path: "/home/contact",
+      element: <ContactUs />,
+    },
+  ]);
 
-// Carga de productos
-const products = [
-  {
-    id: 1,
-    name: "Remera",
-    price: "2000",
-    color: "Rojo",
-    description: "Remera básica",
-    size: "S",
-  },
-  {
-    id: 2,
-    name: "Pantalón",
-    price: "2000",
-    color: "Azul",
-    description: "Pantalón básico",
-    size: "M",
-  },
-  {
-    id: 3,
-    name: "Sweater",
-    price: "2350",
-    color: "Gris",
-    description: "Sweater básico",
-    size: "L",
-  },
-  {
-    id: 4,
-    name: "Musculosa",
-    price: "2000",
-    color: "Negro",
-    description: "Musculosa básica",
-    size: "XL",
-  },
-];
-
-
-function App() {
-  return (
-    <>
-      <NavBar />
-      <div className="mainDiv">
-        <Products products={products} />
-        <ProductFilter/>
-      </div>
-    </>
-  );
-}
+  return <RouterProvider router={router} />;
+};
 
 export default App;

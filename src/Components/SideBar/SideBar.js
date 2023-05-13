@@ -1,5 +1,5 @@
 import React from "react";
-import "./SideBar.css"
+import "./SideBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faListUl,
@@ -12,13 +12,16 @@ import {
 /* Armado de sidebar con estilo, formato y cada item */
 const SideBar = () => {
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{width: 150, fontSize: 18}}>
+    <div
+      className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+      style={{ width: 150, fontSize: 18 }}
+    >
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"> 
+          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <a
               href="/"
-               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+              className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
             >
               <span className="fs-5 d-none d-sm-inline">Menú</span>
             </a>
@@ -26,9 +29,11 @@ const SideBar = () => {
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu"
             >
-              
               <li className="nav-item">
-                <a href="#" className="nav-link align-middle px-0">
+                <a
+                  href="http://localhost:3000/home"
+                  className="nav-link align-middle px-0"
+                >
                   <i className="fs-4 bi-house"></i>{" "}
                   <FontAwesomeIcon
                     icon={faHouse}
@@ -86,7 +91,10 @@ const SideBar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="nav-link px-0 align-middle">
+                <a
+                  href="http://localhost:3000/home/contact"
+                  className="nav-link px-0 align-middle"
+                >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon
                     icon={faPhone}
@@ -98,7 +106,10 @@ const SideBar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="nav-link px-0 align-middle">
+                <a
+                  href="http://localhost:3000/shoppingcart"
+                  className="nav-link px-0 align-middle"
+                >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon
                     icon={faCartShopping}
@@ -149,7 +160,7 @@ const SideBar = () => {
                 </li>
               </ul>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

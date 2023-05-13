@@ -1,21 +1,19 @@
-import React from 'react'
-import "./ProductFilter.css"
-import ColorFilter from '../ColorFilter/ColorFilter'
-import SizeFilter from '../SizeFilter/SizeFilter'
-import PriceFilter from '../PriceFilter/PriceFilter'
-import ButtonFilter from '../ButtonFilter/ButtonFilter'
+import React from "react";
+import "./ProductFilter.css";
+import ColorFilter from "../ColorFilter/ColorFilter";
+import SizeFilter from "../SizeFilter/SizeFilter";
+import PriceFilter from "../PriceFilter/PriceFilter";
+import ButtonFilter from "../ButtonFilter/ButtonFilter";
 
-
-//no andan los filtros para seleccionar
-const ProductFilter = () =>{
+const ProductFilter = () => {
   return (
-    <div className='divFilters'>
-        <ColorFilter/>
-        <SizeFilter/>
-        <PriceFilter/>
-        <ButtonFilter/>
+    <div className="divFilters">
+      <ColorFilter />
+      <SizeFilter />
+      <PriceFilter />
+      <ButtonFilter />
     </div>
-  )
-}
+  );
+};
 
-export default ProductFilter
+export default ProductFilter;

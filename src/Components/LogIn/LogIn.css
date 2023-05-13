@@ -1,3 +1,4 @@
-.gradient-custom {
+.logInDiv {
   background-image: url("../../Images/LogInImage.jpg");
+  background-size: cover;
 }

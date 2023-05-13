@@ -2,3 +2,8 @@ h2,
 h3 {
   text-align: center;
 }
+
+.rounded-t-lg {
+  max-width: 363px;
+  max-height: 286px;
+}

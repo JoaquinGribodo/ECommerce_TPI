@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./LogIn.css";
 
 const LogIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const emailChangeHandler = (e) => {
+    emailRef.current.style.borderColor = "";
+    emailRef.current.style.outline = "";
+    setEmail(e.target.value);
+  };
+
+  const passwordChangeHandler = (e) => {
+    passwordRef.current.style.borderColor = "";
+    passwordRef.current.style.outline = "";
+    setPassword(e.target.value);
+  };
+
+  const logInClicked = () => {
+    if (emailRef.current.value.length === 0) {
+      emailRef.current.focus();
+      emailRef.current.style.border = "solid red";
+      emailRef.current.style.outline = "none";
+      return;
+    }
+    if (passwordRef.current.value.length === 0) {
+      passwordRef.current.focus();
+      passwordRef.current.style.border = "solid red";
+      passwordRef.current.style.outline = "none";
+      return;
+    }
+  };
+
   return (
-    <div>
-      <section className="vh-100 gradient-custom">
+    <div className="logInDiv">
+      <section className="vh-150 gradient-custom">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -27,9 +59,11 @@ const LogIn = () => {
                     <div className="form-outline form-white mb-4">
                       <input
                         type="email"
-                        id="typeEmailX"
                         className="form-control form-control-lg"
+                        ref={emailRef}
+                        onChange={emailChangeHandler}
                       />
+                      <p>{email === "" ? "Ingrese su correo" : ""}</p>
                     </div>
 
                     <label className="form-label" for="typePasswordX">
@@ -38,9 +72,11 @@ const LogIn = () => {
                     <div className="form-outline form-white mb-4">
                       <input
                         type="password"
-                        id="typePasswordX"
                         className="form-control form-control-lg"
+                        ref={passwordRef}
+                        onChange={passwordChangeHandler}
                       />
+                      <p>{password === "" ? "Ingrese su contraseña" : ""}</p>
                     </div>
 
                     <p className="small mb-5 pb-lg-2">
@@ -52,6 +88,7 @@ const LogIn = () => {
                     <button
                       className="btn btn-outline-light btn-lg px-5"
                       type="submit"
+                      onClick={logInClicked}
                     >
                       Ingresar
                     </button>
