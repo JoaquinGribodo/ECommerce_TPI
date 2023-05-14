@@ -4,6 +4,7 @@ import Products from "../Products/Products";
 import ProductFilter from "../ProductFilter/ProductFilter";
 import WhoWeAre from "../WhoWeAre/WhoWeAre";
 import ContactUs from "../ContactUs/ContactUs";
+import SideBar from "../SideBar/SideBar";
 
 const products = [
   {
@@ -52,9 +53,13 @@ const DashBoard = () => {
   return (
     <>
       <NavBar />
-      <div className="mainDiv">
-        <Products products={products} />
-        <ProductFilter />
+      <div className="row">
+        <div className="col-10">
+          <Products products={products} />
+        </div>
+        <div className="col-2">
+          <ProductFilter />
+        </div>
       </div>
 
       <div>
