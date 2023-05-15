@@ -5,6 +5,7 @@ import ProductFilter from "../ProductFilter/ProductFilter";
 import WhoWeAre from "../WhoWeAre/WhoWeAre";
 import ContactUs from "../ContactUs/ContactUs";
 import SideBar from "../SideBar/SideBar";
+import { useState } from "react";
 
 const products = [
   {
@@ -50,11 +51,18 @@ const products = [
 ];
 
 const DashBoard = () => {
+  const [showSideBar, setShowSideBar] = useState(false);
+
+  const stateChange = (newState) => {
+    setShowSideBar(newState);
+  };
+
   return (
     <>
-      <NavBar />
+      <NavBar onChangeState={stateChange} />
       <div className="row">
-        <div className="col-10">
+        <div className="col-2">{showSideBar && <SideBar />}</div>
+        <div className="col-8">
           <Products products={products} />
         </div>
         <div className="col-2">

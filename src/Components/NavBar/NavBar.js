@@ -7,11 +7,11 @@ import SideBar from "../SideBar/SideBar";
 
 //cuando lo cerramos que no se corra todo para la izquierda
 
-const NavBar = () => {
-  const [showSideBar, setShowSideBar] = useState(false);
+const NavBar = ({onChangeState}) => {
 
   const showHandler = () => {
-    setShowSideBar((prevShowSidebar) => !prevShowSidebar);
+    const newState = ((prevShowSidebar) => !prevShowSidebar);
+    onChangeState(newState);
   };
   return (
     <>
@@ -58,7 +58,6 @@ const NavBar = () => {
           </div>
         </form>
       </nav>
-      <div>{showSideBar && <SideBar />}</div>
     </>
   );
 };
