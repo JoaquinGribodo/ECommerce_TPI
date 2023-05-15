@@ -11,6 +11,20 @@ import {
 
 /* Armado de sidebar con estilo, formato y cada item */
 const SideBar = () => {
+  const handleWhoWeAreClickScroll = () => {
+    const element = document.getElementById("whoWeAre");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleContactUsClickScroll = () => {
+    const element = document.getElementById("contactUs");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
@@ -81,7 +95,11 @@ const SideBar = () => {
                 </ul>
               </li>
               <li>
-                <a href="#" className="nav-link px-0 align-middle">
+                <a
+                  className="nav-link px-0 align-middle"
+                  onClick={handleWhoWeAreClickScroll}
+                  role="button"
+                >
                   <i className="fs-4 bi-table"></i>{" "}
                   <FontAwesomeIcon
                     icon={faCircleInfo}
@@ -92,8 +110,9 @@ const SideBar = () => {
               </li>
               <li>
                 <a
-                  href="http://localhost:3000/home/contact"
                   className="nav-link px-0 align-middle"
+                  onClick={handleContactUsClickScroll}
+                  role="button"
                 >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon

@@ -69,10 +69,10 @@ const DashBoard = () => {
           <ProductFilter />
         </div>
       </div>
-      <div>
+      <div id="whoWeAre">
         <WhoWeAre />
       </div>
-      <div>
+      <div id="contactUs">
         <ContactUs />
       </div>
     </>
