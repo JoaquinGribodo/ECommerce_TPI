@@ -6,3 +6,7 @@ a {
   color: #1411d3;
   text-decoration: inherit;
 }
+
+.nav-link {
+  visibility: visible;
+}

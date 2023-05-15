@@ -69,7 +69,7 @@ const SideBar = () => {
                   </span>{" "}
                 </a>
                 <ul
-                  className="collapse show nav flex-column ms-1"
+                  className="collapse nav flex-column ms-1"
                   id="submenu1"
                   data-bs-parent="#menu"
                 >
