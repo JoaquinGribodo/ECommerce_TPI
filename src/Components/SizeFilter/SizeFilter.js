@@ -9,7 +9,7 @@ const SizeFilter = () => {
         data-mdb-items=".basic-example-item"
         data-mdb-auto-filter="true"
       >
-        <div className="col-md-6" data-mdb-filter="color">
+        <div className="col-md-12 text-center mb-3" data-mdb-filter="color">
           <span className="text-center fa-lg fw-bold">Talles:</span>
 
           <div className="form-check mt-3">

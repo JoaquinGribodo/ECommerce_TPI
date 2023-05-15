@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import "./LogIn.css";
 
 const LogIn = () => {
@@ -32,6 +33,11 @@ const LogIn = () => {
       passwordRef.current.style.outline = "none";
       return;
     }
+  };
+
+  const navigate = useNavigate();
+  const goToSignUpHandler = () => {
+    navigate("/signup");
   };
 
   return (
@@ -97,9 +103,12 @@ const LogIn = () => {
                   <div>
                     <p className="mb-0">
                       ¿No tiene una cuenta?{" "}
-                      <a href="#!" className="text-white-50 fw-bold">
+                      <button
+                        className="text-white-50 fw-bold"
+                        onClick={goToSignUpHandler}
+                      >
                         Registrarse
-                      </a>
+                      </button>
                     </p>
                   </div>
                 </div>

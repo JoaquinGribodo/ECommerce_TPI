@@ -58,7 +58,7 @@ const NavBar = () => {
           </div>
         </form>
       </nav>
-      <div className="mainDiv">{showSideBar && <SideBar />}</div>
+      <div>{showSideBar && <SideBar />}</div>
     </>
   );
 };

@@ -5,11 +5,15 @@ import LogIn from "./Components/LogIn/LogIn";
 import SignUp from "./Components/SignUp/SignUp";
 import PageNotFound from "./Components/PageNotFound/PageNotFound";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
-import "./App.css";
 import ContactUs from "./Components/ContactUs/ContactUs";
+import "./App.css";
 
 const App = () => {
   const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <DashBoard />,
+    },
     {
       path: "/home",
       element: <DashBoard />,
@@ -33,6 +37,10 @@ const App = () => {
     {
       path: "/home/contact",
       element: <ContactUs />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
     },
   ]);
 

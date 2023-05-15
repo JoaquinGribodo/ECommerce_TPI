@@ -13,11 +13,11 @@ const ProductItem = ({
   return (
     <ProductCard>
       <img className="rounded-t-lg" src={productImage} alt="" />
-      <h2 className="font-mono">{productName}</h2>
-      <h2 className="font-mono">{productColor}</h2>
-      <h2 className="font-mono">{productDescription}</h2>
-      <h2 className="font-mono">{productPrice}</h2>
-      <h2 className="font-mono">{productSize}</h2>
+      <h2 className="font-serif">{productName}</h2>
+      <h2 className="font-serif">{productColor}</h2>
+      <h2 className="font-serif">{productDescription}</h2>
+      <h2 className="font-serif">{productPrice}</h2>
+      <h2 className="font-serif">{productSize}</h2>
     </ProductCard>
   );
 };

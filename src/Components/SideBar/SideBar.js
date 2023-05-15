@@ -14,7 +14,7 @@ const SideBar = () => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-      style={{ width: 150, fontSize: 18 }}
+      style={{ width: 180, fontSize: 18 }}
     >
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -46,7 +46,7 @@ const SideBar = () => {
                 <a
                   href="#submenu1"
                   data-bs-toggle="collapse"
-                  className="nav-link px-0 align-middle"
+                  className="d-flex nav-link px-0 align-middle"
                 >
                   <i className="fs-4 bi-speedometer2"></i>{" "}
                   <FontAwesomeIcon
