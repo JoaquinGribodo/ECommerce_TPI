@@ -61,8 +61,10 @@ const DashBoard = () => {
     <>
       <NavBar onChangeState={stateChange} />
       <div className="row">
-        <div className="col-2">{showSideBar && <SideBar />}</div>
-        <div className="col-8">
+        <div className={showSideBar ? "col-2" : ""}>
+          {showSideBar && <SideBar />}
+        </div>
+        <div className={showSideBar ? "col-8" : "col-10"}>
           <Products products={products} />
         </div>
         <div className="col-2">
