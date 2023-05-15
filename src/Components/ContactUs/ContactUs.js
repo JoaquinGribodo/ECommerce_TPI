@@ -5,7 +5,7 @@ import { faShirt } from "@fortawesome/free-solid-svg-icons";
 
 const ContactUs = () => {
   return (
-    <div className="container my-24 px-6 mx-auto">
+    <div className="container px-6 mx-auto">
       <section className="mb-32 text-gray-800">
         <div
           className="relative overflow-hidden bg-no-repeat bg-cover"
@@ -13,7 +13,7 @@ const ContactUs = () => {
             backgroundImage:
               "https://mdbootstrap.com/img/new/textures/full/284.jpg",
             backgroundPosition: 50,
-            height: 300,
+            height: 170,
           }}
         ></div>
         <div className="container text-gray-800 px-4 md:px-12">

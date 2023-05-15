@@ -27,15 +27,18 @@ const SideBar = () => {
 
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-      style={{ width: 180, fontSize: 18 }}
+      className="d-flex flex-column flex-shrink-0 p-3"
+      style={{ width: 180, fontSize: 18, backgroundColor: "#e3f2fd" }}
     >
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <div
+          className="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
+          style={{ backgroundColor: "#e3f2fd" }}
+        >
+          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
             <a
               href="/"
-              className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+              className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
             >
               <span className="fs-5 d-none d-sm-inline">Menú</span>
             </a>
@@ -49,10 +52,7 @@ const SideBar = () => {
                   className="nav-link align-middle px-0"
                 >
                   <i className="fs-4 bi-house"></i>{" "}
-                  <FontAwesomeIcon
-                    icon={faHouse}
-                    style={{ color: "#ffffff" }}
-                  />
+                  <FontAwesomeIcon icon={faHouse} />
                   <span className="ms-1 d-none d-sm-inline">Inicio</span>
                 </a>
               </li>
@@ -63,11 +63,10 @@ const SideBar = () => {
                   className="d-flex nav-link px-0 align-middle"
                 >
                   <i className="fs-4 bi-speedometer2"></i>{" "}
-                  <FontAwesomeIcon
-                    icon={faListUl}
-                    style={{ color: "#ffffff" }}
-                  />
-                  <span className="ms-1 d-none d-sm-inline">Categorías</span>{" "}
+                  <FontAwesomeIcon icon={faListUl} />
+                  <span className="ms-1 d-none d-sm-inline">
+                    Categorías
+                  </span>{" "}
                 </a>
                 <ul
                   className="collapse show nav flex-column ms-1"
@@ -101,10 +100,7 @@ const SideBar = () => {
                   role="button"
                 >
                   <i className="fs-4 bi-table"></i>{" "}
-                  <FontAwesomeIcon
-                    icon={faCircleInfo}
-                    style={{ color: "#ffffff" }}
-                  />
+                  <FontAwesomeIcon icon={faCircleInfo} />
                   <span className="ms-1 d-none d-sm-inline">Quiénes somos</span>
                 </a>
               </li>
@@ -115,10 +111,7 @@ const SideBar = () => {
                   role="button"
                 >
                   <i className="fs-4 bi-people"></i>{" "}
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    style={{ color: "#fafafa" }}
-                  />
+                  <FontAwesomeIcon icon={faPhone} />
                   <span className="ms-1 d-none d-sm-inline">
                     Cómo encontrarnos
                   </span>{" "}
@@ -130,10 +123,7 @@ const SideBar = () => {
                   className="nav-link px-0 align-middle"
                 >
                   <i className="fs-4 bi-people"></i>{" "}
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    style={{ color: "#f5f9ff" }}
-                  />
+                  <FontAwesomeIcon icon={faCartShopping} />
                   <span className="ms-1 d-none d-sm-inline">
                     Carrito de compras
                   </span>{" "}
@@ -144,7 +134,7 @@ const SideBar = () => {
             <div className="dropdown pb-4">
               <a
                 href="#"
-                className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                className="d-flex align-items-center text-decoration-none dropdown-toggle"
                 id="dropdownUser1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"

@@ -5,27 +5,30 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import SideBar from "../SideBar/SideBar";
 
-//cuando lo cerramos que no se corra todo para la izquierda
-
-const NavBar = ({onChangeState}) => {
-
+const NavBar = ({ onChangeState }) => {
   const showHandler = () => {
-    const newState = ((prevShowSidebar) => !prevShowSidebar);
+    const newState = (prevShowSidebar) => !prevShowSidebar;
     onChangeState(newState);
   };
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark justify-content-between">
+      <nav
+        className="navbar navbar-light justify-content-between"
+        style={{ backgroundColor: "#e3f2fd" }}
+      >
         <div className="pos-f-t">
           <div className="collapse" id="navbarToggleExternalContent">
-            <div className="bg-dark p-4">
+            <div className="p-4" style={{ backgroundColor: "#e3f2fd" }}>
               <h4 className="text-white">Collapsed content</h4>
               <span className="text-muted">
                 Toggleable via the navbar brand.
               </span>
             </div>
           </div>
-          <nav className="navbar navbar-dark bg-dark justify-content-between ">
+          <nav
+            className="navbar navbar-light justify-content-between"
+            style={{ backgroundColor: "#e3f2fd" }}
+          >
             <button
               className="navbar-toggler"
               type="button"
@@ -40,14 +43,11 @@ const NavBar = ({onChangeState}) => {
             </button>
           </nav>
         </div>
+
         <form className="form-inline">
           <div className="searchDiv">
             <div className="glassDiv">
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                size="xl"
-                style={{ color: "#f9fafb" }}
-              />
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
             </div>
             <input
               className="form-control mr-sm-2"
