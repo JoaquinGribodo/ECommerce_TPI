@@ -30,7 +30,7 @@ const SideBar = () => {
       className="d-flex flex-column flex-shrink-0 p-3"
       style={{ width: 180, fontSize: 18, backgroundColor: "#e3f2fd" }}
     >
-      <div className="row flex-nowrap">
+      <div className="row flex-nowrap" id="sideBar">
         <div
           className="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
           style={{ backgroundColor: "#e3f2fd" }}

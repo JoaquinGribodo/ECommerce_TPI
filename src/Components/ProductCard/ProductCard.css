@@ -1,0 +1,13 @@
+p {
+  position: relative;
+  display: block;
+  flex: 1 1 0px;
+  transition: transform 500ms;
+}
+
+p:focus,
+p:hover {
+  transform: scale(1.3);
+  z-index: 1;
+  cursor: default;
+}
