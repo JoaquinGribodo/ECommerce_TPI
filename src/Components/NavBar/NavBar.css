@@ -9,3 +9,11 @@
   padding-right: 15px;
   padding-top: 5px;
 }
+
+.logo{
+  font-size : 50px;
+  text-align: center;
+  color: purple;
+  font-style: italic;
+
+}

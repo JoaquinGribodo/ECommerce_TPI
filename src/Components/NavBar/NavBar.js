@@ -2,6 +2,10 @@ import React from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+//import { faRaspberryPi } from '@fortawesome/free-solid-svg-icons';
+
+import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons';
+
 
 const NavBar = ({ onChangeState }) => {
   const showHandler = () => {
@@ -41,7 +45,9 @@ const NavBar = ({ onChangeState }) => {
             </button>
           </nav>
         </div>
-
+        <div className="logo">
+        <FontAwesomeIcon icon={faRaspberryPi} size="xl" />  MULBERRY
+        </div>
         <form className="form-inline">
           <div className="searchDiv">
             <div className="glassDiv">
