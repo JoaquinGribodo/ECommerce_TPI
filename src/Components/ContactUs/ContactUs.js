@@ -1,4 +1,5 @@
 import React from "react";
+import './ContactUs.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
 import { faShirt } from "@fortawesome/free-solid-svg-icons";
@@ -25,6 +26,10 @@ const ContactUs = () => {
               backdropFilter: "blur(30)",
             }}
           >
+            <div>
+            <h1>CONTACTATE CON MULBERRY</h1>
+            <br />
+            </div>
             <div className="flex flex-wrap">
               <div className="grow-0 shrink-0 basis-auto w-full xl:w-5/12 px-3 lg:px-6 mb-12 xl:mb-0">
                 <form>
