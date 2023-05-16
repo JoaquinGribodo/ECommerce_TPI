@@ -8,7 +8,7 @@ const ContactUs = () => {
     <div className="container px-6 mx-auto">
       <section className="mb-32 text-gray-800">
         <div
-          className="relative overflow-hidden bg-no-repeat bg-cover"
+          className=" overflow-hidden bg-no-repeat bg-cover"
           style={{
             backgroundImage:
               "https://mdbootstrap.com/img/new/textures/full/284.jpg",

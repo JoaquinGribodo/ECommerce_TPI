@@ -13,9 +13,9 @@ const ShoppingCart = () => {
         <div class="w-3/4 bg-white px-10 py-10">
           <div class="flex justify-between border-b pb-8">
             <h1 class="font-semibold text-2xl">Carrito</h1>
-            <h2 class="font-semibold text-2xl">
+            <h1 class="font-semibold text-2xl">
               Acá iría la cantidad de productos
-            </h2>
+            </h1>
           </div>
           <div class="flex mt-10 mb-5">
             <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">
