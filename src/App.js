@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import PageNotFound from "./Components/PageNotFound/PageNotFound";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import ContactUs from "./Components/ContactUs/ContactUs";
+import WhoWeAre from "./Components/WhoWeAre/WhoWeAre"
 import "./App.css";
 
 const App = () => {
@@ -41,6 +42,10 @@ const App = () => {
     {
       path: "/signup",
       element: <SignUp />,
+    },
+    {
+      path: "/whoweare",
+      element: <WhoWeAre/>,
     },
   ]);
 

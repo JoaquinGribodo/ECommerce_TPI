@@ -10,3 +10,7 @@ a {
 .nav-link {
   visibility: visible;
 }
+
+.collapse.show {
+  visibility: visible;
+}

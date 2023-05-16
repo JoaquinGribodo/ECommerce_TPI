@@ -25,7 +25,7 @@ const SizeFilter = () => {
             </label>
           </div>
 
-          <div className="form-check">
+          <div className="form-check mt-2">
             <input
               className="form-check-input"
               type="radio"
@@ -38,7 +38,7 @@ const SizeFilter = () => {
             </label>
           </div>
 
-          <div className="form-check">
+          <div className="form-check mt-2">
             <input
               className="form-check-input"
               type="radio"
@@ -51,7 +51,7 @@ const SizeFilter = () => {
             </label>
           </div>
 
-          <div className="form-check">
+          <div className="form-check mt-2">
             <input
               className="form-check-input"
               type="radio"
