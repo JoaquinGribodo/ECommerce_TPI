@@ -2,8 +2,6 @@ import React from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import SideBar from "../SideBar/SideBar";
 
 const NavBar = ({ onChangeState }) => {
   const showHandler = () => {
