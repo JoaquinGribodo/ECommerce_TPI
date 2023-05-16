@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { auth } from "../../Config/FireBase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import "./LogIn.css";
 
 const LogIn = () => {
@@ -7,6 +9,14 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const signIn = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const emailChangeHandler = (e) => {
     emailRef.current.style.borderColor = "";
@@ -94,7 +104,7 @@ const LogIn = () => {
                     <button
                       className="btn btn-outline-light btn-lg px-5"
                       type="submit"
-                      onClick={logInClicked}
+                      onClick={signIn}
                     >
                       Ingresar
                     </button>

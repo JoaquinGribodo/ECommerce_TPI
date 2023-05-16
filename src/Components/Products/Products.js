@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Products.css";
 import ProductItem from "../ProductItem/ProductItem";
+import { db } from "../../Config/FireBase";
+import { collection, getDocs } from "firebase/firestore";
 
-const Products = ({ products }) => {
-  //desestructuramos las propiedades que obtenemos de el arreglo de objetos de app para después hacer un map que muestra cada propiedad.
+const Products = () => {
+  const [productList, setProductList] = useState([]);
 
-  const mappedProducts = products.map((product) => (
+  const productsCollection = collection(db, "products");
+
+  useEffect(() => {
+    const getProductList = async () => {
+      try {
+        const data = await getDocs(productsCollection);
+        const filteredData = data.docs.map((doc) => ({ ...doc.data() }));
+        setProductList(filteredData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getProductList();
+  }, []);
+
+  const mappedProducts = productList.map((product) => (
     <div>
       <ProductItem
         key={product.id}

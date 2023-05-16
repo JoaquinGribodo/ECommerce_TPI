@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import "./SideBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,6 +24,11 @@ const SideBar = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const navigate = useNavigate();
+  const goToLogInHandler = () => {
+    navigate("/login");
   };
 
   return (
@@ -131,43 +137,22 @@ const SideBar = () => {
               </li>
             </ul>
             <hr />
-            <div className="dropdown pb-4">
-              <a
-                href="#"
-                className="d-flex align-items-center text-decoration-none dropdown-toggle"
-                id="dropdownUser1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+            <div className=" pb-4">
+              <a className="d-flex align-items-center text-decoration-none">
                 <img
-                  src="https://github.com/mdo.png"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
                   alt="hugenerd"
                   width="30"
                   height="30"
                   className="rounded-circle"
                 />
-                <span className="d-none d-sm-inline mx-1">Usuario</span>
+                <button
+                  className="d-none d-sm-inline mx-1"
+                  onClick={goToLogInHandler}
+                >
+                  Iniciar Sesión
+                </button>
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Configuración
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Perfil
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Cerrar sesión
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
