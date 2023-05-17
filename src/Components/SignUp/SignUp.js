@@ -1,8 +1,29 @@
 import React from "react";
-
+import { useState } from "react";
+import { auth } from "../../Config/FireBase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import "./SignUp.css";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const emailChangeHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordChangeHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const signUp = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <section className="background-radial-gradient overflow-hidden">
@@ -35,34 +56,7 @@ const SignUp = () => {
               <div className="card bg-glass">
                 <div className="card-body px-4 py-5 px-md-5">
                   <form>
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <div className="form-outline">
-                          <label className="form-label" for="form3Example1">
-                            Nombre:
-                          </label>
-                          <input
-                            type="text"
-                            id="form3Example1"
-                            className="form-control"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <div className="form-outline">
-                          <label className="form-label" for="form3Example2">
-                            Apellido:
-                          </label>
-                          <input
-                            type="text"
-                            id="form3Example2"
-                            className="form-control"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-outline mb-4">
+                    <div className="form-outline mb-5">
                       <label className="form-label" for="form3Example3">
                         Correo electrónico:
                       </label>
@@ -70,10 +64,11 @@ const SignUp = () => {
                         type="email"
                         id="form3Example3"
                         className="form-control"
+                        onChange={emailChangeHandler}
                       />
                     </div>
 
-                    <div className="form-outline mb-4">
+                    <div className="form-outline mb-5">
                       <label className="form-label" for="form3Example4">
                         Contraseña:
                       </label>
@@ -81,12 +76,14 @@ const SignUp = () => {
                         type="password"
                         id="form3Example4"
                         className="form-control"
+                        onChange={passwordChangeHandler}
                       />
                     </div>
 
                     <button
                       type="button"
                       class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                      onClick={signUp}
                     >
                       Registrarse
                     </button>
