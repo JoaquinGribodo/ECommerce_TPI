@@ -4,8 +4,8 @@ import ProductItem from "../ProductItem/ProductItem";
 import { db } from "../../Config/FireBase";
 import { collection, getDocs } from "firebase/firestore";
 
-const Products = () => {
-  const [productList, setProductList] = useState([]);
+const Products = ({ productList, getProductsHandler }) => {
+  //Subir el estado a dashboard de productList y en el componente Products, en setProductsList recibir por props getProducts (función en dashboard que se encarga de setear el estado)
 
   const productsCollection = collection(db, "products");
 
@@ -14,7 +14,7 @@ const Products = () => {
       try {
         const data = await getDocs(productsCollection);
         const filteredData = data.docs.map((doc) => ({ ...doc.data() }));
-        setProductList(filteredData);
+        getProductsHandler(filteredData);
       } catch (error) {
         console.error(error);
       }

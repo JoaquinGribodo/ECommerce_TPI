@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 //import { faRaspberryPi } from '@fortawesome/free-solid-svg-icons';
 
-import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons';
-
+import { faRaspberryPi } from "@fortawesome/free-brands-svg-icons";
 
 const NavBar = ({ onChangeState }) => {
   const showHandler = () => {
     const newState = (prevShowSidebar) => !prevShowSidebar;
     onChangeState(newState);
   };
+
   return (
     <>
       <nav
@@ -46,7 +46,7 @@ const NavBar = ({ onChangeState }) => {
           </nav>
         </div>
         <div className="logo">
-        <FontAwesomeIcon icon={faRaspberryPi} size="xl" />  MULBERRY
+          <FontAwesomeIcon icon={faRaspberryPi} size="xl" /> MULBERRY
         </div>
         <form className="form-inline">
           <div className="searchDiv">
@@ -55,7 +55,7 @@ const NavBar = ({ onChangeState }) => {
             </div>
             <input
               className="form-control mr-sm-2"
-              type="search"
+              type="text"
               placeholder="¿Qué producto buscas?"
               aria-label="Search"
             />

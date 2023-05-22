@@ -1,7 +1,7 @@
 import React from "react";
 import "./SizeFilter.css";
 
-const SizeFilter = () => {
+const SizeFilter = ({ filterProductsBySize }) => {
   return (
     <>
       <div
@@ -18,7 +18,8 @@ const SizeFilter = () => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio1"
-              value="black"
+              value="S"
+              onClick={() => filterProductsBySize("S")}
             />
             <label className="form-check-label" for="inlineRadio1">
               S
@@ -31,7 +32,8 @@ const SizeFilter = () => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio2"
-              value="red"
+              value="M"
+              onClick={() => filterProductsBySize("M")}
             />
             <label className="form-check-label" for="inlineRadio2">
               M
@@ -44,7 +46,8 @@ const SizeFilter = () => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              value="blue"
+              value="L"
+              onClick={() => filterProductsBySize("L")}
             />
             <label className="form-check-label" for="inlineRadio3">
               L
@@ -57,7 +60,8 @@ const SizeFilter = () => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              value="white"
+              value="XL"
+              onClick={() => filterProductsBySize("XL")}
             />
             <label className="form-check-label" for="inlineRadio3">
               XL
