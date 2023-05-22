@@ -1,7 +1,7 @@
 import React from "react";
 import "./ColorFilter.css";
 
-const ColorFilter = () => {
+const ColorFilter = ({ filterProductsByColor }) => {
   return (
     <>
       <div
@@ -29,9 +29,13 @@ const ColorFilter = () => {
               className="btn-check"
               type="radio"
               name="colorRadio"
-              value="red"
+              id="colorRadio1"
+              onClick={() => filterProductsByColor("Rojo")}
             />
-            <label className="btn bg-danger btn-rounded p-3"></label>
+            <label
+              class="btn bg-danger btn-rounded p-3"
+              for="colorRadio1"
+            ></label>
           </div>
 
           <div
@@ -42,9 +46,13 @@ const ColorFilter = () => {
               className="btn-check"
               type="radio"
               name="colorRadio"
-              value="blue"
+              id="colorRadio2"
+              onClick={() => filterProductsByColor("Azul")}
             />
-            <label className="btn bg-primary btn-rounded p-3"></label>
+            <label
+              className="btn bg-primary btn-rounded p-3"
+              for="colorRadio2"
+            ></label>
           </div>
 
           <div
@@ -55,10 +63,12 @@ const ColorFilter = () => {
               className="btn-check"
               type="radio"
               name="colorRadio"
-              value="gray"
+              id="colorRadio3"
+              onClick={() => filterProductsByColor("Gris")}
             />
             <label
               className="btn btn-rounded p-3"
+              for="colorRadio3"
               style={{ backgroundColor: "#bdbdbd" }}
             ></label>
           </div>
@@ -71,9 +81,13 @@ const ColorFilter = () => {
               className="btn-check"
               type="radio"
               name="colorRadio"
-              value="black"
+              id="colorRadio4"
+              onClick={() => filterProductsByColor("Negro")}
             />
-            <label className="btn bg-dark text-white btn-rounded p-3"></label>
+            <label
+              className="btn bg-dark text-white btn-rounded p-3"
+              for="colorRadio4"
+            ></label>
           </div>
         </div>
       </div>
