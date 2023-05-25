@@ -42,9 +42,23 @@ const DashBoard = () => {
     setProductFiltered(newProductsFilter);
   };
 
+  const filterProductsByName = (name) => {
+    const newProductsFilter = productList.filter(
+      (product) => product.name.toLowerCase() === name.toLowerCase()
+    );
+    setProductFiltered(newProductsFilter);
+  };
+
+  const clearProductsFilters = () => {
+    setProductFiltered(productList);
+  };
+
   return (
     <>
-      <NavBar onChangeState={sideBarOn} />
+      <NavBar
+        onChangeState={sideBarOn}
+        filterProductsByName={filterProductsByName}
+      />
       <div className="row">
         <div className={showSideBar ? "col-2" : ""}>
           {showSideBar && <SideBar />}
@@ -60,6 +74,7 @@ const DashBoard = () => {
             filterProductsBySize={filterProductsBySize}
             filterProductsByColor={filterProductsByColor}
             filterProductsByPrice={filterProductsByPrice}
+            clearProductsFilters={clearProductsFilters}
           />
         </div>
       </div>

@@ -3,6 +3,9 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router";
 import { auth } from "../../Config/FireBase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -36,6 +39,7 @@ const SignUp = () => {
       passwordRef.current.style.outline = "none";
       return;
     }
+    successMessage();
   };
 
   const signUp = async () => {
@@ -51,7 +55,17 @@ const SignUp = () => {
   const goToHomeHandler = () => {
     navigate("/home");
   };
-
+  const successMessage = () =>
+    toast.success("¡Registrado correctamente!", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   return (
     <div>
       <section className="background-radial-gradient overflow-hidden">
@@ -104,7 +118,6 @@ const SignUp = () => {
                           : ""}
                       </p>
                     </div>
-
                     <div className="form-outline mb-5">
                       <label className="form-label" for="form3Example4">
                         Contraseña:
@@ -127,7 +140,6 @@ const SignUp = () => {
                           : ""}
                       </p>
                     </div>
-
                     <button
                       type="button"
                       class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -138,6 +150,7 @@ const SignUp = () => {
                   </form>
                 </div>
               </div>
+              <ToastContainer />
             </div>
           </div>
           <div>

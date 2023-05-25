@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-//import { faRaspberryPi } from '@fortawesome/free-solid-svg-icons';
-
 import { faRaspberryPi } from "@fortawesome/free-brands-svg-icons";
 
-const NavBar = ({ onChangeState }) => {
+const NavBar = ({ onChangeState, filterProductsByName }) => {
+  const [productName, setProductName] = useState("");
+
+  const productNameHandler = (e) => {
+    setProductName(e.target.value);
+    console.log(productName);
+  };
+
   const showHandler = () => {
     const newState = (prevShowSidebar) => !prevShowSidebar;
     onChangeState(newState);
@@ -58,6 +63,8 @@ const NavBar = ({ onChangeState }) => {
               type="text"
               placeholder="¿Qué producto buscas?"
               aria-label="Search"
+              onChange={productNameHandler}
+              onInput={() => filterProductsByName(productName)}
             />
           </div>
         </form>

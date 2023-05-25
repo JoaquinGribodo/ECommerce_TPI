@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./LogIn.css";
 
@@ -34,12 +36,25 @@ const LogIn = () => {
       passwordRef.current.style.outline = "none";
       return;
     }
+    successMessage();
   };
 
   const navigate = useNavigate();
   const goToSignUpHandler = () => {
     navigate("/signup");
   };
+
+  const successMessage = () =>
+    toast.success("Ha iniciado sesión correctamente", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
   return (
     <div className="logInDiv">
@@ -69,8 +84,8 @@ const LogIn = () => {
                         className="form-control form-control-lg"
                         ref={emailRef}
                         onChange={emailChangeHandler}
+                        required
                       />
-                      <p>{email === "" ? "Ingrese su correo" : ""}</p>
                     </div>
 
                     <label className="form-label" for="typePasswordX">
@@ -82,8 +97,8 @@ const LogIn = () => {
                         className="form-control form-control-lg"
                         ref={passwordRef}
                         onChange={passwordChangeHandler}
+                        required
                       />
-                      <p>{password === "" ? "Ingrese su contraseña" : ""}</p>
                     </div>
 
                     <button
@@ -106,6 +121,7 @@ const LogIn = () => {
                       </button>
                     </p>
                   </div>
+                  <ToastContainer />
                 </div>
               </div>
             </div>

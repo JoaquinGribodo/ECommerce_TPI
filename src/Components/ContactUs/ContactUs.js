@@ -1,10 +1,57 @@
-import React from "react";
-import './ContactUs.css'
+import React, { useRef, useState } from "react";
+import "./ContactUs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
 import { faShirt } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const emailChangeHandler = (e) => {
+    emailRef.current.style.borderColor = "";
+    emailRef.current.style.outline = "";
+    setEmail(e.target.value);
+  };
+
+  const messageChangeHandler = (e) => {
+    messageRef.current.style.borderColor = "";
+    messageRef.current.style.outline = "";
+    setMessage(e.target.value);
+  };
+
+  const sendClick = () => {
+    if (emailRef.current.value.length === 0) {
+      emailRef.current.focus();
+      emailRef.current.style.border = "solid red";
+      emailRef.current.style.outline = "none";
+      return;
+    }
+    if (messageRef.current.value.length === 0) {
+      messageRef.current.focus();
+      messageRef.current.style.border = "solid red";
+      messageRef.current.style.outline = "none";
+      return;
+    }
+    emailMessage();
+  };
+
+  const emailMessage = () => {
+    toast.success("¡Su correo se envió correctamente!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
   return (
     <div className="container px-6 mx-auto">
       <section className="mb-32 text-gray-800">
@@ -27,8 +74,8 @@ const ContactUs = () => {
             }}
           >
             <div>
-            <h1>CONTACTATE CON MULBERRY</h1>
-            <br />
+              <h1>CONTACTATE CON MULBERRY</h1>
+              <br />
             </div>
             <div className="flex flex-wrap">
               <div className="grow-0 shrink-0 basis-auto w-full xl:w-5/12 px-3 lg:px-6 mb-12 xl:mb-0">
@@ -54,6 +101,13 @@ const ContactUs = () => {
                     />
                   </div>
                   <div className="form-group mb-6">
+                    <p>
+                      {email === ""
+                        ? "Ingrese su correo*"
+                        : !email.includes("@") || !email.includes(".")
+                        ? "Su correo debe contener @ y ."
+                        : ""}
+                    </p>
                     <input
                       type="email"
                       className="form-control block
@@ -71,9 +125,14 @@ const ContactUs = () => {
                   m-0
                   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       placeholder="Correo electrónico"
+                      required
+                      ref={emailRef}
+                      onChange={emailChangeHandler}
                     />
                   </div>
                   <div className="form-group mb-6">
+                    <p>{message === "" ? "Ingrese un mensaje*" : ""}</p>
+
                     <textarea
                       className="
                   form-control
@@ -94,10 +153,14 @@ const ContactUs = () => {
                 "
                       rows="3"
                       placeholder="Mensaje"
+                      required
+                      onChange={messageChangeHandler}
+                      ref={messageRef}
                     ></textarea>
                   </div>
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={sendClick}
                     className="
                 w-full
                 px-6
@@ -119,6 +182,7 @@ const ContactUs = () => {
                   >
                     Enviar
                   </button>
+                  <ToastContainer />
                 </form>
               </div>
               <div className="grow-0 shrink-0 basis-auto w-full xl:w-7/12">
@@ -136,7 +200,7 @@ const ContactUs = () => {
                       </div>
                       <div className="grow ml-6">
                         <p className="font-bold mb-1">Soporte técnico</p>
-                        <p className="text-gray-500">soporte@example.com</p>
+                        <p className="text-gray-500">soporte@ejemplo.com</p>
                         <p className="text-gray-500">+123456789</p>
                       </div>
                     </div>
@@ -156,10 +220,15 @@ const ContactUs = () => {
                         <p className="font-bold mb-1">
                           Preguntas sobre Productos Nuevos
                         </p>
-                        <p className="text-gray-500">productos@example.com</p>
+                        <p className="text-gray-500">productos@ejemplo.com</p>
                         <p className="text-gray-500">+123456789</p>
                       </div>
                     </div>
+                  </div>
+                  <div className="grow ml-6">
+                    <p className="text-gray-500">
+                      Los campos que contienen un * son obligatorios.
+                    </p>
                   </div>
                 </div>
               </div>
