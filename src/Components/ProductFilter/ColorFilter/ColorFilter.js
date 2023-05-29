@@ -1,7 +1,7 @@
 import React from "react";
 import "./ColorFilter.css";
 
-const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
+const ColorFilter = ({ filterProductsByColor, colorFilter }) => {
   return (
     <>
       <div
@@ -23,6 +23,7 @@ const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
 
           <div
             className="form-check form-check-inline"
+            value={colorFilter}
             style={{ paddingLeft: 3, paddingTop: 25 }}
           >
             <input
@@ -30,7 +31,7 @@ const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
               type="radio"
               name="colorRadio"
               id="colorRadio1"
-              value={colorFilter}
+              checked={colorFilter === "Rojo"}
               onClick={() => filterProductsByColor("Rojo")}
             />
             <label
@@ -48,7 +49,7 @@ const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
               type="radio"
               name="colorRadio"
               id="colorRadio2"
-              value={colorFilter}
+              checked={colorFilter === "Azul"}
               onClick={() => filterProductsByColor("Azul")}
             />
             <label
@@ -66,7 +67,7 @@ const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
               type="radio"
               name="colorRadio"
               id="colorRadio3"
-              value={colorFilter}
+              checked={colorFilter === "Gris"}
               onClick={() => filterProductsByColor("Gris")}
             />
             <label
@@ -85,7 +86,7 @@ const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
               type="radio"
               name="colorRadio"
               id="colorRadio4"
-              value={colorFilter}
+              checked={colorFilter === "Negro"}
               onClick={() => filterProductsByColor("Negro")}
             />
             <label

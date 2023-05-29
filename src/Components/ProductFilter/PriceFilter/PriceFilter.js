@@ -8,7 +8,7 @@ const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
   const priceHandler = (e) => {
     setPrice(e.target.value);
     console.log(price);
-    filterProductsByPrice(e.target.value)
+    filterProductsByPrice(e.target.value);
   };
 
   return (
@@ -28,7 +28,6 @@ const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
           max={10000}
           step={500}
           id="customRange2"
-          value={priceFilter}
           onChange={priceHandler}
         />
 
