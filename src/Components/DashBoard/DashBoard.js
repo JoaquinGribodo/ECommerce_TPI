@@ -11,6 +11,12 @@ const DashBoard = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [productList, setProductList] = useState([]);
   const [productFiltered, setProductFiltered] = useState([]);
+  const[filters, setFilters] = useState({
+    color: null,
+    size: null,
+    description: null,
+    price: null
+  });
 
   const sideBarOn = (newState) => {
     setShowSideBar(newState);
@@ -26,6 +32,7 @@ const DashBoard = () => {
       (product) => product.size === size
     );
     setProductFiltered(newProductsFilter);
+    setFilters({...filters,size})
   };
 
   const filterProductsByColor = (color) => {
@@ -33,6 +40,7 @@ const DashBoard = () => {
       (product) => product.color === color
     );
     setProductFiltered(newProductsFilter);
+    setFilters({...filters,color})
   };
 
   const filterProductsByPrice = (price) => {
@@ -40,19 +48,33 @@ const DashBoard = () => {
       (product) => product.price <= price
     );
     setProductFiltered(newProductsFilter);
+    setFilters({...filters,price})
   };
 
   const filterProductsByName = (name) => {
     const newProductsFilter = productList.filter(
-      (product) => product.name.toLowerCase() === name.toLowerCase()
+      (product) => product.name.toLowerCase().includes(name.toLowerCase())
     );
     setProductFiltered(newProductsFilter);
   };
 
   const clearProductsFilters = () => {
     setProductFiltered(productList);
+    setFilters({
+      color: null,
+      size: null,
+      description: null,
+      price: null
+    })
+    
   };
 
+  const filterProductsByCategory = (description) => {
+    const newProductsFilter = productList.filter(
+      (product) => product.description === description
+    );
+    setProductFiltered(newProductsFilter);
+  };
   return (
     <>
       <NavBar
@@ -61,7 +83,7 @@ const DashBoard = () => {
       />
       <div className="row">
         <div className={showSideBar ? "col-2" : ""}>
-          {showSideBar && <SideBar />}
+          {showSideBar && <SideBar filterProductsByCategory={filterProductsByCategory} />}
         </div>
         <div className={showSideBar ? "col-8" : "col-10"}>
           <Products
@@ -72,6 +94,7 @@ const DashBoard = () => {
         <div className="col-2">
           <ProductFilter
             filterProductsBySize={filterProductsBySize}
+            filters={filters}
             filterProductsByColor={filterProductsByColor}
             filterProductsByPrice={filterProductsByPrice}
             clearProductsFilters={clearProductsFilters}

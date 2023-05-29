@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import "./PriceFilter.css";
 
-const PriceFilter = ({ filterProductsByPrice }) => {
+const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
   const [price, setPrice] = useState(0);
 
   const priceHandler = (e) => {
     setPrice(e.target.value);
     console.log(price);
+    filterProductsByPrice(e.target.value)
   };
 
   return (
@@ -27,8 +28,8 @@ const PriceFilter = ({ filterProductsByPrice }) => {
           max={10000}
           step={500}
           id="customRange2"
+          value={priceFilter}
           onChange={priceHandler}
-          onInput={() => filterProductsByPrice(price)}
         />
 
         <p id="max-val"> Precio máximo: {price} </p>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./SizeFilter.css";
 
-const SizeFilter = ({ filterProductsBySize }) => {
+const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
   return (
     <>
       <div
@@ -12,13 +12,13 @@ const SizeFilter = ({ filterProductsBySize }) => {
         <div className="col-md-12 text-center mb-3" data-mdb-filter="color">
           <span className="text-center fa-lg fw-bold">Talles:</span>
 
-          <div className="form-check mt-3">
+          <div className="form-check mt-3" value={sizeFilter}>
             <input
               className="form-check-input"
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio1"
-              value="S"
+              checked={sizeFilter === "S"}
               onClick={() => filterProductsBySize("S")}
             />
             <label className="form-check-label" for="inlineRadio1">
@@ -32,7 +32,8 @@ const SizeFilter = ({ filterProductsBySize }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio2"
-              value="M"
+              checked={sizeFilter === "M"}
+
               onClick={() => filterProductsBySize("M")}
             />
             <label className="form-check-label" for="inlineRadio2">
@@ -46,7 +47,8 @@ const SizeFilter = ({ filterProductsBySize }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              value="L"
+              checked={sizeFilter === "L"}
+
               onClick={() => filterProductsBySize("L")}
             />
             <label className="form-check-label" for="inlineRadio3">
@@ -60,7 +62,8 @@ const SizeFilter = ({ filterProductsBySize }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              value="XL"
+              checked={sizeFilter === "XL"}
+       
               onClick={() => filterProductsBySize("XL")}
             />
             <label className="form-check-label" for="inlineRadio3">

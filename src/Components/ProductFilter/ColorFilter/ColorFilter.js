@@ -1,7 +1,7 @@
 import React from "react";
 import "./ColorFilter.css";
 
-const ColorFilter = ({ filterProductsByColor }) => {
+const ColorFilter = ({ filterProductsByColor, colorFilter}) => {
   return (
     <>
       <div
@@ -30,10 +30,11 @@ const ColorFilter = ({ filterProductsByColor }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio1"
+              value={colorFilter}
               onClick={() => filterProductsByColor("Rojo")}
             />
             <label
-              class="btn bg-danger btn-rounded p-3"
+              className="btn bg-danger btn-rounded p-3 border border-red"
               for="colorRadio1"
             ></label>
           </div>
@@ -43,14 +44,15 @@ const ColorFilter = ({ filterProductsByColor }) => {
             style={{ paddingLeft: 3 }}
           >
             <input
-              className="btn-check"
+              className="btn-check "
               type="radio"
               name="colorRadio"
               id="colorRadio2"
+              value={colorFilter}
               onClick={() => filterProductsByColor("Azul")}
             />
             <label
-              className="btn bg-primary btn-rounded p-3"
+              className="btn bg-primary btn-rounded p-3 border border-red"
               for="colorRadio2"
             ></label>
           </div>
@@ -64,10 +66,11 @@ const ColorFilter = ({ filterProductsByColor }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio3"
+              value={colorFilter}
               onClick={() => filterProductsByColor("Gris")}
             />
             <label
-              className="btn btn-rounded p-3"
+              className="btn btn-rounded p-3 border border-red"
               for="colorRadio3"
               style={{ backgroundColor: "#bdbdbd" }}
             ></label>
@@ -82,10 +85,11 @@ const ColorFilter = ({ filterProductsByColor }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio4"
+              value={colorFilter}
               onClick={() => filterProductsByColor("Negro")}
             />
             <label
-              className="btn bg-dark text-white btn-rounded p-3"
+              className="btn bg-dark text-white btn-rounded p-3 border border-red"
               for="colorRadio4"
             ></label>
           </div>

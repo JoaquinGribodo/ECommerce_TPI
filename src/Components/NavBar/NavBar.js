@@ -9,6 +9,7 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
 
   const productNameHandler = (e) => {
     setProductName(e.target.value);
+    filterProductsByName(e.target.value)
     console.log(productName);
   };
 
@@ -64,7 +65,6 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
               placeholder="¿Qué producto buscas?"
               aria-label="Search"
               onChange={productNameHandler}
-              onInput={() => filterProductsByName(productName)}
             />
           </div>
         </form>

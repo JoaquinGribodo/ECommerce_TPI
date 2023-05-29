@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 /* Armado de sidebar con estilo, formato y cada item */
-const SideBar = () => {
+const SideBar = ({filterProductsByCategory}) => {
   const handleWhoWeAreClickScroll = () => {
     const element = document.getElementById("whoWeAre");
     if (element) {
@@ -82,19 +82,19 @@ const SideBar = () => {
                   <li className="w-100">
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Mujer</span>{" "}
+                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Mujer")}>Mujer</span>{" "}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Hombre</span>{" "}
+                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Hombre")}>Hombre</span>{" "}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Niño</span>{" "}
+                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Niño")}>Niño</span>{" "}
                     </a>
                   </li>
                 </ul>
