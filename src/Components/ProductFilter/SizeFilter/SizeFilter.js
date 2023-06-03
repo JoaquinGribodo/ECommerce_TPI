@@ -18,10 +18,10 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio1"
-              checked={sizeFilter === "S"}
+              defaultChecked={sizeFilter === "S"}
               onClick={() => filterProductsBySize("S")}
             />
-            <label className="form-check-label" for="inlineRadio1">
+            <label className="form-check-label" htmlFor="inlineRadio1">
               S
             </label>
           </div>
@@ -32,11 +32,10 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio2"
-              checked={sizeFilter === "M"}
-
+              defaultChecked={sizeFilter === "M"}
               onClick={() => filterProductsBySize("M")}
             />
-            <label className="form-check-label" for="inlineRadio2">
+            <label className="form-check-label" htmlFor="inlineRadio2">
               M
             </label>
           </div>
@@ -47,11 +46,10 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              checked={sizeFilter === "L"}
-
+              defaultChecked={sizeFilter === "L"}
               onClick={() => filterProductsBySize("L")}
             />
-            <label className="form-check-label" for="inlineRadio3">
+            <label className="form-check-label" htmlFor="inlineRadio3">
               L
             </label>
           </div>
@@ -62,11 +60,10 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              checked={sizeFilter === "XL"}
-       
+              defaultChecked={sizeFilter === "XL"}
               onClick={() => filterProductsBySize("XL")}
             />
-            <label className="form-check-label" for="inlineRadio3">
+            <label className="form-check-label" htmlFor="inlineRadio3">
               XL
             </label>
           </div>

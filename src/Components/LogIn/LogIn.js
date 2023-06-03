@@ -68,9 +68,9 @@ const LogIn = () => {
               >
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-5 mt-md-4 pb-5">
-                    <h2 className="fw-bold mb-2 text-uppercase">
+                    <p className="fw-bold mb-2 text-uppercase">
                       Iniciar Sesión
-                    </h2>
+                    </p>
                     <p className="text-white-50 mb-5">
                       Ingrese su correo electrónico y su contraseña
                     </p>

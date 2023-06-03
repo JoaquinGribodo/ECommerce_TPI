@@ -10,13 +10,22 @@ const ProductFilter = ({
   filterProductsByColor,
   filterProductsByPrice,
   clearProductsFilters,
-  filters
+  filters,
 }) => {
   return (
     <div className="divFilters">
-      <ColorFilter colorFilter={filters.color} filterProductsByColor={filterProductsByColor} />
-      <SizeFilter sizeFilter={filters.size}filterProductsBySize={filterProductsBySize} />
-      <PriceFilter priceFilter={filters.price}filterProductsByPrice={filterProductsByPrice} />
+      <ColorFilter
+        colorFilter={filters.color}
+        filterProductsByColor={filterProductsByColor}
+      />
+      <SizeFilter
+        sizeFilter={filters.size}
+        filterProductsBySize={filterProductsBySize}
+      />
+      <PriceFilter
+        priceFilter={filters.price}
+        filterProductsByPrice={filterProductsByPrice}
+      />
       <ButtonFilter clearProductsFilters={clearProductsFilters} />
     </div>
   );

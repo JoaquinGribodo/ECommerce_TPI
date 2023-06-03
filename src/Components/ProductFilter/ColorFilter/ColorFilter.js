@@ -31,12 +31,12 @@ const ColorFilter = ({ filterProductsByColor, colorFilter }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio1"
-              checked={colorFilter === "Rojo"}
+              defaultChecked={colorFilter === "Rojo"}
               onClick={() => filterProductsByColor("Rojo")}
             />
             <label
               className="btn bg-danger btn-rounded p-3 border border-red"
-              for="colorRadio1"
+              htmlFor="colorRadio1"
             ></label>
           </div>
 
@@ -49,12 +49,12 @@ const ColorFilter = ({ filterProductsByColor, colorFilter }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio2"
-              checked={colorFilter === "Azul"}
+              defaultChecked={colorFilter === "Azul"}
               onClick={() => filterProductsByColor("Azul")}
             />
             <label
               className="btn bg-primary btn-rounded p-3 border border-red"
-              for="colorRadio2"
+              htmlFor="colorRadio2"
             ></label>
           </div>
 
@@ -67,12 +67,12 @@ const ColorFilter = ({ filterProductsByColor, colorFilter }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio3"
-              checked={colorFilter === "Gris"}
+              defaultChecked={colorFilter === "Gris"}
               onClick={() => filterProductsByColor("Gris")}
             />
             <label
               className="btn btn-rounded p-3 border border-red"
-              for="colorRadio3"
+              htmlFor="colorRadio3"
               style={{ backgroundColor: "#bdbdbd" }}
             ></label>
           </div>
@@ -86,12 +86,12 @@ const ColorFilter = ({ filterProductsByColor, colorFilter }) => {
               type="radio"
               name="colorRadio"
               id="colorRadio4"
-              checked={colorFilter === "Negro"}
+              defaultChecked={colorFilter === "Negro"}
               onClick={() => filterProductsByColor("Negro")}
             />
             <label
               className="btn bg-dark text-white btn-rounded p-3 border border-red"
-              for="colorRadio4"
+              htmlFor="colorRadio4"
             ></label>
           </div>
         </div>

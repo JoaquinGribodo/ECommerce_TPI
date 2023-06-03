@@ -11,11 +11,11 @@ const DashBoard = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [productList, setProductList] = useState([]);
   const [productFiltered, setProductFiltered] = useState([]);
-  const[filters, setFilters] = useState({
+  const [filters, setFilters] = useState({
     color: null,
     size: null,
     description: null,
-    price: null
+    price: null,
   });
 
   const sideBarOn = (newState) => {
@@ -32,7 +32,7 @@ const DashBoard = () => {
       (product) => product.size === size
     );
     setProductFiltered(newProductsFilter);
-    setFilters({...filters,size})
+    setFilters({ ...filters, size });
   };
 
   const filterProductsByColor = (color) => {
@@ -40,7 +40,7 @@ const DashBoard = () => {
       (product) => product.color === color
     );
     setProductFiltered(newProductsFilter);
-    setFilters({...filters,color})
+    setFilters({ ...filters, color });
   };
 
   const filterProductsByPrice = (price) => {
@@ -48,12 +48,12 @@ const DashBoard = () => {
       (product) => product.price <= price
     );
     setProductFiltered(newProductsFilter);
-    setFilters({...filters,price})
+    setFilters({ ...filters, price });
   };
 
   const filterProductsByName = (name) => {
-    const newProductsFilter = productList.filter(
-      (product) => product.name.toLowerCase().includes(name.toLowerCase())
+    const newProductsFilter = productList.filter((product) =>
+      product.name.toLowerCase().includes(name.toLowerCase())
     );
     setProductFiltered(newProductsFilter);
   };
@@ -64,9 +64,8 @@ const DashBoard = () => {
       color: null,
       size: null,
       description: null,
-      price: null
-    })
-    
+      price: null,
+    });
   };
 
   const filterProductsByCategory = (description) => {
@@ -83,7 +82,9 @@ const DashBoard = () => {
       />
       <div className="row">
         <div className={showSideBar ? "col-2" : ""}>
-          {showSideBar && <SideBar filterProductsByCategory={filterProductsByCategory} />}
+          {showSideBar && (
+            <SideBar filterProductsByCategory={filterProductsByCategory} />
+          )}
         </div>
         <div className={showSideBar ? "col-8" : "col-10"}>
           <Products

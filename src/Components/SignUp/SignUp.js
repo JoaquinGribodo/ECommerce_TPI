@@ -110,13 +110,13 @@ const SignUp = () => {
                         ref={emailRef}
                         required
                       />
-                      <p>
+                      <span>
                         {email === ""
                           ? "Ingrese su correo"
                           : !email.includes("@") || !email.includes(".")
                           ? "Su correo debe contener @ y ."
                           : ""}
-                      </p>
+                      </span>
                     </div>
                     <div className="form-outline mb-5">
                       <label className="form-label" for="form3Example4">
@@ -132,13 +132,13 @@ const SignUp = () => {
                         min={4}
                         max={10}
                       />
-                      <p>
+                      <span>
                         {password === ""
                           ? "Ingrese su contraseña"
                           : password.length < 4 || password.length > 10
                           ? "La contraseña debe tener entre 4 y 10 caracteres"
                           : ""}
-                      </p>
+                      </span>
                     </div>
                     <button
                       type="button"

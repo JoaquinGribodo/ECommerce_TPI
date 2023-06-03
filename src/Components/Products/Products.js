@@ -24,9 +24,8 @@ const Products = ({ productList, getProductsHandler }) => {
   }, []);
 
   const mappedProducts = productList.map((product) => (
-    <div>
+    <div key={product.id}>
       <ProductItem
-        key={product.id}
         productImage={product.image}
         productName={product.name}
         productPrice={product.price}
