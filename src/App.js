@@ -10,6 +10,9 @@ import WhoWeAre from "./Components/WhoWeAre/WhoWeAre";
 import "./App.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import AddProduct from "./Components/AddProduct/AddProduct";
+import ModifyProduct from "./Components/ModifyProduct/ModifyProduct";
+import DeleteProduct from "./Components/DeleteProduct/DeleteProduct";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -70,6 +73,18 @@ const App = () => {
     {
       path: "/whoweare",
       element: <WhoWeAre />,
+    },
+    {
+      path: "/addProduct",
+      element: <AddProduct />,
+    },
+    {
+      path: "/modifyProduct",
+      element: <ModifyProduct />,
+    },
+    {
+      path: "/deleteProduct",
+      element: <DeleteProduct />,
     },
   ]);
 

@@ -4,6 +4,7 @@ import ColorFilter from "./ColorFilter/ColorFilter";
 import SizeFilter from "./SizeFilter/SizeFilter";
 import PriceFilter from "./PriceFilter/PriceFilter";
 import ButtonFilter from "./ButtonFilter/ButtonFilter";
+import { useNavigate } from "react-router";
 
 const ProductFilter = ({
   filterProductsBySize,
@@ -12,6 +13,17 @@ const ProductFilter = ({
   clearProductsFilters,
   filters,
 }) => {
+  const navigate = useNavigate();
+  const goToAddProduct = () => {
+    navigate("/addProduct");
+  };
+  const goToModifyProduct = () => {
+    navigate("/modifyProduct");
+  };
+  const goToDeleteProduct = () => {
+    navigate("/deleteProduct");
+  };
+
   return (
     <div className="divFilters">
       <ColorFilter
@@ -27,6 +39,27 @@ const ProductFilter = ({
         filterProductsByPrice={filterProductsByPrice}
       />
       <ButtonFilter clearProductsFilters={clearProductsFilters} />
+      <button
+        className="bg-green-500 hover:bg-green-400 text-white font-bold m-3 py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
+        type="button"
+        onClick={goToAddProduct}
+      >
+        Agregar Producto
+      </button>
+      <button
+        className="bg-green-500 hover:bg-green-400 text-white font-bold m-3 py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
+        type="button"
+        onClick={goToModifyProduct}
+      >
+        Modificar Producto
+      </button>
+      <button
+        className="bg-green-500 hover:bg-green-400 text-white font-bold m-3 py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
+        type="button"
+        onClick={goToDeleteProduct}
+      >
+        Eliminar Producto
+      </button>
     </div>
   );
 };
