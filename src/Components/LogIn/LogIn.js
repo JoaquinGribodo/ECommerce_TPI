@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
+import { auth,  } from "../../Config/FireBase";
+import {signInWithEmailAndPassword } from "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./LogIn.css";
@@ -23,7 +25,9 @@ const LogIn = () => {
     setPassword(e.target.value);
   };
 
-  const logInClicked = () => {
+  const logInClicked = async () => {
+    
+    
     if (emailRef.current.value.length === 0) {
       emailRef.current.focus();
       emailRef.current.style.border = "solid red";
@@ -36,7 +40,13 @@ const LogIn = () => {
       passwordRef.current.style.outline = "none";
       return;
     }
-    successMessage();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      successMessage();
+    } catch (err) {
+      console.error(err);
+    }
+    
   };
 
   const navigate = useNavigate();
