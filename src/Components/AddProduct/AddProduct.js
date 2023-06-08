@@ -74,7 +74,7 @@ const AddProduct = () => {
         <div className="card-body px-4 py-5 px-md-5">
           <form>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Nombre:
               </label>
               <input
@@ -85,7 +85,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Imagen:
               </label>
               <input
@@ -96,7 +96,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Color:
               </label>
               <select name="colores" id="lang" onChange={colorHandler}>
@@ -108,7 +108,7 @@ const AddProduct = () => {
               </select>
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Talle:
               </label>
               <select name="talles" id="lang" onChange={sizeHandler}>
@@ -120,7 +120,7 @@ const AddProduct = () => {
               </select>
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Descripción:
               </label>
               <input
@@ -131,7 +131,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Precio:
               </label>
               <input
