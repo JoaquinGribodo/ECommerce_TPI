@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashBoard from "./Components/DashBoard/DashBoard";
 import LogIn from "./Components/LogIn/LogIn";
@@ -13,30 +13,37 @@ import { useEffect } from "react";
 import AddProduct from "./Components/AddProduct/AddProduct";
 import ModifyProduct from "./Components/ModifyProduct/ModifyProduct";
 import DeleteProduct from "./Components/DeleteProduct/DeleteProduct";
+import { ThemeContext } from "./Components/Services/Theme/Theme.Context";
+import { APIContext } from "./Components/Services/API/Api.Context";
+import Spinner from "./Components/UI/Spinner/Spinner.js";
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
-    const currentMode = localStorage.getItem("darkMode");
-    if (currentMode === "true") {
-      setIsDarkMode(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const currentMode = localStorage.getItem("darkMode");
+  //   if (currentMode === "true") {
+  //     setIsDarkMode(true);
+  //   }
+  // }, []);
 
-  const toggleDarkMode = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-    localStorage.setItem("darkMode", newMode.toString());
-  };
+  // const toggleDarkMode = () => {
+  //   const newMode = !isDarkMode;
+  //   setIsDarkMode(newMode);
+  //   localStorage.setItem("darkMode", newMode.toString());
+  // };
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }, [isDarkMode]);
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.body.classList.add("dark-mode");
+  //   } else {
+  //     document.body.classList.remove("dark-mode");
+  //   }
+  // }, [isDarkMode]);
+
+  const { theme } = useContext(ThemeContext);
+  const { isLoading } = useContext(APIContext);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -90,8 +97,21 @@ const App = () => {
 
   return (
     <>
-      <RouterProvider router={router} />
-      <div className={`App ${isDarkMode ? "dark-mode" : ""}`}>
+      <div
+        className={`${theme === "dark" && "dark-theme"} ${
+          isLoading && "opacity-80"
+        }`}
+      >
+        {isLoading && <Spinner />}
+        <RouterProvider router={router} />
+      </div>
+    </>
+  );
+};
+
+export default App;
+
+/* <div className={`App ${isDarkMode ? "dark-mode" : ""}`}>
         <nav>
           <div className="switch-container">
             <label className="switch">
@@ -104,9 +124,4 @@ const App = () => {
             </label>
           </div>
         </nav>
-      </div>
-    </>
-  );
-};
-
-export default App;
+      </div> */

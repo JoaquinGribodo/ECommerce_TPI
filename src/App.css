@@ -4,16 +4,25 @@
   transition: background-color 0.4s;
 }
 
-.App.dark-mode {
-  background-color: #222; /* Estilo de fondo oscuro */
+.dark-theme {
+  background-color: #020c1a;
+  color: white;
+  height: 100%;
 }
 
-nav {
-  background-color: #ccc; /* Estilo de fondo de la barra de navegación */
+.opacity-80 {
+  opacity: 0.8;
+}
+
+/* .App.dark-mode {
+  background-color: #222;}  Estilo de fondo oscuro */
+
+/* nav {
+  background-color: #ccc;  Estilo de fondo de la barra de navegación 
   padding: 10px;
-}
+} */
 
-.switch-container {
+/* .switch-container {
   display: flex;
   justify-content: flex-end;
 }
@@ -39,7 +48,7 @@ nav {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -50,12 +59,11 @@ nav {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3; /* Estilo de fondo del interruptor cuando está activado */
-}
+  background-color: #2196f3};  Estilo de fondo del interruptor cuando está activado */
 
 input:checked + .slider:before {
   transform: translateX(26px);
@@ -64,8 +72,7 @@ input:checked + .slider:before {
 .dark-mode {
   background-color: #222; /* Estilo de fondo oscuro */
 }
-
-.mainDiv {
+*/ .mainDiv {
   display: flex;
 }
 

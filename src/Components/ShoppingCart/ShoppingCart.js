@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const products = [
+  {
+    id: 1,
+    name: "Remera",
+    color: "Rojo",
+    size: "M",
+    price: 410,
+    image: "",
+  },
+  {
+    id: 2,
+    name: "Pantalón",
+    color: "Negro",
+    size: "L",
+    price: 2000,
+    image: "",
+  },
+  {
+    id: 3,
+    name: "Sweater",
+    color: "Gris",
+    size: "S",
+    price: 4000,
+    image: "",
+  },
+  {
+    id: 4,
+    name: "Musculosa",
+    color: "Blanco",
+    size: "XL",
+    price: 1500,
+    image: "",
+  },
+];
+
 const ShoppingCart = () => {
+  const [amount, setAmount] = useState(1);
+
+  const amountHandler = (e) => {
+    setAmount(e.target.value);
+  };
+
   const navigate = useNavigate();
   const backToHomePageHandler = () => {
     navigate("/home");
@@ -45,99 +86,41 @@ const ShoppingCart = () => {
               Total
             </h3>
           </div>
-          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-            <div className="flex w-2/5">
-              <div className="w-20">
-                <img
-                  className="h-24"
-                  src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z"
-                  alt=""
-                />
+          <div>
+            {products.map((item) => (
+              <div>
+                <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                  <div className="flex w-2/5">
+                    <div className="w-20">
+                      <img className="h-24" src={item.image} alt="" />
+                    </div>
+                    <div className="flex flex-col justify-between ml-4 flex-grow">
+                      <span className="font-bold text-sm">{item.name}</span>
+                      <a
+                        href="#"
+                        className="font-semibold hover:text-red-500 text-gray-500 text-xs"
+                      >
+                        Eliminar
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex justify-center w-1/5">
+                    <input
+                      className="mx-2 border text-center w-8"
+                      type="number"
+                      onChange={amountHandler}
+                    />
+                  </div>
+                  <span className="text-center w-1/5 font-semibold text-sm">
+                    {item.price}
+                  </span>
+                  <span className="text-center w-1/5 font-semibold text-sm">
+                    {item.price * amount}
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col justify-between ml-4 flex-grow">
-                <span className="font-bold text-sm">Iphone 6S</span>
-                <span className="text-red-500 text-xs">Apple</span>
-                <a
-                  href="#"
-                  className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                >
-                  Eliminar
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center w-1/5">
-              <input className="mx-2 border text-center w-8" type="number" />
-            </div>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $400.00
-            </span>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $400.00
-            </span>
+            ))}
           </div>
-
-          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-            <div className="flex w-2/5">
-              <div className="w-20">
-                <img
-                  className="h-24"
-                  src="https://drive.google.com/uc?id=10ht6a9IR3K2i1j0rHofp9-Oubl1Chraw"
-                  alt=""
-                />
-              </div>
-              <div className="flex flex-col justify-between ml-4 flex-grow">
-                <span className="font-bold text-sm">Xiaomi Mi 20000mAh</span>
-                <span className="text-red-500 text-xs">Xiaomi</span>
-                <a
-                  href="#"
-                  className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                >
-                  Eliminar
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center w-1/5">
-              <input className="mx-2 border text-center w-8" type="number" />
-            </div>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $40.00
-            </span>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $40.00
-            </span>
-          </div>
-
-          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-            <div className="flex w-2/5">
-              <div className="w-20">
-                <img
-                  className="h-24"
-                  src="https://drive.google.com/uc?id=1vXhvO9HoljNolvAXLwtw_qX3WNZ0m75v"
-                  alt=""
-                />
-              </div>
-              <div className="flex flex-col justify-between ml-4 flex-grow">
-                <span className="font-bold text-sm">Airpods</span>
-                <span className="text-red-500 text-xs">Apple</span>
-                <a
-                  href="#"
-                  className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                >
-                  Eliminar
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center w-1/5">
-              <input className="mx-2 border text-center w-8" type="number" />
-            </div>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $150.00
-            </span>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $150.00
-            </span>
-          </div>
-
           <button
             className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-25"
             onClick={backToHomePageHandler}
@@ -150,10 +133,17 @@ const ShoppingCart = () => {
           <h1 className="font-semibold text-2xl border-b pb-8">
             Resumen del pedido
           </h1>
-          <div className="flex justify-between mt-10 mb-5">
+          <div className=" justify-between mt-10 mb-5">
             <span className="font-semibold text-sm uppercase">Productos</span>
             <span className="font-semibold text-sm">
-              Acá iría el nombre de cada producto y su precio
+              {products.map((item) => (
+                <>
+                  <div className="d-flex justify-content-between m-3 p-2">
+                    <p>{item.name}</p>
+                    <p>${item.price}</p>
+                  </div>
+                </>
+              ))}
             </span>
           </div>
 

@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faRaspberryPi } from "@fortawesome/free-brands-svg-icons";
+import ToggleTheme from "../UI/ToggleTheme/ToggleTheme";
+import { ThemeContext } from "../Services/Theme/Theme.Context";
 
 const NavBar = ({ onChangeState, filterProductsByName }) => {
   const [productName, setProductName] = useState("");
 
   const productNameHandler = (e) => {
     setProductName(e.target.value);
-    filterProductsByName(e.target.value)
+    filterProductsByName(e.target.value);
     console.log(productName);
   };
 
@@ -17,6 +19,8 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
     const newState = (prevShowSidebar) => !prevShowSidebar;
     onChangeState(newState);
   };
+
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
@@ -54,8 +58,12 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
         <div className="logo">
           <FontAwesomeIcon icon={faRaspberryPi} size="xl" /> MULBERRY
         </div>
+
         <form className="form-inline">
           <div className="searchDiv">
+            <div className="pr-5 pt-1">
+              <ToggleTheme />
+            </div>
             <div className="glassDiv">
               <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
             </div>
