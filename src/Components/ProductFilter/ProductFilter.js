@@ -12,16 +12,17 @@ const ProductFilter = ({
   filterProductsByPrice,
   clearProductsFilters,
   filters,
+  productList,
 }) => {
   const navigate = useNavigate();
   const goToAddProduct = () => {
     navigate("/addProduct");
   };
   const goToModifyProduct = () => {
-    navigate("/modifyProduct");
+    navigate("/modifyProduct", { state: { productList } });
   };
   const goToDeleteProduct = () => {
-    navigate("/deleteProduct");
+    navigate("/deleteProduct", { state: { productList } });
   };
 
   return (

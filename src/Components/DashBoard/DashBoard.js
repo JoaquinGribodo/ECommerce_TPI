@@ -99,6 +99,7 @@ const DashBoard = () => {
             filterProductsByColor={filterProductsByColor}
             filterProductsByPrice={filterProductsByPrice}
             clearProductsFilters={clearProductsFilters}
+            productList={productList}
           />
         </div>
       </div>
