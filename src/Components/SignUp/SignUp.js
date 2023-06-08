@@ -99,7 +99,7 @@ const SignUp = () => {
                 <div className="card-body px-4 py-5 px-md-5">
                   <form>
                     <div className="form-outline mb-5">
-                      <label className="form-label" for="form3Example3">
+                      <label className="form-label" htmlFor="form3Example3">
                         Correo electrónico:
                       </label>
                       <input
@@ -119,7 +119,7 @@ const SignUp = () => {
                       </span>
                     </div>
                     <div className="form-outline mb-5">
-                      <label className="form-label" for="form3Example4">
+                      <label className="form-label" htmlFor="form3Example4">
                         Contraseña:
                       </label>
                       <input

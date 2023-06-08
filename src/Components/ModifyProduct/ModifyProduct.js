@@ -59,7 +59,7 @@ const ModifyProduct = () => {
       <div className="card-body px-4 py-5 px-md-5">
         <form>
           <div className="form-outline mb-5">
-            <label className="form-label" for="form3Example3">
+            <label className="form-label" htmlFor="form3Example3">
               Producto:
             </label>
             <select name="productos" id="lang" onChange={idHandler}>
@@ -68,18 +68,15 @@ const ModifyProduct = () => {
               </option>
               {productList
                 ? productList.map((item) => (
-                    <>
-                      <option key={item.id} value={item.id}>
-                        <p className="m-2 p-4">Id: {item.id}</p>
-                        <p> Nombre: {item.name}</p>
-                      </option>
-                    </>
+                    <option key={item.id} value={item.id}>
+                      Id: {item.id} - Nombre: {item.name}
+                    </option>
                   ))
                 : ""}
             </select>
 
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Nombre:
               </label>
               <input
@@ -90,7 +87,7 @@ const ModifyProduct = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Imagen:
               </label>
               <input
@@ -101,7 +98,7 @@ const ModifyProduct = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Color:
               </label>
               <select
@@ -117,7 +114,7 @@ const ModifyProduct = () => {
               </select>
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Talle:
               </label>
               <select
@@ -133,7 +130,7 @@ const ModifyProduct = () => {
               </select>
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Descripción:
               </label>
               <input
@@ -144,7 +141,7 @@ const ModifyProduct = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Precio:
               </label>
               <input
