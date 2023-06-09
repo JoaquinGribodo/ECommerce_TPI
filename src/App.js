@@ -8,8 +8,6 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import WhoWeAre from "./Components/WhoWeAre/WhoWeAre";
 import "./App.css";
-import { useState } from "react";
-import { useEffect } from "react";
 import AddProduct from "./Components/AddProduct/AddProduct";
 import ModifyProduct from "./Components/ModifyProduct/ModifyProduct";
 import DeleteProduct from "./Components/DeleteProduct/DeleteProduct";

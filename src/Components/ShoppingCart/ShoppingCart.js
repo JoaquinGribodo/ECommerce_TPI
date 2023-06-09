@@ -1,45 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const products = [
-  {
-    id: 1,
-    name: "Remera",
-    color: "Rojo",
-    size: "M",
-    price: 410,
-    image: "",
-  },
-  {
-    id: 2,
-    name: "Pantalón",
-    color: "Negro",
-    size: "L",
-    price: 2000,
-    image: "",
-  },
-  {
-    id: 3,
-    name: "Sweater",
-    color: "Gris",
-    size: "S",
-    price: 4000,
-    image: "",
-  },
-  {
-    id: 4,
-    name: "Musculosa",
-    color: "Blanco",
-    size: "XL",
-    price: 1500,
-    image: "",
-  },
-];
+import { CartContext } from "../Services/Cart/Cart.Context";
 
 const ShoppingCart = () => {
   const [amount, setAmount] = useState(1);
+
+  const { cartItem } = useContext(CartContext);
 
   const amountHandler = (e) => {
     setAmount(e.target.value);
@@ -61,6 +29,7 @@ const ShoppingCart = () => {
       progress: undefined,
       theme: "dark",
     });
+    console.log(cartItem);
   };
   return (
     <div className="container mx-auto mt-10">
@@ -87,39 +56,41 @@ const ShoppingCart = () => {
             </h3>
           </div>
           <div>
-            {products.map((item) => (
-              <div>
-                <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-                  <div className="flex w-2/5">
-                    <div className="w-20">
-                      <img className="h-24" src={item.image} alt="" />
-                    </div>
-                    <div className="flex flex-col justify-between ml-4 flex-grow">
-                      <span className="font-bold text-sm">{item.name}</span>
-                      <a
-                        href="#"
-                        className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                      >
-                        Eliminar
-                      </a>
+            {cartItem
+              ? cartItem.map((item) => (
+                  <div>
+                    <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                      <div className="flex w-2/5">
+                        <div className="w-20">
+                          <img className="h-24" src={item.image} alt="" />
+                        </div>
+                        <div className="flex flex-col justify-between ml-4 flex-grow">
+                          <span className="font-bold text-sm">{item.name}</span>
+                          <a
+                            href="#"
+                            className="font-semibold hover:text-red-500 text-gray-500 text-xs"
+                          >
+                            Eliminar
+                          </a>
+                        </div>
+                      </div>
+                      <div className="flex justify-center w-1/5">
+                        <input
+                          className="mx-2 border text-center w-8"
+                          type="number"
+                          onChange={amountHandler}
+                        />
+                      </div>
+                      <span className="text-center w-1/5 font-semibold text-sm">
+                        {item.price}
+                      </span>
+                      <span className="text-center w-1/5 font-semibold text-sm">
+                        {item.price * amount}
+                      </span>
                     </div>
                   </div>
-                  <div className="flex justify-center w-1/5">
-                    <input
-                      className="mx-2 border text-center w-8"
-                      type="number"
-                      onChange={amountHandler}
-                    />
-                  </div>
-                  <span className="text-center w-1/5 font-semibold text-sm">
-                    {item.price}
-                  </span>
-                  <span className="text-center w-1/5 font-semibold text-sm">
-                    {item.price * amount}
-                  </span>
-                </div>
-              </div>
-            ))}
+                ))
+              : ""}
           </div>
           <button
             className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-25"
@@ -136,14 +107,16 @@ const ShoppingCart = () => {
           <div className=" justify-between mt-10 mb-5">
             <span className="font-semibold text-sm uppercase">Productos</span>
             <span className="font-semibold text-sm">
-              {products.map((item) => (
-                <>
-                  <div className="d-flex justify-content-between m-3 p-2">
-                    <p>{item.name}</p>
-                    <p>${item.price}</p>
-                  </div>
-                </>
-              ))}
+              {cartItem
+                ? cartItem.map((item) => (
+                    <>
+                      <div className="d-flex justify-content-between m-3 p-2">
+                        <p>{item.name}</p>
+                        <p>${item.price}</p>
+                      </div>
+                    </>
+                  ))
+                : ""}
             </span>
           </div>
 
