@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./SideBar.css";
+import { auth } from "../../Config/FireBase";
+import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faListUl,
@@ -11,7 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 /* Armado de sidebar con estilo, formato y cada item */
-const SideBar = ({filterProductsByCategory}) => {
+const SideBar = ({ filterProductsByCategory }) => {
+  const [userLoged, setUserLoged] = useState(auth.currentUser);
   const handleWhoWeAreClickScroll = () => {
     const element = document.getElementById("whoWeAre");
     if (element) {
@@ -27,8 +30,13 @@ const SideBar = ({filterProductsByCategory}) => {
   };
 
   const navigate = useNavigate();
-  const goToLogInHandler = () => {
-    navigate("/login");
+  const goToLogInHandler = async () => {
+    if (userLoged) {
+      await signOut(auth);
+      setUserLoged((prevValue) => !prevValue);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -82,19 +90,34 @@ const SideBar = ({filterProductsByCategory}) => {
                   <li className="w-100">
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Mujer")}>Mujer</span>{" "}
+                      <span
+                        className="d-none d-sm-inline"
+                        onClick={() => filterProductsByCategory("Mujer")}
+                      >
+                        Mujer
+                      </span>{" "}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Hombre")}>Hombre</span>{" "}
+                      <span
+                        className="d-none d-sm-inline"
+                        onClick={() => filterProductsByCategory("Hombre")}
+                      >
+                        Hombre
+                      </span>{" "}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Niño")}>Niño</span>{" "}
+                      <span
+                        className="d-none d-sm-inline"
+                        onClick={() => filterProductsByCategory("Niño")}
+                      >
+                        Niño
+                      </span>{" "}
                     </a>
                   </li>
                 </ul>
@@ -150,7 +173,7 @@ const SideBar = ({filterProductsByCategory}) => {
                   className="d-none d-sm-inline mx-1"
                   onClick={goToLogInHandler}
                 >
-                  Iniciar Sesión
+                  {userLoged ? "Cerrar Sesión" : "Iniciar Sesión"}
                 </button>
               </a>
             </div>

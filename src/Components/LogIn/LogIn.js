@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import { auth } from "../../Config/FireBase";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
 import "./LogIn.css";
 
