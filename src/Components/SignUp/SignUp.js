@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router";
-import { auth } from "../../Config/FireBase";
+import { auth, db } from "../../Config/FireBase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, setDoc, doc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,6 +14,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const usersCollection = collection(db, "users");
 
   const emailChangeHandler = (e) => {
     emailRef.current.style.borderColor = "";
@@ -46,6 +48,11 @@ const SignUp = () => {
     try {
       logInClicked();
       await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(usersCollection, email), {
+        email: email,
+        password: password,
+        user_type: email.includes("@mulberry.com") ? "admin" : email.includes("@superadmin.com") ? "superadmin" : "user"
+      });
     } catch (error) {
       console.error(error);
     }

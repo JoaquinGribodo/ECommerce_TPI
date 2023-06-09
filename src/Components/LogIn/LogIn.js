@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-import { auth,  } from "../../Config/FireBase";
-import {signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Config/FireBase";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./LogIn.css";
@@ -26,8 +26,6 @@ const LogIn = () => {
   };
 
   const logInClicked = async () => {
-    
-    
     if (emailRef.current.value.length === 0) {
       emailRef.current.focus();
       emailRef.current.style.border = "solid red";
@@ -44,9 +42,8 @@ const LogIn = () => {
       await signInWithEmailAndPassword(auth, email, password);
       successMessage();
     } catch (err) {
-      console.error(err);
+      errorMessage();
     }
-    
   };
 
   const navigate = useNavigate();
@@ -56,6 +53,18 @@ const LogIn = () => {
 
   const successMessage = () =>
     toast.success("Ha iniciado sesión correctamente", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+  const errorMessage = () =>
+    toast.error("Has ingresado mal tus credenciales al iniciar sesión", {
       position: "top-left",
       autoClose: 5000,
       hideProgressBar: false,
