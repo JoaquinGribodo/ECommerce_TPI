@@ -24,7 +24,7 @@ const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
         <input
           type="range"
           className="form-range"
-          min={0}
+          min={500}
           max={10000}
           step={500}
           id="customRange2"
