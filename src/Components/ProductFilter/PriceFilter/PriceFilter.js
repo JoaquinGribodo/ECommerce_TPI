@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./PriceFilter.css";
 
 const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(500);
 
   const priceHandler = (e) => {
     setPrice(e.target.value);
