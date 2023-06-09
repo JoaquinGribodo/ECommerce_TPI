@@ -11,7 +11,7 @@ const ProductItem = ({
   productImage,
 }) => {
   return (
-    <ProductCard>
+    <ProductCard productName={productName} productPrice={productPrice}>
       <img className="rounded-t-lg" src={productImage} alt="" />
       <span className="font-serif">{productName}</span>
       <span className="font-serif">{productColor}</span>

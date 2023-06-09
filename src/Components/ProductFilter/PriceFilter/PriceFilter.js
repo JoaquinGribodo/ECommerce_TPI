@@ -7,7 +7,7 @@ const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
 
   const priceHandler = (e) => {
     setPrice(e.target.value);
-    console.log(price);
+    console.log(e.target.value);
     filterProductsByPrice(e.target.value);
   };
 

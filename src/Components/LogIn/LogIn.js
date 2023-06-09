@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { auth } from "../../Config/FireBase";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./LogIn.css";
 
 const LogIn = () => {
@@ -43,12 +42,20 @@ const LogIn = () => {
       successMessage();
     } catch (err) {
       errorMessage();
+      console.error(err);
+    } finally {
+      setInterval(() => {
+        goHomeHandler();
+      }, 2000);
     }
   };
 
   const navigate = useNavigate();
   const goToSignUpHandler = () => {
     navigate("/signup");
+  };
+  const goHomeHandler = () => {
+    navigate("/home");
   };
 
   const successMessage = () =>

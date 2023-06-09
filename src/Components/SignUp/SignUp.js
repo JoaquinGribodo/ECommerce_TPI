@@ -6,7 +6,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, setDoc, doc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -51,10 +50,18 @@ const SignUp = () => {
       await setDoc(doc(usersCollection, email), {
         email: email,
         password: password,
-        user_type: email.includes("@mulberry.com") ? "admin" : email.includes("@superadmin.com") ? "superadmin" : "user"
+        user_type: email.includes("@mulberry.com")
+          ? "admin"
+          : email.includes("@superadmin.com")
+          ? "superadmin"
+          : "user",
       });
     } catch (error) {
       console.error(error);
+    } finally {
+      setInterval(() => {
+        goHomeHandler();
+      }, 2000);
     }
   };
 
@@ -149,7 +156,7 @@ const SignUp = () => {
                     </div>
                     <button
                       type="button"
-                      class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                      className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                       onClick={signUp}
                     >
                       Registrarse
@@ -163,7 +170,7 @@ const SignUp = () => {
           <div>
             <button
               type="button"
-              class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
               onClick={goHomeHandler}
             >
               Volver al Inicio
