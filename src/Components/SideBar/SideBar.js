@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 /* Armado de sidebar con estilo, formato y cada item */
-const SideBar = ({filterProductsByCategory}) => {
+const SideBar = ({ filterProductsByCategory }) => {
   const handleWhoWeAreClickScroll = () => {
     const element = document.getElementById("whoWeAre");
     if (element) {
@@ -82,19 +82,34 @@ const SideBar = ({filterProductsByCategory}) => {
                   <li className="w-100">
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Mujer")}>Mujer</span>{" "}
+                      <span
+                        className="d-none d-sm-inline"
+                        onClick={() => filterProductsByCategory("Mujer")}
+                      >
+                        Mujer
+                      </span>{" "}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Hombre")}>Hombre</span>{" "}
+                      <span
+                        className="d-none d-sm-inline"
+                        onClick={() => filterProductsByCategory("Hombre")}
+                      >
+                        Hombre
+                      </span>{" "}
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline" onClick={()=> filterProductsByCategory("Niño")}>Niño</span>{" "}
+                      <span
+                        className="d-none d-sm-inline"
+                        onClick={() => filterProductsByCategory("Niño")}
+                      >
+                        Niño
+                      </span>{" "}
                     </a>
                   </li>
                 </ul>
@@ -125,8 +140,9 @@ const SideBar = ({filterProductsByCategory}) => {
               </li>
               <li>
                 <a
-                  href="http://localhost:3000/shoppingcart"
+                  href="#"
                   className="nav-link px-0 align-middle"
+                  onClick={navigate("/shoppingcart")}
                 >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon icon={faCartShopping} />

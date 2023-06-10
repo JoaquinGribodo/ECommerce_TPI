@@ -37,6 +37,8 @@ const Products = ({ productList, getProductsHandler }) => {
         productColor={product.color}
         productDescription={product.description}
         productSize={product.size}
+        productList={productList}
+        productId={product.id}
       />
     </div>
   ));

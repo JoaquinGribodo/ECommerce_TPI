@@ -5,11 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
-  const [cartItem, setCartItem] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (name, price) => {
     try {
-      setCartItem([...cartItem, { name, price }]);
+      setCartItems([...cartItems, { name, price }]);
       toast.success("El producto se añadió al carrito", {
         position: "top-left",
         autoClose: 2500,
@@ -26,7 +26,7 @@ export const CartContextProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItem, addToCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart }}>
       {children}
     </CartContext.Provider>
   );

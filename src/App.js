@@ -10,35 +10,11 @@ import WhoWeAre from "./Components/WhoWeAre/WhoWeAre";
 import "./App.css";
 import AddProduct from "./Components/AddProduct/AddProduct";
 import ModifyProduct from "./Components/ModifyProduct/ModifyProduct";
-import DeleteProduct from "./Components/DeleteProduct/DeleteProduct";
 import { ThemeContext } from "./Components/Services/Theme/Theme.Context";
 import { APIContext } from "./Components/Services/API/Api.Context";
 import Spinner from "./Components/UI/Spinner/Spinner.js";
 
 const App = () => {
-  // const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // useEffect(() => {
-  //   const currentMode = localStorage.getItem("darkMode");
-  //   if (currentMode === "true") {
-  //     setIsDarkMode(true);
-  //   }
-  // }, []);
-
-  // const toggleDarkMode = () => {
-  //   const newMode = !isDarkMode;
-  //   setIsDarkMode(newMode);
-  //   localStorage.setItem("darkMode", newMode.toString());
-  // };
-
-  // useEffect(() => {
-  //   if (isDarkMode) {
-  //     document.body.classList.add("dark-mode");
-  //   } else {
-  //     document.body.classList.remove("dark-mode");
-  //   }
-  // }, [isDarkMode]);
-
   const { theme } = useContext(ThemeContext);
   const { isLoading } = useContext(APIContext);
 
@@ -87,10 +63,6 @@ const App = () => {
       path: "/modifyProduct",
       element: <ModifyProduct />,
     },
-    {
-      path: "/deleteProduct",
-      element: <DeleteProduct />,
-    },
   ]);
 
   return (
@@ -108,18 +80,3 @@ const App = () => {
 };
 
 export default App;
-
-/* <div className={`App ${isDarkMode ? "dark-mode" : ""}`}>
-        <nav>
-          <div className="switch-container">
-            <label className="switch">
-              <input
-                type="checkbox"
-                defaultChecked={isDarkMode}
-                onChange={toggleDarkMode}
-              />
-              <span className="slider round"></span>
-            </label>
-          </div>
-        </nav>
-      </div> */

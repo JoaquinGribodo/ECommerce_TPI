@@ -7,7 +7,7 @@ import { CartContext } from "../Services/Cart/Cart.Context";
 const ShoppingCart = () => {
   const [amount, setAmount] = useState(1);
 
-  const { cartItem } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   const amountHandler = (e) => {
     setAmount(e.target.value);
@@ -29,7 +29,7 @@ const ShoppingCart = () => {
       progress: undefined,
       theme: "dark",
     });
-    console.log(cartItem);
+    console.log(cartItems);
   };
   return (
     <div className="container mx-auto mt-10">
@@ -56,8 +56,8 @@ const ShoppingCart = () => {
             </h3>
           </div>
           <div>
-            {cartItem
-              ? cartItem.map((item) => (
+            {cartItems
+              ? cartItems.map((item) => (
                   <div>
                     <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                       <div className="flex w-2/5">
@@ -107,8 +107,8 @@ const ShoppingCart = () => {
           <div className=" justify-between mt-10 mb-5">
             <span className="font-semibold text-sm uppercase">Productos</span>
             <span className="font-semibold text-sm">
-              {cartItem
-                ? cartItem.map((item) => (
+              {cartItems
+                ? cartItems.map((item) => (
                     <>
                       <div className="d-flex justify-content-between m-3 p-2">
                         <p>{item.name}</p>

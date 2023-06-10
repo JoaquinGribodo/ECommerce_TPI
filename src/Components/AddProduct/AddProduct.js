@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./AddProduct.css";
-import { addDoc } from "firebase/firestore";
+import { addDoc, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../Config/FireBase";
 import { productsCollection } from "../Products/Products";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +14,13 @@ const AddProduct = () => {
   const [description, setDescription] = useState();
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState();
+
+  async function getDocument(id) {
+    const docRef = doc(db, "products", id);
+    console.log(docRef);
+    console.log("docID:", docRef.id);
+    await updateDoc(docRef, { id: docRef.id });
+  }
 
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -52,8 +60,8 @@ const AddProduct = () => {
 
   const addProduct = async () => {
     try {
-      await addDoc(productsCollection, {
-        id: 50,
+      const docRef = await addDoc(productsCollection, {
+        id: "a",
         name: name,
         color: color,
         size: size,
@@ -62,6 +70,7 @@ const AddProduct = () => {
         image: image,
       });
       successMessage();
+      getDocument(docRef.id.toString());
     } catch (error) {
       console.error(error);
     }

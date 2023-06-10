@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faRaspberryPi } from "@fortawesome/free-brands-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ToggleTheme from "../UI/ToggleTheme/ToggleTheme";
 import { ThemeContext } from "../Services/Theme/Theme.Context";
 
@@ -21,6 +23,10 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
   };
 
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const goToAddProduct = () => {
+    navigate("/addProduct");
+  };
 
   return (
     <>
@@ -55,11 +61,23 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
             </button>
           </nav>
         </div>
+
         <div className="logo">
           <FontAwesomeIcon icon={faRaspberryPi} size="xl" /> MULBERRY
         </div>
 
-        <form className="form-inline">
+        <form className="d-flex form-inline">
+          <button
+            className="bg-white-500 hover:bg-white-400 text-green font-bold m-1"
+            type="button"
+            onClick={goToAddProduct}
+          >
+            <FontAwesomeIcon
+              icon={faPlus}
+              size="2xl"
+              style={{ color: "#00f004" }}
+            />
+          </button>
           <div className="searchDiv">
             <div className="pr-5 pt-1">
               <ToggleTheme />

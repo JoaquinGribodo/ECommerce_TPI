@@ -9,9 +9,20 @@ const ProductItem = ({
   productPrice,
   productSize,
   productImage,
+  productId,
+  productList,
 }) => {
   return (
-    <ProductCard productName={productName} productPrice={productPrice}>
+    <ProductCard
+      productList={productList}
+      productName={productName}
+      productPrice={productPrice}
+      productColor={productColor}
+      productSize={productSize}
+      productImage={productImage}
+      productDescription={productDescription}
+      productId={productId}
+    >
       <img className="rounded-t-lg" src={productImage} alt="" />
       <span className="font-serif">{productName}</span>
       <span className="font-serif">{productColor}</span>
