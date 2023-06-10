@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./SideBar.css";
+import { auth } from "../../Config/FireBase";
+import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faListUl,
@@ -12,6 +14,10 @@ import {
 
 /* Armado de sidebar con estilo, formato y cada item */
 const SideBar = ({ filterProductsByCategory }) => {
+<<<<<<< HEAD
+=======
+  const [userLoged, setUserLoged] = useState(auth.currentUser);
+>>>>>>> fc759afdafa60f053cacf036b09efad7583a0ae4
   const handleWhoWeAreClickScroll = () => {
     const element = document.getElementById("whoWeAre");
     if (element) {
@@ -27,8 +33,13 @@ const SideBar = ({ filterProductsByCategory }) => {
   };
 
   const navigate = useNavigate();
-  const goToLogInHandler = () => {
-    navigate("/login");
+  const goToLogInHandler = async () => {
+    if (userLoged) {
+      await signOut(auth);
+      setUserLoged((prevValue) => !prevValue);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -166,7 +177,7 @@ const SideBar = ({ filterProductsByCategory }) => {
                   className="d-none d-sm-inline mx-1"
                   onClick={goToLogInHandler}
                 >
-                  Iniciar Sesión
+                  {userLoged ? "Cerrar Sesión" : "Iniciar Sesión"}
                 </button>
               </a>
             </div>

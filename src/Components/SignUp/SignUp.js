@@ -52,7 +52,7 @@ const SignUp = () => {
         password: password,
         user_type: email.includes("@mulberry.com")
           ? "admin"
-          : email.includes("@superadmin.com")
+          : email==="belen.linera@gmail.com" || email==="moracapdevila457@gmail.com" || email==="joacogribodo@gmail.com" || email==="tobifernandez1@gmail.com"
           ? "superadmin"
           : "user",
       });
