@@ -57,6 +57,7 @@ const ModifyProduct = () => {
       theme: "dark",
     });
   return (
+    <div className="container"> 
     <div className="card bg-glass">
       <h1>Modificar Producto:</h1>
       <div className="card-body px-4 py-5 px-md-5">
@@ -165,6 +166,7 @@ const ModifyProduct = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

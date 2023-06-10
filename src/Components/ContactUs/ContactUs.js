@@ -219,7 +219,7 @@ const ContactUs = () => {
                   </div>
                   <div className="grow ml-6">
                     <p className="text-gray-500">
-                      Los campos que contienen un * son obligatorios.
+                      Los campos que contienen * son obligatorios.
                     </p>
                   </div>
                 </div>

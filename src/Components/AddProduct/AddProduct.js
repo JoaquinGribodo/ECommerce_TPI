@@ -77,6 +77,7 @@ const AddProduct = () => {
   };
 
   return (
+    <div className="container">
     <div className="addProductDiv">
       <div className="card bg-glass">
         <h1>Agregar un nuevo Producto:</h1>
@@ -145,7 +146,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="number"
-                className="form-control w-50"
+                className="form-control w-50 "
                 required
                 onChange={priceHandler}
               />
@@ -168,6 +169,7 @@ const AddProduct = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -95,7 +95,7 @@ const SignUp = () => {
                 <span style={{ color: "#8CB1F3" }}>siempre</span>
               </h1>
               <p className="mb-4 opacity-70" style={{ color: "#BAD0F8" }}>
-                Descripción de la tienda
+                Somos una tienda que prioriza la comodidad sin dejar de estar a la moda, para toda la familia
               </p>
             </div>
 
