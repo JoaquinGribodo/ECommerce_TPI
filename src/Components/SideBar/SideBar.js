@@ -14,10 +14,7 @@ import {
 
 /* Armado de sidebar con estilo, formato y cada item */
 const SideBar = ({ filterProductsByCategory }) => {
-<<<<<<< HEAD
-=======
   const [userLoged, setUserLoged] = useState(auth.currentUser);
->>>>>>> fc759afdafa60f053cacf036b09efad7583a0ae4
   const handleWhoWeAreClickScroll = () => {
     const element = document.getElementById("whoWeAre");
     if (element) {

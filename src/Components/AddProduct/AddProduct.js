@@ -88,7 +88,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 required
                 onChange={nameHandler}
               />
@@ -99,7 +99,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 required
                 onChange={imageHandler}
               />
@@ -134,7 +134,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 required
                 onChange={descriptionHandler}
               />
@@ -145,7 +145,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="number"
-                className="form-control"
+                className="form-control w-50"
                 required
                 onChange={priceHandler}
               />

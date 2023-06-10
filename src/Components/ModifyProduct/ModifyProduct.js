@@ -33,7 +33,6 @@ const ModifyProduct = () => {
 
   const updateProduct = async (id) => {
     console.log(id);
-
     const productItem = doc(db, "products", id);
     await updateDoc(productItem, {
       name: newName,
@@ -71,7 +70,7 @@ const ModifyProduct = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 required
                 defaultValue={productName}
                 onChange={(e) => setNewName(e.target.value)}
@@ -83,7 +82,7 @@ const ModifyProduct = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 required
                 defaultValue={productImage}
                 onChange={(e) => setNewImage(e.target.value)}
@@ -129,7 +128,7 @@ const ModifyProduct = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 required
                 defaultValue={productDescription}
                 onChange={(e) => setNewDescription(e.target.value)}
@@ -141,7 +140,7 @@ const ModifyProduct = () => {
               </label>
               <input
                 type="number"
-                className="form-control"
+                className="form-control w-50"
                 required
                 defaultValue={productPrice}
                 onChange={(e) => setNewPrice(e.target.value)}
