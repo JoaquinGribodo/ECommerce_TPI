@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const CartContext = createContext();
@@ -7,26 +7,46 @@ export const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (name, price) => {
+  const existsMessage = () => {
+    toast.success("El producto ya se encuentra en el carrito", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  const addToCart = (name, price, id) => {
     try {
-      setCartItems([...cartItems, { name, price }]);
-      toast.success("El producto se añadió al carrito", {
-        position: "top-left",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      const existingProductIndex = cartItems.findIndex(
+        (item) => item.id === id
+      );
+      if (existingProductIndex !== -1) {
+        existsMessage();
+      } else {
+        setCartItems([...cartItems, { name, price, id }]);
+        toast.success("El producto se añadió al carrito", {
+          position: "top-left",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, setCartItems }}>
       {children}
     </CartContext.Provider>
   );

@@ -36,6 +36,10 @@ const AddProduct = () => {
     setSize(e.target.value);
   };
   const descriptionHandler = (e) => {
+    const firstOption = e.target.querySelector(
+      'option[value="selectCategory"]'
+    );
+    firstOption.disabled = true;
     setDescription(e.target.value);
   };
   const priceHandler = (e) => {
@@ -115,10 +119,10 @@ const AddProduct = () => {
                 </label>
                 <select name="colors" id="lang" onChange={colorHandler}>
                   <option value="selectColor">Seleccione un color</option>
-                  <option value="rojo">Rojo</option>
-                  <option value="azul">Azul</option>
-                  <option value="gris">Gris</option>
-                  <option value="negro">Negro</option>
+                  <option value="Rojo">Rojo</option>
+                  <option value="Azul">Azul</option>
+                  <option value="Gris">Gris</option>
+                  <option value="Negro">Negro</option>
                 </select>
               </div>
               <div className="form-outline mb-5">
@@ -137,12 +141,18 @@ const AddProduct = () => {
                 <label className="form-label" htmlFor="form3Example3">
                   Descripción:
                 </label>
-                <input
-                  type="text"
-                  className="form-control w-50"
-                  required
+                <select
+                  name="categories"
+                  id="lang2"
                   onChange={descriptionHandler}
-                />
+                >
+                  <option value="selectCategory">
+                    Seleccione una categoría:
+                  </option>
+                  <option value="Mujer">Mujer</option>
+                  <option value="Hombre">Hombre</option>
+                  <option value="Niño">Niño</option>
+                </select>
               </div>
               <div className="form-outline mb-5">
                 <label className="form-label" htmlFor="form3Example3">

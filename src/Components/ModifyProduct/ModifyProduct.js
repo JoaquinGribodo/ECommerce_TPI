@@ -26,6 +26,25 @@ const ModifyProduct = () => {
   const [newPrice, setNewPrice] = useState(productPrice);
   const [newImage, setNewImage] = useState(productImage);
 
+  const descriptionHandler = (e) => {
+    const firstOption = e.target.querySelector(
+      'option[value="selectModifiedCategory"]'
+    );
+    firstOption.disabled = true;
+    setNewDescription(e.target.value);
+  };
+
+  const colorHandler = (e) => {
+    const firstOption = e.target.querySelector('option[value="selectColor"]');
+    firstOption.disabled = true;
+    setNewColor(e.target.value);
+  };
+  const sizeHandler = (e) => {
+    const firstOption = e.target.querySelector('option[value="selectSize"]');
+    firstOption.disabled = true;
+    setNewSize(e.target.value);
+  };
+
   const navigate = useNavigate();
 
   const goHomeHandler = () => {
@@ -99,14 +118,14 @@ const ModifyProduct = () => {
                     <select
                       name="colores"
                       id="lang"
-                      onChange={(e) => setNewColor(e.target.value)}
+                      onChange={colorHandler}
                       defaultValue={productColor}
                     >
                       <option value="selecciona">Seleccione un color</option>
-                      <option value="rojo">Rojo</option>
-                      <option value="azul">Azul</option>
-                      <option value="gris">Gris</option>
-                      <option value="negro">Negro</option>
+                      <option value="Rojo">Rojo</option>
+                      <option value="Azul">Azul</option>
+                      <option value="Gris">Gris</option>
+                      <option value="Negro">Negro</option>
                     </select>
                   </div>
                   <div className="form-outline mb-5">
@@ -116,7 +135,7 @@ const ModifyProduct = () => {
                     <select
                       name="talles"
                       id="lang"
-                      onChange={(e) => setNewSize(e.target.value)}
+                      onChange={sizeHandler}
                       defaultValue={productSize}
                     >
                       <option value="selecciona">Seleccione un talle</option>
@@ -130,13 +149,18 @@ const ModifyProduct = () => {
                     <label className="form-label" htmlFor="form3Example3">
                       Descripción:
                     </label>
-                    <input
-                      type="text"
-                      className="form-control w-50"
-                      required
-                      defaultValue={productDescription}
-                      onChange={(e) => setNewDescription(e.target.value)}
-                    />
+                    <select
+                      name="categories"
+                      id="lang3"
+                      onChange={descriptionHandler}
+                    >
+                      <option value="selectModifiedCategory">
+                        Seleccione una categoría:
+                      </option>
+                      <option value="Mujer">Mujer</option>
+                      <option value="Hombre">Hombre</option>
+                      <option value="Niño">Niño</option>
+                    </select>
                   </div>
                   <div className="form-outline mb-5">
                     <label className="form-label" htmlFor="form3Example3">

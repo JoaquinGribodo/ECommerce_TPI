@@ -106,7 +106,7 @@ const ProductCard = ({
         </div>
         <p className="mb-3 font-normal text-zinc-900">{children}</p>
         <button
-          onClick={() => addToCart(productName, productPrice)}
+          onClick={() => addToCart(productName, productPrice, productId)}
           className="flex flex-row-reverse float-end items-right py-2 text-sm font-medium text-right text-black bg-white"
         >
           <FontAwesomeIcon

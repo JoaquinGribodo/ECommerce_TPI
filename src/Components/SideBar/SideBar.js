@@ -12,9 +12,11 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
-/* Armado de sidebar con estilo, formato y cada item */
 const SideBar = ({ filterProductsByCategory }) => {
   const [userLoged, setUserLoged] = useState(auth.currentUser);
+
+  const navigate = useNavigate();
+
   const handleWhoWeAreClickScroll = () => {
     const element = document.getElementById("whoWeAre");
     if (element) {
@@ -29,7 +31,6 @@ const SideBar = ({ filterProductsByCategory }) => {
     }
   };
 
-  const navigate = useNavigate();
   const goToLogInHandler = async () => {
     if (userLoged) {
       await signOut(auth);
