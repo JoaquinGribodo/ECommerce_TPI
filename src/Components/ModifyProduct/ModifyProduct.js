@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import { db } from "../../Config/FireBase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./ModifyProduct.css";
 
 const ModifyProduct = () => {
   const location = useLocation();
@@ -57,116 +58,120 @@ const ModifyProduct = () => {
       theme: "dark",
     });
   return (
-    <div className="container"> 
-    <div className="card bg-glass">
-      <h1>Modificar Producto:</h1>
-      <div className="card-body px-4 py-5 px-md-5">
-        <form>
-          <div className="form-outline mb-5">
-            <h1>Producto:</h1>
+    <div className="containerModify">
+      <div className="containerProduct">
+        <div className="modifyProductDiv">
+          <div className="card1 bg-glass">
+            <h1>Modificar Producto:</h1>
+            <div className="card-body px-4 py-5 px-md-5">
+              <form>
+                <div className="form-outline mb-5">
+                  <h1>Producto:</h1>
 
-            <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Nombre:
-              </label>
-              <input
-                type="text"
-                className="form-control w-50"
-                required
-                defaultValue={productName}
-                onChange={(e) => setNewName(e.target.value)}
-              />
-            </div>
-            <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Imagen:
-              </label>
-              <input
-                type="text"
-                className="form-control w-50"
-                required
-                defaultValue={productImage}
-                onChange={(e) => setNewImage(e.target.value)}
-              />
-            </div>
-            <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Color:
-              </label>
-              <select
-                name="colores"
-                id="lang"
-                onChange={(e) => setNewColor(e.target.value)}
-                defaultValue={productColor}
-              >
-                <option value="selecciona">Seleccione un color</option>
-                <option value="rojo">Rojo</option>
-                <option value="azul">Azul</option>
-                <option value="gris">Gris</option>
-                <option value="negro">Negro</option>
-              </select>
-            </div>
-            <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Talle:
-              </label>
-              <select
-                name="talles"
-                id="lang"
-                onChange={(e) => setNewSize(e.target.value)}
-                defaultValue={productSize}
-              >
-                <option value="selecciona">Seleccione un talle</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-              </select>
-            </div>
-            <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Descripción:
-              </label>
-              <input
-                type="text"
-                className="form-control w-50"
-                required
-                defaultValue={productDescription}
-                onChange={(e) => setNewDescription(e.target.value)}
-              />
-            </div>
-            <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Precio:
-              </label>
-              <input
-                type="number"
-                className="form-control w-50"
-                required
-                defaultValue={productPrice}
-                onChange={(e) => setNewPrice(e.target.value)}
-              />
+                  <div className="form-outline mb-5">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Nombre:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control w-50"
+                      required
+                      defaultValue={productName}
+                      onChange={(e) => setNewName(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-outline mb-5">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Imagen:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control w-50"
+                      required
+                      defaultValue={productImage}
+                      onChange={(e) => setNewImage(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-outline mb-5">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Color:
+                    </label>
+                    <select
+                      name="colores"
+                      id="lang"
+                      onChange={(e) => setNewColor(e.target.value)}
+                      defaultValue={productColor}
+                    >
+                      <option value="selecciona">Seleccione un color</option>
+                      <option value="rojo">Rojo</option>
+                      <option value="azul">Azul</option>
+                      <option value="gris">Gris</option>
+                      <option value="negro">Negro</option>
+                    </select>
+                  </div>
+                  <div className="form-outline mb-5">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Talle:
+                    </label>
+                    <select
+                      name="talles"
+                      id="lang"
+                      onChange={(e) => setNewSize(e.target.value)}
+                      defaultValue={productSize}
+                    >
+                      <option value="selecciona">Seleccione un talle</option>
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                    </select>
+                  </div>
+                  <div className="form-outline mb-5">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Descripción:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control w-50"
+                      required
+                      defaultValue={productDescription}
+                      onChange={(e) => setNewDescription(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-outline mb-5">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Precio:
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control w-50"
+                      required
+                      defaultValue={productPrice}
+                      onChange={(e) => setNewPrice(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  onClick={() => updateProduct(productId)}
+                >
+                  Modificar
+                </button>
+                <ToastContainer />
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  onClick={goHomeHandler}
+                >
+                  Volver al Inicio
+                </button>
+              </form>
             </div>
           </div>
-
-          <button
-            type="button"
-            className="text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-            onClick={() => updateProduct(productId)}
-          >
-            Modificar
-          </button>
-          <ToastContainer />
-          <button
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-            onClick={goHomeHandler}
-          >
-            Volver al Inicio
-          </button>
-        </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
