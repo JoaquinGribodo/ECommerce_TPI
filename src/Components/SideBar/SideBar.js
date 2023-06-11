@@ -40,6 +40,10 @@ const SideBar = ({ filterProductsByCategory }) => {
     }
   };
 
+  const goHomeHandler = () => {
+    navigate("/shoppingcart");
+  };
+
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3"
@@ -151,7 +155,7 @@ const SideBar = ({ filterProductsByCategory }) => {
                 <a
                   href="#"
                   className="nav-link px-0 align-middle"
-                  onClick={navigate("/shoppingcart")}
+                  onClick={goHomeHandler}
                 >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon icon={faCartShopping} />
