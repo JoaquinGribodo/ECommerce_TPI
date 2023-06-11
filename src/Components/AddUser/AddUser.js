@@ -59,7 +59,7 @@ const AddUser = () => {
 
     try {
       const docRef = await addDoc(usersCollection, {
-        id: "a",
+        id: email,
         email: email,
         password: password,
         user_type: userType,

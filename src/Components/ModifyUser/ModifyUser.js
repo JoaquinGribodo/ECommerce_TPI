@@ -8,9 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ModifyUser = () => {
   const location = useLocation();
-  const userIdList = location.state ? location.state.userList : null;
-  const [users, setUsers] = useState(userIdList);
-  const [userId, setUserId] = useState("");
+  const userEmailList = location.state ? location.state.userList : null;
+  const [users, setUsers] = useState(userEmailList);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState("");
@@ -25,10 +24,9 @@ const ModifyUser = () => {
       'option[value="selectUser"]'
     );
     firstOption.disabled = true;
-    const selectedUserId = event.target.value;
-    const selectedUser = users.find((user) => user.id === selectedUserId);
+    const selectedUserEmail = event.target.value;
+    const selectedUser = users.find((user) => user.email === selectedUserEmail);
     if (selectedUser) {
-      setUserId(selectedUserId);
       setEmail(selectedUser.email);
       setPassword(selectedUser.password);
       setType(selectedUser.type);
@@ -134,8 +132,8 @@ const ModifyUser = () => {
                       <option value="selectUser">Seleccione un usuario</option>
                       {users
                         ? users.map((user) => (
-                            <option key={user.id} value={user.id}>
-                              Id: {user.id}
+                            <option key={user.email} value={user.email}>
+                              Email: {user.email}
                             </option>
                           ))
                         : ""}
@@ -189,7 +187,7 @@ const ModifyUser = () => {
                   <button
                     type="button"
                     className="text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                    onClick={() => updateUser(userId)}
+                    onClick={() => updateUser(email)}
                   >
                     Modificar
                   </button>

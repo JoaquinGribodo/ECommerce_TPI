@@ -10,14 +10,14 @@ const DeleteUser = () => {
   const location = useLocation();
   const userList = location.state ? location.state.userList : null;
   const [users, setUsers] = useState(userList);
-  const [id, setId] = useState();
+  const [email, setEmail] = useState();
   const navigate = useNavigate();
   const goHomeHandler = () => {
     navigate("/home");
   };
-  const removeUserFromDb = async (id) => {
-    if (id) {
-      const userItem = doc(db, "users", id);
+  const removeUserFromDb = async (email) => {
+    if (email) {
+      const userItem = doc(db, "users", email);
       await deleteDoc(userItem);
       successMessage();
     } else {
@@ -25,8 +25,8 @@ const DeleteUser = () => {
     }
   };
 
-  const idHandler = (e) => {
-    setId(e.target.value);
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
   };
 
   const successMessage = () =>
@@ -63,13 +63,12 @@ const DeleteUser = () => {
               <label className="form-label" htmlFor="form3Example3">
                 Usuario:
               </label>
-              <select name="users" id="lang" onChange={idHandler}>
+              <select name="users" id="lang" onChange={emailHandler}>
                 <option value="selecciona">Seleccione un usuario</option>
                 {users
                   ? users.map((user) => (
-                      <option key={user.id} value={user.id}>
-                        Id: {user.id} - Email: {user.email} - Contraseña:{" "}
-                        {user.password}
+                      <option key={user.email} value={user.email}>
+                        Email: {user.email}
                       </option>
                     ))
                   : ""}
@@ -80,7 +79,7 @@ const DeleteUser = () => {
                   type="button"
                   className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                   onClick={() =>
-                    removeUserFromDb(id ? id.toString() : undefined)
+                    removeUserFromDb(email ? email.toString() : undefined)
                   }
                 >
                   Eliminar
