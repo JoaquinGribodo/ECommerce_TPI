@@ -12,7 +12,7 @@ const ModifyUser = () => {
   const [users, setUsers] = useState(userEmailList);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [type, setType] = useState("");
+  const [user_type, setUserType] = useState("");
   const [newEmail, setNewEmail] = useState();
   const [newPassword, setNewPassword] = useState();
   const [newType, setNewType] = useState();
@@ -29,7 +29,7 @@ const ModifyUser = () => {
     if (selectedUser) {
       setEmail(selectedUser.email);
       setPassword(selectedUser.password);
-      setType(selectedUser.type);
+      setUserType(selectedUser.user_type);
     }
   };
 
@@ -57,25 +57,24 @@ const ModifyUser = () => {
     navigate("/home");
   };
 
-  const updateUser = async (id) => {
+  const updateUser = async (email) => {
     if (
       email === "" ||
       !email.includes("@") ||
       !email.includes(".") ||
       password === "" ||
-      type === "" ||
-      id === ""
+      user_type === ""
     ) {
       warningMessage();
       return;
     }
 
     try {
-      const userItem = doc(db, "users", id);
+      const userItem = doc(db, "users", email);
       await updateDoc(userItem, {
         email: newEmail,
         password: newPassword,
-        type: newType,
+        user_type: newType,
       });
       successMessage();
     } catch {
@@ -173,7 +172,7 @@ const ModifyUser = () => {
                     <select
                       name="types"
                       id="lang1"
-                      defaultValue={type}
+                      defaultValue={user_type}
                       required
                       onChange={typeHandler}
                     >
