@@ -15,12 +15,12 @@ const AddUser = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  async function getDocument(id) {
-    const docRef = doc(db, "users", id);
-    console.log(docRef);
-    console.log("docID:", docRef.id);
-    await updateDoc(docRef, { id: docRef.id });
-  }
+  // async function getDocument(email) {
+  //   const docRef = doc(db, "users", email);
+  //   console.log(docRef);
+  //   console.log("docID:", docRef.email);
+  //   await updateDoc(docRef, { id: docRef.id });
+  // }
 
   const emailHandler = (e) => {
     emailRef.current.style.borderColor = "";
@@ -64,7 +64,7 @@ const AddUser = () => {
         user_type: userType,
       });
       successMessage();
-      getDocument(docRef.id.toString());
+      // getDocument(docRef.id.toString());
     } catch (error) {
       console.error(error);
       warningMessage();

@@ -31,14 +31,14 @@ const SideBar = ({ filterProductsByCategory }) => {
     }
   };
 
-  const goToLogInHandler = async () => {
-    if (userLoged) {
-      await signOut(auth);
-      setUserLoged((prevValue) => !prevValue);
-    } else {
-      navigate("/login");
-    }
-  };
+  // const goToLogInHandler = async () => {
+  //   if (userLoged) {
+  //     await signOut(auth);
+  //     setUserLoged((prevValue) => !prevValue);
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // };
 
   return (
     <div
@@ -62,14 +62,16 @@ const SideBar = ({ filterProductsByCategory }) => {
               id="menu"
             >
               <li className="nav-item">
-                <a
-                  href="http://localhost:3000/home"
-                  className="nav-link align-middle px-0"
-                >
+                <button className="nav-link align-middle px-0">
                   <i className="fs-4 bi-house"></i>{" "}
                   <FontAwesomeIcon icon={faHouse} />
-                  <span className="ms-1 d-none d-sm-inline">Inicio</span>
-                </a>
+                  <button
+                    onClick={navigate("/home")}
+                    className="ms-1 d-none d-sm-inline"
+                  >
+                    Inicio
+                  </button>
+                </button>
               </li>
               <li>
                 <a
@@ -88,38 +90,32 @@ const SideBar = ({ filterProductsByCategory }) => {
                   id="submenu1"
                   data-bs-parent="#menu"
                 >
-                  <li className="w-100">
-                    <a href="#" className="nav-link px-0">
+                  <li>
+                    <button
+                      onClick={() => filterProductsByCategory("Mujer")}
+                      className="nav-link px-0"
+                    >
                       {" "}
-                      <span
-                        className="d-none d-sm-inline"
-                        onClick={() => filterProductsByCategory("Mujer")}
-                      >
-                        Mujer
-                      </span>{" "}
-                    </a>
+                      <span>Mujer</span>{" "}
+                    </button>
                   </li>
                   <li>
-                    <a href="#" className="nav-link px-0">
+                    <button
+                      onClick={() => filterProductsByCategory("Hombre")}
+                      className="nav-link px-0"
+                    >
                       {" "}
-                      <span
-                        className="d-none d-sm-inline"
-                        onClick={() => filterProductsByCategory("Hombre")}
-                      >
-                        Hombre
-                      </span>{" "}
-                    </a>
+                      <span>Hombre</span>{" "}
+                    </button>
                   </li>
                   <li>
-                    <a href="#" className="nav-link px-0">
+                    <button
+                      onClick={() => filterProductsByCategory("Niño")}
+                      className="nav-link px-0"
+                    >
                       {" "}
-                      <span
-                        className="d-none d-sm-inline"
-                        onClick={() => filterProductsByCategory("Niño")}
-                      >
-                        Niño
-                      </span>{" "}
-                    </a>
+                      <span>Niño</span>{" "}
+                    </button>
                   </li>
                 </ul>
               </li>
@@ -138,7 +134,7 @@ const SideBar = ({ filterProductsByCategory }) => {
                 <a
                   className="nav-link px-0 align-middle"
                   onClick={handleContactUsClickScroll}
-                  role="button"
+                  mrole="button"
                 >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon icon={faPhone} />
@@ -171,12 +167,12 @@ const SideBar = ({ filterProductsByCategory }) => {
                   height="30"
                   className="rounded-circle"
                 />
-                <button
+                {/* <button
                   className="d-none d-sm-inline mx-1"
                   onClick={goToLogInHandler}
                 >
                   {userLoged ? "Cerrar Sesión" : "Iniciar Sesión"}
-                </button>
+                </button> */}
               </a>
             </div>
           </div>
