@@ -112,7 +112,7 @@ const ProductCard = ({
           <FontAwesomeIcon
             icon={faCartPlus}
             size="2xl"
-            style={{ color: "#075ced" }}
+            style={{ color: "#05f641" }}
           />
         </button>
       </div>

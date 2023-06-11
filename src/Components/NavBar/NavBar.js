@@ -4,7 +4,7 @@ import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faRaspberryPi } from "@fortawesome/free-brands-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import ToggleTheme from "../UI/ToggleTheme/ToggleTheme";
 import { ThemeContext } from "../Services/Theme/Theme.Context";
 
@@ -73,9 +73,9 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
             onClick={goToAddProduct}
           >
             <FontAwesomeIcon
-              icon={faPlus}
+              icon={faSquarePlus}
               size="2xl"
-              style={{ color: "#00f004" }}
+              style={{ color: "#05f901" }}
             />
           </button>
           <div className="searchDiv">

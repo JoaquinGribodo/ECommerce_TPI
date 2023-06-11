@@ -1,0 +1,19 @@
+div.card4 {
+  background-color: rgb(29, 117, 29);
+  padding: 1rem;
+
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-image: url("https://rare-gallery.com/uploads/posts/1144042-blue-triangle-HTML-Toy-ART-shape-line-wing-font.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.card4 input {
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}

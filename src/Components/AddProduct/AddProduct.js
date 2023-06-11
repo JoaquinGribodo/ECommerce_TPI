@@ -26,9 +26,13 @@ const AddProduct = () => {
     setName(e.target.value);
   };
   const colorHandler = (e) => {
+    const firstOption = e.target.querySelector('option[value="selectColor"]');
+    firstOption.disabled = true;
     setColor(e.target.value);
   };
   const sizeHandler = (e) => {
+    const firstOption = e.target.querySelector('option[value="selectSize"]');
+    firstOption.disabled = true;
     setSize(e.target.value);
   };
   const descriptionHandler = (e) => {
@@ -109,8 +113,8 @@ const AddProduct = () => {
                 <label className="form-label" htmlFor="form3Example3">
                   Color:
                 </label>
-                <select name="colores" id="lang" onChange={colorHandler}>
-                  <option value="selecciona">Seleccione un color</option>
+                <select name="colors" id="lang" onChange={colorHandler}>
+                  <option value="selectColor">Seleccione un color</option>
                   <option value="rojo">Rojo</option>
                   <option value="azul">Azul</option>
                   <option value="gris">Gris</option>
@@ -122,7 +126,7 @@ const AddProduct = () => {
                   Talle:
                 </label>
                 <select name="talles" id="lang" onChange={sizeHandler}>
-                  <option value="selecciona">Seleccione un talle</option>
+                  <option value="selectSize">Seleccione un talle</option>
                   <option value="S">S</option>
                   <option value="M">M</option>
                   <option value="L">L</option>

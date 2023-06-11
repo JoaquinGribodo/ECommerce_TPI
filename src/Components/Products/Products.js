@@ -4,11 +4,18 @@ import ProductItem from "../ProductItem/ProductItem";
 import { db } from "../../Config/FireBase";
 import { collection, getDocs } from "firebase/firestore";
 import { APIContext } from "../Services/API/Api.Context";
+import ModifyUser from "../ModifyUser/ModifyUser";
 
-const Products = ({ productList, getProductsHandler }) => {
+const Products = ({
+  productList,
+  getProductsHandler,
+  getUsersHandler,
+  userList,
+}) => {
   //Subir el estado a dashboard de productList y en el componente Products, en setProductsList recibir por props getProducts (función en dashboard que se encarga de setear el estado)
 
   const productsCollection = collection(db, "products");
+  const usersCollection = collection(db, "users");
   const { toggleLoading } = useContext(APIContext);
 
   useEffect(() => {
@@ -26,6 +33,20 @@ const Products = ({ productList, getProductsHandler }) => {
     };
 
     getProductList();
+  }, []);
+
+  useEffect(() => {
+    const getUserList = async () => {
+      try {
+        const data = await getDocs(usersCollection);
+        const filteredUserData = data.docs.map((doc) => ({ ...doc.data() }));
+        getUsersHandler(filteredUserData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUserList();
   }, []);
 
   const mappedProducts = productList.map((product) => (
@@ -48,3 +69,4 @@ const Products = ({ productList, getProductsHandler }) => {
 
 export default Products;
 export const productsCollection = collection(db, "products");
+export const usersCollection = collection(db, "users");

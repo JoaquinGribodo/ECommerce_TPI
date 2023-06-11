@@ -10,6 +10,7 @@ import { useState } from "react";
 const DashBoard = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [productList, setProductList] = useState([]);
+  const [userList, setUserList] = useState([]);
   const [productFiltered, setProductFiltered] = useState([]);
   const [filters, setFilters] = useState({
     color: null,
@@ -25,6 +26,10 @@ const DashBoard = () => {
   const getProductsHandler = (products) => {
     setProductList(products);
     setProductFiltered(products);
+  };
+
+  const getUsersHandler = (users) => {
+    setUserList(users);
   };
 
   const filterProductsBySize = (size) => {
@@ -89,7 +94,9 @@ const DashBoard = () => {
         <div className={showSideBar ? "col-8" : "col-10"}>
           <Products
             productList={productFiltered}
+            userList={userList}
             getProductsHandler={getProductsHandler}
+            getUsersHandler={getUsersHandler}
           />
         </div>
         <div className="col-2">
@@ -100,6 +107,7 @@ const DashBoard = () => {
             filterProductsByPrice={filterProductsByPrice}
             clearProductsFilters={clearProductsFilters}
             productList={productList}
+            userList={userList}
           />
         </div>
       </div>

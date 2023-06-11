@@ -13,6 +13,9 @@ import ModifyProduct from "./Components/ModifyProduct/ModifyProduct";
 import { ThemeContext } from "./Components/Services/Theme/Theme.Context";
 import { APIContext } from "./Components/Services/API/Api.Context";
 import Spinner from "./Components/UI/Spinner/Spinner.js";
+import AddUser from "./Components/AddUser/AddUser";
+import DeleteUser from "./Components/DeleteUser/DeleteUser";
+import ModifyUser from "./Components/ModifyUser/ModifyUser";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -62,6 +65,18 @@ const App = () => {
     {
       path: "/modifyProduct",
       element: <ModifyProduct />,
+    },
+    {
+      path: "/addUser",
+      element: <AddUser />,
+    },
+    {
+      path: "/modifyUser",
+      element: <ModifyUser />,
+    },
+    {
+      path: "/deleteUser",
+      element: <DeleteUser />,
     },
   ]);
 

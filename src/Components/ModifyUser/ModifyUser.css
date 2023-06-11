@@ -1,0 +1,20 @@
+div.card5 {
+  background-color: rgb(29, 117, 29);
+  padding: 1rem;
+
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-image: url("https://images.hdqwalls.com/download/abstract-minimal-clear-design-8k-4x-1920x1080.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 100vh;
+}
+
+.card5 input {
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
