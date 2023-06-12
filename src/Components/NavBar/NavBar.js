@@ -68,17 +68,19 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
         </div>
 
         <form className="d-flex form-inline">
-          {(user_type === "superadmin" || user_type === "admin") && <button
-            className="bg-white-500 hover:bg-white-400 text-green font-bold m-1"
-            type="button"
-            onClick={goToAddProduct}
-          >
-            <FontAwesomeIcon
-              icon={faSquarePlus}
-              size="2xl"
-              style={{ color: "#05f901" }}
-            />
-          </button>}
+          {(user_type === "superadmin" || user_type === "admin") && (
+            <button
+              className="bg-white-500 hover:bg-white-400 text-green font-bold m-1"
+              type="button"
+              onClick={goToAddProduct}
+            >
+              <FontAwesomeIcon
+                icon={faSquarePlus}
+                size="2xl"
+                style={{ color: "#05f901" }}
+              />
+            </button>
+          )}
           <div className="searchDiv">
             <div className="pr-5 pt-1">
               <ToggleTheme />

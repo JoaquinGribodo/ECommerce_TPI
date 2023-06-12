@@ -16,6 +16,7 @@ const Products = ({
 
   const productsCollection = collection(db, "products");
   const usersCollection = collection(db, "users");
+  const ordersCollection = collection(db, "orders");
   const { toggleLoading } = useContext(APIContext);
 
   useEffect(() => {
@@ -49,6 +50,20 @@ const Products = ({
     getUserList();
   }, []);
 
+  useEffect(() => {
+    const getOrderList = async () => {
+      try {
+        const data = await getDocs(ordersCollection);
+        const filteredOrderData = data.docs.map((doc) => ({ ...doc.data() }));
+        getUsersHandler(filteredOrderData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getOrderList();
+  }, []);
+
   const mappedProducts = productList.map((product) => (
     <div key={product.id}>
       <ProductItem
@@ -70,3 +85,4 @@ const Products = ({
 export default Products;
 export const productsCollection = collection(db, "products");
 export const usersCollection = collection(db, "users");
+export const ordersCollection = collection(db, "orders");

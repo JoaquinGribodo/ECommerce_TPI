@@ -3,14 +3,15 @@ import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartContext } from "../Services/Cart/Cart.Context";
+import { ordersCollection } from "../Products/Products";
+import { addDoc, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../Config/FireBase";
 
 const ShoppingCart = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [cart, setCart] = useState(
     cartItems.map((item) => ({ ...item, amount: 1 }))
   );
-
-  cartItems.map((item) => console.log(item.image));
 
   const amountHandler = (e, id) => {
     setCart(
@@ -31,19 +32,57 @@ const ShoppingCart = () => {
     navigate("/home");
   };
 
-  const buyMessage = () => {
-    toast.success("¡Su compra se ha realizado correctamente!", {
-      position: "top-center",
-      autoClose: 2000,
+  async function getDocument(id) {
+    const docRef = doc(db, "orders", id);
+    console.log(docRef);
+    console.log("docID:", docRef.id);
+    await updateDoc(docRef, { id: docRef.id });
+  }
+  const buyMessage = async () => {
+    const items = cart.map((item) => ({
+      image: item.image,
+      price: item.price,
+      name: item.name,
+      amount: item.amount,
+    }));
+    if (cart.length !== 0) {
+      try {
+        const docRef = await addDoc(ordersCollection, { items });
+        successMessage();
+        getDocument(docRef.id.toString());
+        navigate("/home");
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      warningMessage();
+    }
+  };
+
+  const successMessage = () =>
+    toast.success("La compra se ha realizado correctamente", {
+      position: "top-left",
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
-      draggable: false,
+      draggable: true,
       progress: undefined,
       theme: "dark",
     });
-    navigate("/home");
-  };
+
+  const warningMessage = () =>
+    toast.warning("El carrito no tiene productos.", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
   return (
     <div className="container mx-auto mt-10">
       <div className="flex shadow-md my-10">

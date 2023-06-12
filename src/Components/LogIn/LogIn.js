@@ -46,7 +46,8 @@ const LogIn = () => {
     } catch (err) {
       errorMessage();
       console.error(err);
-    }};
+    }
+  };
 
   const navigate = useNavigate();
   const goToSignUpHandler = () => {
