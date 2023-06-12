@@ -40,15 +40,13 @@ const LogIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       successMessage();
-    } catch (err) {
-      errorMessage();
-      console.error(err);
-    } finally {
       setInterval(() => {
         goHomeHandler();
       }, 2000);
-    }
-  };
+    } catch (err) {
+      errorMessage();
+      console.error(err);
+    }};
 
   const navigate = useNavigate();
   const goToSignUpHandler = () => {

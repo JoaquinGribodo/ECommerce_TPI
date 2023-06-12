@@ -91,6 +91,7 @@ const ShoppingCart = () => {
                           type="number"
                           onChange={(e) => amountHandler(e, item.id)}
                           min={1}
+                          defaultValue={1}
                         />
                       </div>
                       <span className="text-center w-1/5 font-semibold text-sm">

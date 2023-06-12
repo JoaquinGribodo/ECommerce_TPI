@@ -10,10 +10,11 @@ import {
   faCircleInfo,
   faPhone,
   faCartShopping,
+  faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 
 const SideBar = ({ filterProductsByCategory }) => {
-  const [userLoged, setUserLoged] = useState(auth.currentUser);
+  const [userLogged, setUserLogged] = useState(auth.currentUser);
 
   const navigate = useNavigate();
 
@@ -32,9 +33,9 @@ const SideBar = ({ filterProductsByCategory }) => {
   };
 
   const goToLogInHandler = async () => {
-    if (userLoged) {
+    if (userLogged) {
       await signOut(auth);
-      setUserLoged((prevValue) => !prevValue);
+      setUserLogged((prevValue) => !prevValue);
     } else {
       navigate("/login");
     }
@@ -157,6 +158,20 @@ const SideBar = ({ filterProductsByCategory }) => {
                   </button>
                 </li>
               </div>
+              <div>
+                <li>
+                  <button
+                    className="nav-link px-0 "
+                    onClick={() => navigate("/orders")}
+                  >
+                    <i className="fs-4 bi-people"></i>{" "}
+                    <FontAwesomeIcon icon={faTruck} />
+                    <span className="ms-1 d-none d-sm-inline">
+                      Pedidos
+                    </span>{" "}
+                  </button>
+                </li>
+              </div>
             </ul>
             <hr />
             <div className=" pb-4">
@@ -165,14 +180,14 @@ const SideBar = ({ filterProductsByCategory }) => {
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
                   alt="hugenerd"
                   width="30"
-                  height="30"
+                  height="35"
                   className="rounded-circle"
                 />
                 <button
                   className="d-none d-sm-inline mx-1"
                   onClick={goToLogInHandler}
                 >
-                  {userLoged ? "Cerrar Sesión" : "Iniciar Sesión"}
+                  {userLogged ? "Cerrar Sesión" : "Iniciar Sesión"}
                 </button>
               </a>
             </div>

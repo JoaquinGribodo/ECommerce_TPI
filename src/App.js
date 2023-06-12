@@ -16,6 +16,7 @@ import Spinner from "./Components/UI/Spinner/Spinner.js";
 import AddUser from "./Components/AddUser/AddUser";
 import DeleteUser from "./Components/DeleteUser/DeleteUser";
 import ModifyUser from "./Components/ModifyUser/ModifyUser";
+import Orders from "./Components/Orders/Orders";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -77,6 +78,10 @@ const App = () => {
     {
       path: "/deleteUser",
       element: <DeleteUser />,
+    },
+    {
+      path: "/orders",
+      element: <Orders />,
     },
   ]);
 

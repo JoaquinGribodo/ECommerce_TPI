@@ -10,6 +10,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Config/FireBase";
+import { UsersContext } from "../Services/Users/Users.Context";
 
 const ProductCard = ({
   children,
@@ -23,6 +24,7 @@ const ProductCard = ({
   productList,
 }) => {
   const { addToCart } = useContext(CartContext);
+  const { user_type } = useContext(UsersContext);
   const navigate = useNavigate();
 
   const goToModifyProduct = () => {
@@ -78,9 +80,10 @@ const ProductCard = ({
     });
 
   return (
+    <>
     <div className="w-80 h-200 m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5" id="cardDiv">
-        <div className="d-flex justify-content-between">
+        {(user_type === "superadmin" || user_type === "admin") && <div className="d-flex justify-content-between">
           <button
             className="bg-white-500 hover:bg-white-400 text-green font-bold mb-4 py-2 px-2"
             type="button"
@@ -103,9 +106,9 @@ const ProductCard = ({
               style={{ color: "#f60404" }}
             />
           </button>
-        </div>
+        </div>}
         <p className="mb-3 font-normal text-zinc-900">{children}</p>
-        <button
+        {user_type !== null  && <button
           onClick={() =>
             addToCart(productName, productPrice, productId, productImage)
           }
@@ -116,10 +119,11 @@ const ProductCard = ({
             size="2xl"
             style={{ color: "#05f641" }}
           />
-        </button>
+        </button>}
       </div>
       <ToastContainer />
     </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import "./ProductFilter.css";
 import ColorFilter from "./ColorFilter/ColorFilter";
@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faUserXmark } from "@fortawesome/free-solid-svg-icons";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { UsersContext } from "../Services/Users/Users.Context";
 
 const ProductFilter = ({
   filterProducts,
@@ -16,6 +17,7 @@ const ProductFilter = ({
   filters,
   userList,
 }) => {
+  const { user_type } = useContext(UsersContext);
   const navigate = useNavigate();
   const goToAddUser = () => {
     navigate("/addUser");
@@ -38,41 +40,43 @@ const ProductFilter = ({
         filterProducts={filterProducts}
       />
       <ButtonFilter clearProductsFilters={clearProductsFilters} />
-      <div className="d-flex pr-4">
-        <button
-          className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
-          type="button"
-          onClick={goToAddUser}
-        >
-          <FontAwesomeIcon
-            icon={faUserPlus}
-            size="2xl"
-            style={{ color: "#0bf207" }}
-          />
-        </button>
-        <button
-          className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
-          type="button"
-          onClick={goToModifyUser}
-        >
-          <FontAwesomeIcon
-            icon={faUserPen}
-            size="2xl"
-            style={{ color: "#0079fa" }}
-          />
-        </button>
-        <button
-          className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
-          type="button"
-          onClick={goToDeleteUser}
-        >
-          <FontAwesomeIcon
-            icon={faUserXmark}
-            size="2xl"
-            style={{ color: "#fb0404" }}
-          />
-        </button>
-      </div>
+      {user_type  === "superadmin" && (
+        <div className="d-flex pr-4">
+          <button
+            className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
+            type="button"
+            onClick={goToAddUser}
+          >
+            <FontAwesomeIcon
+              icon={faUserPlus}
+              size="2xl"
+              style={{ color: "#0bf207" }}
+            />
+          </button>
+          <button
+            className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
+            type="button"
+            onClick={goToModifyUser}
+          >
+            <FontAwesomeIcon
+              icon={faUserPen}
+              size="2xl"
+              style={{ color: "#0079fa" }}
+            />
+          </button>
+          <button
+            className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
+            type="button"
+            onClick={goToDeleteUser}
+          >
+            <FontAwesomeIcon
+              icon={faUserXmark}
+              size="2xl"
+              style={{ color: "#fb0404" }}
+            />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

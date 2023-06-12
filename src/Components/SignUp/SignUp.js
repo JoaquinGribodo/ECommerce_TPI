@@ -63,11 +63,8 @@ const SignUp = () => {
         goHomeHandler();
       }, 2000);
     } catch (error) {
-      console.error(error);
-      // } finally {
-      //   setInterval(() => {
-      //     goHomeHandler();
-      //   }, 6000);
+      console.error(error);  
+      errorMessage();
     }
   };
 
@@ -77,6 +74,17 @@ const SignUp = () => {
   };
   const successMessage = () =>
     toast.success("¡Registrado correctamente!", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    const errorMessage = () =>
+    toast.error("¡Registrado correctamente!", {
       position: "top-left",
       autoClose: 5000,
       hideProgressBar: false,
@@ -150,7 +158,7 @@ const SignUp = () => {
                         onChange={passwordChangeHandler}
                         ref={passwordRef}
                         required
-                        min={4}
+                        min={6}
                         max={10}
                       />
                       <span>

@@ -7,10 +7,11 @@ import { faRaspberryPi } from "@fortawesome/free-brands-svg-icons";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import ToggleTheme from "../UI/ToggleTheme/ToggleTheme";
 import { ThemeContext } from "../Services/Theme/Theme.Context";
+import { UsersContext } from "../Services/Users/Users.Context";
 
 const NavBar = ({ onChangeState, filterProductsByName }) => {
   const [productName, setProductName] = useState("");
-
+  const { user_type } = useContext(UsersContext);
   const productNameHandler = (e) => {
     setProductName(e.target.value);
     filterProductsByName(e.target.value);
@@ -67,7 +68,7 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
         </div>
 
         <form className="d-flex form-inline">
-          <button
+          {(user_type === "superadmin" || user_type === "admin") && <button
             className="bg-white-500 hover:bg-white-400 text-green font-bold m-1"
             type="button"
             onClick={goToAddProduct}
@@ -77,7 +78,7 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
               size="2xl"
               style={{ color: "#05f901" }}
             />
-          </button>
+          </button>}
           <div className="searchDiv">
             <div className="pr-5 pt-1">
               <ToggleTheme />
