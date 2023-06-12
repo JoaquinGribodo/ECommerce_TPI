@@ -31,17 +31,13 @@ const SideBar = ({ filterProductsByCategory }) => {
     }
   };
 
-  // const goToLogInHandler = async () => {
-  //   if (userLoged) {
-  //     await signOut(auth);
-  //     setUserLoged((prevValue) => !prevValue);
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // };
-
-  const goHomeHandler = () => {
-    navigate("/shoppingcart");
+  const goToLogInHandler = async () => {
+    if (userLoged) {
+      await signOut(auth);
+      setUserLoged((prevValue) => !prevValue);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -66,16 +62,16 @@ const SideBar = ({ filterProductsByCategory }) => {
               id="menu"
             >
               <li className="nav-item">
-                <button className="nav-link align-middle px-0">
+                <a href="#" className="nav-link align-middle px-0">
                   <i className="fs-4 bi-house"></i>{" "}
                   <FontAwesomeIcon icon={faHouse} />
                   <button
-                    onClick={navigate("/home")}
+                    onClick={() => navigate("/home")}
                     className="ms-1 d-none d-sm-inline"
                   >
                     Inicio
                   </button>
-                </button>
+                </a>
               </li>
               <li>
                 <a
@@ -124,42 +120,43 @@ const SideBar = ({ filterProductsByCategory }) => {
                 </ul>
               </li>
               <li>
-                <a
+                <button
                   className="nav-link px-0 align-middle"
                   onClick={handleWhoWeAreClickScroll}
-                  role="button"
+                  type="button"
                 >
                   <i className="fs-4 bi-table"></i>{" "}
                   <FontAwesomeIcon icon={faCircleInfo} />
                   <span className="ms-1 d-none d-sm-inline">Quiénes somos</span>
-                </a>
+                </button>
               </li>
               <li>
-                <a
+                <button
                   className="nav-link px-0 align-middle"
                   onClick={handleContactUsClickScroll}
-                  mrole="button"
+                  type="button"
                 >
                   <i className="fs-4 bi-people"></i>{" "}
                   <FontAwesomeIcon icon={faPhone} />
                   <span className="ms-1 d-none d-sm-inline">
                     Cómo encontrarnos
                   </span>{" "}
-                </a>
+                </button>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="nav-link px-0 align-middle"
-                  onClick={goHomeHandler}
-                >
-                  <i className="fs-4 bi-people"></i>{" "}
-                  <FontAwesomeIcon icon={faCartShopping} />
-                  <span className="ms-1 d-none d-sm-inline">
-                    Carrito de compras
-                  </span>{" "}
-                </a>
-              </li>
+              <div>
+                <li>
+                  <button
+                    className="nav-link px-0 align-middle"
+                    onClick={() => navigate("/shoppingcart")}
+                  >
+                    <i className="fs-4 bi-people"></i>{" "}
+                    <FontAwesomeIcon icon={faCartShopping} />
+                    <span className="ms-1 d-none d-sm-inline">
+                      Carrito de compras
+                    </span>{" "}
+                  </button>
+                </li>
+              </div>
             </ul>
             <hr />
             <div className=" pb-4">
@@ -171,12 +168,12 @@ const SideBar = ({ filterProductsByCategory }) => {
                   height="30"
                   className="rounded-circle"
                 />
-                {/* <button
+                <button
                   className="d-none d-sm-inline mx-1"
                   onClick={goToLogInHandler}
                 >
                   {userLoged ? "Cerrar Sesión" : "Iniciar Sesión"}
-                </button> */}
+                </button>
               </a>
             </div>
           </div>

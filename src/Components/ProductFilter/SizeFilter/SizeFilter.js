@@ -1,7 +1,7 @@
 import React from "react";
 import "./SizeFilter.css";
 
-const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
+const SizeFilter = ({ filterProducts }) => {
   return (
     <>
       <div
@@ -12,14 +12,13 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
         <div className="col-md-12 text-center mb-3" data-mdb-filter="color">
           <span className="text-center fa-lg fw-bold">Talles:</span>
 
-          <div className="form-check mt-3" value={sizeFilter}>
+          <div className="form-check mt-3">
             <input
               className="form-check-input"
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio1"
-              defaultChecked={sizeFilter === "S"}
-              onClick={() => filterProductsBySize("S")}
+              onClick={() => filterProducts({ size: "S" })}
             />
             <label className="form-check-label" htmlFor="inlineRadio1">
               S
@@ -32,8 +31,7 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio2"
-              defaultChecked={sizeFilter === "M"}
-              onClick={() => filterProductsBySize("M")}
+              onClick={() => filterProducts({ size: "M" })}
             />
             <label className="form-check-label" htmlFor="inlineRadio2">
               M
@@ -46,8 +44,7 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              defaultChecked={sizeFilter === "L"}
-              onClick={() => filterProductsBySize("L")}
+              onClick={() => filterProducts({ size: "L" })}
             />
             <label className="form-check-label" htmlFor="inlineRadio3">
               L
@@ -60,8 +57,7 @@ const SizeFilter = ({ filterProductsBySize, sizeFilter }) => {
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
-              defaultChecked={sizeFilter === "XL"}
-              onClick={() => filterProductsBySize("XL")}
+              onClick={() => filterProducts({ size: "XL" })}
             />
             <label className="form-check-label" htmlFor="inlineRadio3">
               XL

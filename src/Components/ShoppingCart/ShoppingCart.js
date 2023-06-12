@@ -26,7 +26,7 @@ const ShoppingCart = () => {
 
   const navigate = useNavigate();
   const backHomePageHandler = () => {
-    navigate("/home"); //REVISAR!!!!!
+    navigate("/home");
   };
 
   const buyMessage = () => {

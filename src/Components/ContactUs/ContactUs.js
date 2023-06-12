@@ -54,7 +54,7 @@ const ContactUs = () => {
   };
   return (
     <div className="container px-6 mx-auto">
-      <section className="mb-32 text-gray-800">
+      <section className="mb-0 text-gray-800">
         <div
           className=" overflow-hidden bg-no-repeat bg-cover"
           style={{

@@ -11,9 +11,7 @@ import { faUserXmark } from "@fortawesome/free-solid-svg-icons";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 const ProductFilter = ({
-  filterProductsBySize,
-  filterProductsByColor,
-  filterProductsByPrice,
+  filterProducts,
   clearProductsFilters,
   filters,
   userList,
@@ -32,15 +30,12 @@ const ProductFilter = ({
     <div className="divFilters">
       <ColorFilter
         colorFilter={filters.color}
-        filterProductsByColor={filterProductsByColor}
+        filterProducts={filterProducts}
       />
-      <SizeFilter
-        sizeFilter={filters.size}
-        filterProductsBySize={filterProductsBySize}
-      />
+      <SizeFilter sizeFilter={filters.size} filterProducts={filterProducts} />
       <PriceFilter
         priceFilter={filters.price}
-        filterProductsByPrice={filterProductsByPrice}
+        filterProducts={filterProducts}
       />
       <ButtonFilter clearProductsFilters={clearProductsFilters} />
       <div className="d-flex pr-4">

@@ -2,13 +2,13 @@ import React from "react";
 import { useState } from "react";
 import "./PriceFilter.css";
 
-const PriceFilter = ({ filterProductsByPrice, priceFilter }) => {
+const PriceFilter = ({ filterProducts }) => {
   const [price, setPrice] = useState(500);
 
   const priceHandler = (e) => {
     setPrice(e.target.value);
     console.log(e.target.value);
-    filterProductsByPrice(e.target.value);
+    filterProducts({ price: e.target.value });
   };
 
   return (

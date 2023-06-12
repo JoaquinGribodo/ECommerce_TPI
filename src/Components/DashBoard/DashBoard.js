@@ -32,28 +32,15 @@ const DashBoard = () => {
     setUserList(users);
   };
 
-  const filterProductsBySize = (size) => {
+  const filterProducts = ({ size, color, price }) => {
     const newProductsFilter = productList.filter(
-      (product) => product.size === size
+      (product) =>
+        product.size === size &&
+        product.color === color &&
+        product.price <= price
     );
-    setProductFiltered(newProductsFilter);
-    setFilters({ ...filters, size });
-  };
-
-  const filterProductsByColor = (color) => {
-    const newProductsFilter = productList.filter(
-      (product) => product.color === color
-    );
-    setProductFiltered(newProductsFilter);
-    setFilters({ ...filters, color });
-  };
-
-  const filterProductsByPrice = (price) => {
-    const newProductsFilter = productList.filter(
-      (product) => product.price <= price
-    );
-    setProductFiltered(newProductsFilter);
-    setFilters({ ...filters, price });
+    setProductFiltered([...newProductsFilter]);
+    setFilters({ size, color, price });
   };
 
   const filterProductsByName = (name) => {
@@ -101,10 +88,8 @@ const DashBoard = () => {
         </div>
         <div className="col-2">
           <ProductFilter
-            filterProductsBySize={filterProductsBySize}
             filters={filters}
-            filterProductsByColor={filterProductsByColor}
-            filterProductsByPrice={filterProductsByPrice}
+            filterProducts={filterProducts}
             clearProductsFilters={clearProductsFilters}
             productList={productList}
             userList={userList}
