@@ -40,7 +40,6 @@ const SignUp = () => {
       passwordRef.current.style.outline = "none";
       return;
     }
-    successMessage();
   };
 
   const signUp = async () => {
@@ -52,16 +51,23 @@ const SignUp = () => {
         password: password,
         user_type: email.includes("@mulberry.com")
           ? "admin"
-          : email==="belen.linera@gmail.com" || email==="moracapdevila457@gmail.com" || email==="joacogribodo@gmail.com" || email==="tobifernandez1@gmail.com"
+          : email === "belen.linera@gmail.com" ||
+            email === "moracapdevila457@gmail.com" ||
+            email === "joacogribodo@gmail.com" ||
+            email === "tobifernandez1@gmail.com"
           ? "superadmin"
           : "user",
       });
-    } catch (error) {
-      console.error(error);
-    } finally {
+      successMessage();
       setInterval(() => {
         goHomeHandler();
       }, 2000);
+    } catch (error) {
+      console.error(error);
+      // } finally {
+      //   setInterval(() => {
+      //     goHomeHandler();
+      //   }, 6000);
     }
   };
 
@@ -95,7 +101,8 @@ const SignUp = () => {
                 <span style={{ color: "#8CB1F3" }}>siempre</span>
               </h1>
               <p className="mb-4 opacity-70" style={{ color: "#BAD0F8" }}>
-                Somos una tienda que prioriza la comodidad sin dejar de estar a la moda, para toda la familia
+                Somos una tienda que prioriza la comodidad sin dejar de estar a
+                la moda, para toda la familia
               </p>
             </div>
 
@@ -149,8 +156,8 @@ const SignUp = () => {
                       <span>
                         {password === ""
                           ? "Ingrese su contraseña"
-                          : password.length < 4 || password.length > 10
-                          ? "La contraseña debe tener entre 4 y 10 caracteres"
+                          : password.length < 6 || password.length > 10
+                          ? "La contraseña debe tener entre 6 y 10 caracteres"
                           : ""}
                       </span>
                     </div>
