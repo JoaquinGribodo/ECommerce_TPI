@@ -2,6 +2,15 @@ import React from "react";
 import "./SizeFilter.css";
 
 const SizeFilter = ({ filterProducts }) => {
+  const resetRadioInput = () => {
+    const radioInput = document.querySelector(
+      'input[name="inlineRadioOptions"]:checked'
+    );
+    if (radioInput) {
+      radioInput.checked = false;
+    }
+  };
+  document.body.addEventListener("click", resetRadioInput);
   return (
     <>
       <div
