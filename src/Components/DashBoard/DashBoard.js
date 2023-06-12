@@ -11,6 +11,7 @@ const DashBoard = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [productList, setProductList] = useState([]);
   const [userList, setUserList] = useState([]);
+  const [orderList, setOrderList] = useState([]);
   const [productFiltered, setProductFiltered] = useState([]);
   const [filters, setFilters] = useState({
     color: null,
@@ -30,6 +31,10 @@ const DashBoard = () => {
 
   const getUsersHandler = (users) => {
     setUserList(users);
+  };
+
+  const getOrdersHandler = (users) => {
+    setOrderList(users);
   };
 
   const filterProducts = ({ size, color, price }) => {
@@ -75,7 +80,10 @@ const DashBoard = () => {
       <div className="row">
         <div className={showSideBar ? "col-2" : ""}>
           {showSideBar && (
-            <SideBar filterProductsByCategory={filterProductsByCategory} />
+            <SideBar
+              filterProductsByCategory={filterProductsByCategory}
+              orderList={orderList}
+            />
           )}
         </div>
         <div className={showSideBar ? "col-8" : "col-10"}>
@@ -84,6 +92,7 @@ const DashBoard = () => {
             userList={userList}
             getProductsHandler={getProductsHandler}
             getUsersHandler={getUsersHandler}
+            getOrdersHandler={getOrdersHandler}
           />
         </div>
         <div className="col-2">

@@ -13,7 +13,7 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 
-const SideBar = ({ filterProductsByCategory }) => {
+const SideBar = ({ filterProductsByCategory, orderList }) => {
   const [userLogged, setUserLogged] = useState(auth.currentUser);
 
   const navigate = useNavigate();
@@ -39,6 +39,11 @@ const SideBar = ({ filterProductsByCategory }) => {
     } else {
       navigate("/login");
     }
+  };
+
+  const goToOrders = () => {
+    navigate("/orders", { state: { orderList } });
+    console.log(orderList);
   };
 
   return (
@@ -160,10 +165,7 @@ const SideBar = ({ filterProductsByCategory }) => {
               </div>
               <div>
                 <li>
-                  <button
-                    className="nav-link px-0 "
-                    onClick={() => navigate("/orders")}
-                  >
+                  <button className="nav-link px-0 " onClick={goToOrders}>
                     <i className="fs-4 bi-people"></i>{" "}
                     <FontAwesomeIcon icon={faTruck} />
                     <span className="ms-1 d-none d-sm-inline">

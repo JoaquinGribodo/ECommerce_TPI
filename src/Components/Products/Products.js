@@ -10,6 +10,7 @@ const Products = ({
   productList,
   getProductsHandler,
   getUsersHandler,
+  getOrdersHandler,
   userList,
 }) => {
   //Subir el estado a dashboard de productList y en el componente Products, en setProductsList recibir por props getProducts (función en dashboard que se encarga de setear el estado)
@@ -55,7 +56,7 @@ const Products = ({
       try {
         const data = await getDocs(ordersCollection);
         const filteredOrderData = data.docs.map((doc) => ({ ...doc.data() }));
-        getUsersHandler(filteredOrderData);
+        getOrdersHandler(filteredOrderData);
       } catch (error) {
         console.error(error);
       }

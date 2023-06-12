@@ -17,6 +17,9 @@ import AddUser from "./Components/AddUser/AddUser";
 import DeleteUser from "./Components/DeleteUser/DeleteUser";
 import ModifyUser from "./Components/ModifyUser/ModifyUser";
 import Orders from "./Components/Orders/Orders";
+import AddOrder from "./Components/AddOrder/AddOrder";
+import DeleteOrder from "./Components/DeleteOrder/DeleteOrder";
+import ModifyOrder from "./Components/ModifyOrder/ModifyOrder";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -82,6 +85,18 @@ const App = () => {
     {
       path: "/orders",
       element: <Orders />,
+    },
+    {
+      path: "/addOrder",
+      element: <AddOrder />,
+    },
+    {
+      path: "/modifyOrder",
+      element: <ModifyOrder />,
+    },
+    {
+      path: "/deleteOrder",
+      element: <DeleteOrder />,
     },
   ]);
 
