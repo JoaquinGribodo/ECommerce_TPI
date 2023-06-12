@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const CartContext = createContext();
@@ -12,7 +12,7 @@ export const CartContextProvider = ({ children }) => {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
-      closeOnClick: false,
+      closeOnClick: true,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
@@ -20,7 +20,7 @@ export const CartContextProvider = ({ children }) => {
     });
   };
 
-  const addToCart = (name, price, id) => {
+  const addToCart = (name, price, id, image) => {
     try {
       const existingProductIndex = cartItems.findIndex(
         (item) => item.id === id
@@ -28,7 +28,7 @@ export const CartContextProvider = ({ children }) => {
       if (existingProductIndex !== -1) {
         existsMessage();
       } else {
-        setCartItems([...cartItems, { name, price, id }]);
+        setCartItems([...cartItems, { name, price, id, image }]);
         toast.success("El producto se añadió al carrito", {
           position: "top-left",
           autoClose: 2500,

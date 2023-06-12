@@ -10,6 +10,8 @@ const ShoppingCart = () => {
     cartItems.map((item) => ({ ...item, amount: 1 }))
   );
 
+  cartItems.map((item) => console.log(item.image));
+
   const amountHandler = (e, id) => {
     setCart(
       cart.map((item) =>
@@ -34,7 +36,7 @@ const ShoppingCart = () => {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
-      closeOnClick: false,
+      closeOnClick: true,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
@@ -66,7 +68,7 @@ const ShoppingCart = () => {
           <div>
             {cart
               ? cart.map((item) => (
-                  <div>
+                  <div key={item.id}>
                     <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                       <div className="flex w-2/5">
                         <div className="w-20">
