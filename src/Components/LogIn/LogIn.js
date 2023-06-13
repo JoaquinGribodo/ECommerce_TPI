@@ -25,6 +25,8 @@ const LogIn = () => {
   };
 
   const logInClicked = async () => {
+    console.log("Entra a la función: ", email);
+    console.log("Entra a la función: ", password);
     if (emailRef.current.value.length === 0) {
       emailRef.current.focus();
       emailRef.current.style.border = "solid red";
@@ -38,6 +40,8 @@ const LogIn = () => {
       return;
     }
     try {
+      console.log("Entra al try: ", email);
+      console.log("Entra al try: ", password);
       await signInWithEmailAndPassword(auth, email, password);
       successMessage();
       setInterval(() => {
@@ -46,6 +50,8 @@ const LogIn = () => {
     } catch (err) {
       errorMessage();
       console.error(err);
+      console.log("Entra al catch: ", email);
+      console.log("Entra al catch: ", password);
     }
   };
 

@@ -24,7 +24,7 @@ const ProductCard = ({
   productList,
 }) => {
   const { addToCart } = useContext(CartContext);
-  const { user_type } = useContext(UsersContext);
+  const { userType } = useContext(UsersContext);
   const navigate = useNavigate();
 
   const goToModifyProduct = () => {
@@ -81,48 +81,54 @@ const ProductCard = ({
 
   return (
     <>
-    <div className="w-80 h-200 m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="p-5" id="cardDiv">
-        {(user_type === "superadmin" || user_type === "admin") && <div className="d-flex justify-content-between">
-          <button
-            className="bg-white-500 hover:bg-white-400 text-green font-bold mb-4 py-2 px-2"
-            type="button"
-            onClick={goToModifyProduct}
-          >
-            <FontAwesomeIcon
-              icon={faPenToSquare}
-              size="lg"
-              style={{ color: "#0054e6" }}
-            />
-          </button>
-          <button
-            className="bg-white-500 hover:bg-white-400 text-green font-bold mb-4 py-2 px-2"
-            type="submit"
-            onClick={() => removeProductFromDb(productId.toString())}
-          >
-            <FontAwesomeIcon
-              icon={faTrashCan}
-              size="lg"
-              style={{ color: "#f60404" }}
-            />
-          </button>
-        </div>}
-        <p className="mb-3 font-normal text-zinc-900">{children}</p>
-        {user_type !== null  && <button
-          onClick={() =>
-            addToCart(productName, productPrice, productId, productImage)
-          }
-          className="flex flex-row-reverse float-end items-right py-2 text-sm font-medium text-right text-black bg-white"
-        >
-          <FontAwesomeIcon
-            icon={faCartPlus}
-            size="2xl"
-            style={{ color: "#05f641" }}
-          />
-        </button>}
+      <div className="w-80 h-200 m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="p-5" id="cardDiv">
+          {(userType === "superadmin" || userType === "admin") && (
+            <div className="d-flex justify-content-between">
+              <button
+                className="bg-white-500 hover:bg-white-400 text-green font-bold mb-4 py-2 px-2"
+                type="button"
+                onClick={goToModifyProduct}
+              >
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  size="lg"
+                  style={{ color: "#0054e6" }}
+                />
+              </button>
+              <button
+                className="bg-white-500 hover:bg-white-400 text-green font-bold mb-4 py-2 px-2"
+                type="submit"
+                onClick={() => removeProductFromDb(productId.toString())}
+              >
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  size="lg"
+                  style={{ color: "#f60404" }}
+                />
+              </button>
+            </div>
+          )}
+          <p className="mb-3 font-normal text-zinc-900">{children}</p>
+          {(userType === "superadmin" ||
+            userType === "admin" ||
+            userType === "user") && (
+            <button
+              onClick={() =>
+                addToCart(productName, productPrice, productId, productImage)
+              }
+              className="flex flex-row-reverse float-end items-right py-2 text-sm font-medium text-right text-black bg-white"
+            >
+              <FontAwesomeIcon
+                icon={faCartPlus}
+                size="2xl"
+                style={{ color: "#05f641" }}
+              />
+            </button>
+          )}
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
-    </div>
     </>
   );
 };

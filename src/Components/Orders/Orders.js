@@ -13,7 +13,7 @@ const Orders = () => {
   const orderList = location.state ? location.state.orderList : null;
   const [orders, setOrders] = useState(orderList);
   console.log(orders);
-  const { user_type } = useContext(UsersContext);
+  const { userType } = useContext(UsersContext);
   const navigate = useNavigate();
   console.log(ordersCollection);
   const goToAddOrder = () => {

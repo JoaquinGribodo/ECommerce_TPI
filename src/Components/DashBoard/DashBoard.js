@@ -39,9 +39,10 @@ const DashBoard = () => {
 
   const filterProducts = ({ size, color, price }) => {
     const newProductsFilter = productList.filter((product) => {
+      console.log(product);
       if (size && product.size !== size) return false;
       if (color && product.color !== color) return false;
-      if (price && product.price > price) return false;
+      if (price && parseFloat(product.price) > price) return false;
       return true;
     });
     setProductFiltered([...newProductsFilter]);

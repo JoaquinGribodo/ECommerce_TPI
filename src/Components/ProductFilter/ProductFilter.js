@@ -17,7 +17,7 @@ const ProductFilter = ({
   filters,
   userList,
 }) => {
-  const { user_type } = useContext(UsersContext);
+  const { userType } = useContext(UsersContext);
   const navigate = useNavigate();
   const goToAddUser = () => {
     navigate("/addUser");
@@ -40,7 +40,7 @@ const ProductFilter = ({
         filterProducts={filterProducts}
       />
       <ButtonFilter clearProductsFilters={clearProductsFilters} />
-      {user_type  === "superadmin" && (
+      {userType === "superadmin" && (
         <div className="d-flex pr-4">
           <button
             className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"

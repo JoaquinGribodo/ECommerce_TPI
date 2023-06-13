@@ -11,7 +11,7 @@ import { UsersContext } from "../Services/Users/Users.Context";
 
 const NavBar = ({ onChangeState, filterProductsByName }) => {
   const [productName, setProductName] = useState("");
-  const { user_type } = useContext(UsersContext);
+  const { userType } = useContext(UsersContext);
   const productNameHandler = (e) => {
     setProductName(e.target.value);
     filterProductsByName(e.target.value);
@@ -68,7 +68,7 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
         </div>
 
         <form className="d-flex form-inline">
-          {(user_type === "superadmin" || user_type === "admin") && (
+          {(userType === "superadmin" || userType === "admin") && (
             <button
               className="bg-white-500 hover:bg-white-400 text-green font-bold m-1"
               type="button"

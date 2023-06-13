@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router";
-import { addDoc, doc, updateDoc } from "firebase/firestore";
-import { db } from "../../Config/FireBase";
+import { setDoc, doc, updateDoc } from "firebase/firestore";
+import { db, auth } from "../../Config/FireBase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { usersCollection } from "../Products/Products";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,12 +16,12 @@ const AddUser = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  // async function getDocument(email) {
-  //   const docRef = doc(db, "users", email);
-  //   console.log(docRef);
-  //   console.log("docID:", docRef.email);
-  //   await updateDoc(docRef, { id: docRef.id });
-  // }
+  async function getDocument(email) {
+    const docRef = doc(db, "users", email);
+    console.log(docRef);
+    console.log("docID:", docRef.email);
+    await updateDoc(docRef, { id: docRef.email });
+  }
 
   const emailHandler = (e) => {
     emailRef.current.style.borderColor = "";
@@ -58,13 +59,16 @@ const AddUser = () => {
     }
 
     try {
-      const docRef = await addDoc(usersCollection, {
+      const docRef = doc(usersCollection, email);
+
+      await setDoc(docRef, {
         email: email,
         password: password,
         user_type: userType,
       });
+      await createUserWithEmailAndPassword(auth, email, password);
       successMessage();
-      // getDocument(docRef.id.toString());
+      getDocument(docRef.id.toString());
     } catch (error) {
       console.error(error);
       warningMessage();

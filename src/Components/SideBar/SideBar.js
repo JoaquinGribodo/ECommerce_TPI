@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import "./SideBar.css";
+import { CartContext } from "../Services/Cart/Cart.Context";
 import { auth } from "../../Config/FireBase";
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +16,8 @@ import {
 
 const SideBar = ({ filterProductsByCategory, orderList }) => {
   const [userLogged, setUserLogged] = useState(auth.currentUser);
+  const { cartItems, setCartItems } = useContext(CartContext);
+  console.log(cartItems);
 
   const navigate = useNavigate();
 
@@ -36,6 +39,7 @@ const SideBar = ({ filterProductsByCategory, orderList }) => {
     if (userLogged) {
       await signOut(auth);
       setUserLogged((prevValue) => !prevValue);
+      setCartItems([]);
     } else {
       navigate("/login");
     }

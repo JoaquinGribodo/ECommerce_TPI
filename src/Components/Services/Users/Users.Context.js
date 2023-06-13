@@ -1,21 +1,35 @@
-import { createContext } from "react";
-import { auth } from "../../../Config/FireBase";
+import { createContext, useState, useEffect } from "react";
+import { auth, db } from "../../../Config/FireBase";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
-  const user = auth.currentUser;
-  let user_type;
+  const [userType, setUserType] = useState("");
+  console.log(userType);
 
-  console.log(user);
-  if (user === null) {
-    user_type = "";
-    console.log(user_type);
-  } else {
-    user_type = user.user_type;
-    console.log(user_type);
-  }
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        getDoc(doc(collection(db, "users"), user.email)).then((doc) => {
+          if (doc.exists) {
+            const data = doc.data();
+            if (data) {
+              setUserType(data.user_type);
+            }
+          }
+        });
+      } else {
+        setUserType("");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
-    <UsersContext.Provider value={user_type}>{children}</UsersContext.Provider>
+    <UsersContext.Provider value={{ userType }}>
+      {children}
+    </UsersContext.Provider>
   );
 };
