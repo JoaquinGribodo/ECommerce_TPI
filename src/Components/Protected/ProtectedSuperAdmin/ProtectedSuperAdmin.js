@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router";
 
-const Protected = ({ userType, children }) => {
+const ProtectedSuperAdmin = ({ userType, children }) => {
   console.log(userType);
-  if (userType !== "superadmin" && userType !== "admin") {
+  if (userType !== "superadmin") {
     console.log(userType);
     return <Navigate to="/home" replace />;
   } else {
@@ -12,4 +12,4 @@ const Protected = ({ userType, children }) => {
   }
 };
 
-export default Protected;
+export default ProtectedSuperAdmin;

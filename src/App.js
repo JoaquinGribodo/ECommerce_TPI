@@ -21,76 +21,73 @@ import AddOrder from "./Components/AddOrder/AddOrder";
 import DeleteOrder from "./Components/DeleteOrder/DeleteOrder";
 import ModifyOrder from "./Components/ModifyOrder/ModifyOrder";
 import Protected from "./Components/Protected/Protected";
+import { UsersContext } from "./Components/Services/Users/Users.Context";
+import ProtectedSuperAdmin from "./Components/Protected/ProtectedSuperAdmin/ProtectedSuperAdmin";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
   const { isLoading } = useContext(APIContext);
+  const { userType, loading } = useContext(UsersContext);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <DashBoard />,
-    },
-    {
-      path: "/home",
-      element: <DashBoard />,
-    },
-    {
-      path: "/login",
-      element: <LogIn />,
-    },
-    {
-      path: "/signup",
-      element: <SignUp />,
-    },
-    {
-      path: "*",
-      element: <PageNotFound />,
-    },
-    {
-      path: "/shoppingcart",
-      element: <ShoppingCart />,
-    },
-    {
-      path: "/home/contact",
-      element: <ContactUs />,
-    },
-    {
-      path: "/signup",
-      element: <SignUp />,
-    },
-    {
-      path: "/whoweare",
-      element: <WhoWeAre />,
-    },
+    { path: "/", element: <DashBoard /> },
+    { path: "/home", element: <DashBoard /> },
+    { path: "/login", element: <LogIn /> },
+    { path: "/signup", element: <SignUp /> },
+    { path: "*", element: <PageNotFound /> },
+    { path: "/shoppingcart", element: <ShoppingCart /> },
+    { path: "/home/contact", element: <ContactUs /> },
+    { path: "/signup", element: <SignUp /> },
+    { path: "/whoweare", element: <WhoWeAre /> },
     {
       path: "/addProduct",
-      element: <AddProduct />,
+      element: (
+        <Protected userType={userType}>
+          <AddProduct />
+        </Protected>
+      ),
     },
     {
       path: "/modifyProduct",
-      element: <ModifyProduct />,
+      element: (
+        <Protected userType={userType}>
+          <ModifyProduct />
+        </Protected>
+      ),
     },
     {
       path: "/addUser",
-      element: <AddUser />,
+      element: (
+        <ProtectedSuperAdmin userType={userType}>
+          <AddUser />
+        </ProtectedSuperAdmin>
+      ),
     },
     {
       path: "/modifyUser",
-      element: <ModifyUser />,
+      element: (
+        <ProtectedSuperAdmin userType={userType}>
+          <ModifyUser />
+        </ProtectedSuperAdmin>
+      ),
     },
     {
       path: "/deleteUser",
-      element: <DeleteUser />,
+      element: (
+        <ProtectedSuperAdmin userType={userType}>
+          <DeleteUser />
+        </ProtectedSuperAdmin>
+      ),
     },
-    {
-      path: "/orders",
-      element: <Orders />,
-    },
+    { path: "/orders", element: <Orders /> },
     {
       path: "/addOrder",
       element: (
-        <Protected>
+        <Protected userType={userType}>
           <AddOrder />
         </Protected>
       ),
@@ -98,7 +95,7 @@ const App = () => {
     {
       path: "/modifyOrder",
       element: (
-        <Protected>
+        <Protected userType={userType}>
           <ModifyOrder />
         </Protected>
       ),
@@ -106,7 +103,7 @@ const App = () => {
     {
       path: "/deleteOrder",
       element: (
-        <Protected>
+        <Protected userType={userType}>
           <DeleteOrder />
         </Protected>
       ),
