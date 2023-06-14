@@ -17,7 +17,6 @@ import {
 const SideBar = ({ filterProductsByCategory, orderList }) => {
   const [userLogged, setUserLogged] = useState(auth.currentUser);
   const { cartItems, setCartItems } = useContext(CartContext);
-  console.log(cartItems);
 
   const navigate = useNavigate();
 
@@ -47,7 +46,6 @@ const SideBar = ({ filterProductsByCategory, orderList }) => {
 
   const goToOrders = () => {
     navigate("/orders", { state: { orderList } });
-    console.log(orderList);
   };
 
   return (

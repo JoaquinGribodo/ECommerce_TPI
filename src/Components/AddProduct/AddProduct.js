@@ -17,8 +17,6 @@ const AddProduct = () => {
 
   async function getDocument(id) {
     const docRef = doc(db, "products", id);
-    console.log(docRef);
-    console.log("docID:", docRef.id);
     await updateDoc(docRef, { id: docRef.id });
   }
 
@@ -67,7 +65,7 @@ const AddProduct = () => {
     });
   const warningMessage = () =>
     toast.warning(
-      "El producto no se ha agregado. Verifique que todos campos estén completos. Aclaración: el precio no puede ser 0",
+      "El producto no se ha agregado. Verifique que todos los campos estén completos. Aclaración: el precio no puede ser 0",
       {
         position: "top-left",
         autoClose: 5000,

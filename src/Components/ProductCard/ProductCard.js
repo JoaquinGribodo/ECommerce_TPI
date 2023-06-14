@@ -43,10 +43,8 @@ const ProductCard = ({
   };
 
   const removeProductFromDb = async (id) => {
-    console.log(id);
     if (window.confirm("¿Confirma la eliminación de este producto?")) {
       const productItem = doc(db, "products", id);
-      console.log(productItem);
       await deleteDoc(productItem);
       successMessage();
       window.location.reload();

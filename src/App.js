@@ -18,7 +18,6 @@ import DeleteUser from "./Components/DeleteUser/DeleteUser";
 import ModifyUser from "./Components/ModifyUser/ModifyUser";
 import Orders from "./Components/Orders/Orders";
 import AddOrder from "./Components/AddOrder/AddOrder";
-import DeleteOrder from "./Components/DeleteOrder/DeleteOrder";
 import ModifyOrder from "./Components/ModifyOrder/ModifyOrder";
 import Protected from "./Components/Protected/Protected";
 import { UsersContext } from "./Components/Services/Users/Users.Context";
@@ -97,14 +96,6 @@ const App = () => {
       element: (
         <Protected userType={userType}>
           <ModifyOrder />
-        </Protected>
-      ),
-    },
-    {
-      path: "/deleteOrder",
-      element: (
-        <Protected userType={userType}>
-          <DeleteOrder />
         </Protected>
       ),
     },

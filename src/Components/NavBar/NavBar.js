@@ -15,7 +15,6 @@ const NavBar = ({ onChangeState, filterProductsByName }) => {
   const productNameHandler = (e) => {
     setProductName(e.target.value);
     filterProductsByName(e.target.value);
-    console.log(productName);
   };
 
   const showHandler = () => {

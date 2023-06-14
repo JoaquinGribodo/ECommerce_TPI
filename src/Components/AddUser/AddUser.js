@@ -21,8 +21,6 @@ const AddUser = () => {
 
   async function getDocument(email) {
     const docRef = doc(db, "users", email);
-    console.log(docRef);
-    console.log("docID:", docRef.email);
     await updateDoc(docRef, { id: docRef.email });
   }
 

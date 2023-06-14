@@ -34,8 +34,6 @@ const ShoppingCart = () => {
 
   async function getDocument(id) {
     const docRef = doc(db, "orders", id);
-    console.log(docRef);
-    console.log("docID:", docRef.id);
     await updateDoc(docRef, { id: docRef.id });
   }
   const buyMessage = async () => {
