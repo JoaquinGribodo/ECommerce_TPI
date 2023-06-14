@@ -6,7 +6,6 @@ export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
   const [userType, setUserType] = useState("");
-  console.log(userType);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

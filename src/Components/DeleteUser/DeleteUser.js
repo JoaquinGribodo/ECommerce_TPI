@@ -64,7 +64,9 @@ const DeleteUser = () => {
                 Usuario:
               </label>
               <select name="users" id="lang" onChange={emailHandler}>
-                <option value="selecciona">Seleccione un usuario</option>
+                <option value="selecciona" disabled>
+                  Seleccione un usuario
+                </option>
                 {users
                   ? users.map((user) => (
                       <option key={user.email} value={user.email}>

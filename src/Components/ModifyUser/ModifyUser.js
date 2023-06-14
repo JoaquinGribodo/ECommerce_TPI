@@ -68,6 +68,12 @@ const ModifyUser = () => {
       warningMessage();
       return;
     }
+    if (
+      passwordRef.current.value.length < 5 ||
+      passwordRef.current.value.length > 10
+    ) {
+      passwordErrorMessage();
+    }
 
     try {
       const userItem = doc(db, "users", email);
@@ -77,6 +83,9 @@ const ModifyUser = () => {
         user_type: newType,
       });
       successMessage();
+      setInterval(() => {
+        goHomeHandler();
+      }, 2000);
     } catch {
       warningMessage();
     }
@@ -108,6 +117,18 @@ const ModifyUser = () => {
         theme: "dark",
       }
     );
+
+  const passwordErrorMessage = () =>
+    toast.warning("La contraseña debe tener entre 6 y 10 caracteres", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
   return (
     <div className="containerModify">
@@ -160,6 +181,8 @@ const ModifyUser = () => {
                       type="password"
                       className="form-control w-50"
                       required
+                      min={6}
+                      max={10}
                       ref={passwordRef}
                       defaultValue={password}
                       onChange={passwordHandler}

@@ -2,7 +2,10 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router";
 import { setDoc, doc, updateDoc } from "firebase/firestore";
 import { db, auth } from "../../Config/FireBase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
+} from "firebase/auth";
 import { usersCollection } from "../Products/Products";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -52,26 +55,41 @@ const AddUser = () => {
       passwordRef.current.style.outline = "none";
       return warningMessage();
     }
+    if (
+      passwordRef.current.value.length < 5 ||
+      passwordRef.current.value.length > 10
+    ) {
+      passwordErrorMessage();
+    }
     if (email === "" || !email.includes("@") || !email.includes(".")) {
       emailRef.current.focus();
       emailRef.current.style.border = "solid red";
       return warningMessage();
     }
 
-    try {
-      const docRef = doc(usersCollection, email);
+    let signInMethods = await fetchSignInMethodsForEmail(auth, email);
 
-      await setDoc(docRef, {
-        email: email,
-        password: password,
-        user_type: userType,
-      });
-      await createUserWithEmailAndPassword(auth, email, password);
-      successMessage();
-      getDocument(docRef.id.toString());
-    } catch (error) {
-      console.error(error);
-      warningMessage();
+    if (signInMethods.length > 0) {
+      errorMessage();
+    } else {
+      try {
+        const docRef = doc(usersCollection, email);
+
+        await setDoc(docRef, {
+          email: email,
+          password: password,
+          user_type: userType,
+        });
+        await createUserWithEmailAndPassword(auth, email, password);
+        successMessage();
+        getDocument(docRef.id.toString());
+        setInterval(() => {
+          goHomeHandler();
+        }, 2000);
+      } catch (error) {
+        console.error(error);
+        warningMessage();
+      }
     }
   };
 
@@ -101,6 +119,28 @@ const AddUser = () => {
         theme: "dark",
       }
     );
+  const passwordErrorMessage = () =>
+    toast.warning("La contraseña debe tener entre 6 y 10 caracteres", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  const errorMessage = () =>
+    toast.error("El usuario ya existe. Utilice otro correo electrónico.", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
   const navigate = useNavigate();
   const goHomeHandler = () => {
@@ -133,6 +173,8 @@ const AddUser = () => {
                 type="password"
                 className="form-control w-50"
                 required
+                min={6}
+                max={10}
                 onChange={passwordHandler}
                 ref={passwordRef}
               />

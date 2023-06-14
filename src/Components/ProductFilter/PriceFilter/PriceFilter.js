@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./PriceFilter.css";
 
 const PriceFilter = ({ filterProducts }) => {
-  const [price, setPrice] = useState(500);
+  const [price, setPrice] = useState(0);
 
   const priceHandler = (e) => {
     setPrice(e.target.value);
@@ -24,7 +24,7 @@ const PriceFilter = ({ filterProducts }) => {
         <input
           type="range"
           className="form-range"
-          min={500}
+          min={0}
           max={10000}
           step={500}
           id="customRange2"

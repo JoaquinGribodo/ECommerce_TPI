@@ -65,22 +65,44 @@ const AddProduct = () => {
       progress: undefined,
       theme: "dark",
     });
+  const warningMessage = () =>
+    toast.warning(
+      "El producto no se ha agregado. Verifique que todos campos estén completos. Aclaración: el precio no puede ser 0",
+      {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
 
   const addProduct = async () => {
-    try {
-      const docRef = await addDoc(productsCollection, {
-        id: "a",
-        name: name,
-        color: color,
-        size: size,
-        description: description,
-        price: price,
-        image: image,
-      });
-      successMessage();
-      getDocument(docRef.id.toString());
-    } catch (error) {
-      console.error(error);
+    if (price !== "" && price && price > 0) {
+      try {
+        const docRef = await addDoc(productsCollection, {
+          id: "a",
+          name: name,
+          color: color,
+          size: size,
+          description: description,
+          price: price,
+          image: image,
+        });
+        successMessage();
+        getDocument(docRef.id.toString());
+        setInterval(() => {
+          goHomeHandler();
+        }, 2000);
+      } catch (error) {
+        warningMessage();
+        console.error(error);
+      }
+    } else {
+      warningMessage();
     }
   };
 

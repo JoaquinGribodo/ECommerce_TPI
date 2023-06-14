@@ -20,6 +20,7 @@ import Orders from "./Components/Orders/Orders";
 import AddOrder from "./Components/AddOrder/AddOrder";
 import DeleteOrder from "./Components/DeleteOrder/DeleteOrder";
 import ModifyOrder from "./Components/ModifyOrder/ModifyOrder";
+import Protected from "./Components/Protected/Protected";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -88,15 +89,27 @@ const App = () => {
     },
     {
       path: "/addOrder",
-      element: <AddOrder />,
+      element: (
+        <Protected>
+          <AddOrder />
+        </Protected>
+      ),
     },
     {
       path: "/modifyOrder",
-      element: <ModifyOrder />,
+      element: (
+        <Protected>
+          <ModifyOrder />
+        </Protected>
+      ),
     },
     {
       path: "/deleteOrder",
-      element: <DeleteOrder />,
+      element: (
+        <Protected>
+          <DeleteOrder />
+        </Protected>
+      ),
     },
   ]);
 

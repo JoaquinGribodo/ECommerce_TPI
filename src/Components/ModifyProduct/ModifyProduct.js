@@ -52,17 +52,36 @@ const ModifyProduct = () => {
   };
 
   const updateProduct = async (id) => {
-    console.log(id);
-    const productItem = doc(db, "products", id);
-    await updateDoc(productItem, {
-      name: newName,
-      color: newColor,
-      description: newDescription,
-      size: newSize,
-      price: newPrice,
-      image: newImage,
-    });
-    successMessage();
+    if (
+      newPrice !== "" &&
+      newPrice &&
+      newPrice > 0 &&
+      newName !== "" &&
+      newColor !== "" &&
+      newDescription !== "" &&
+      newSize !== "" &&
+      newImage !== ""
+    ) {
+      try {
+        const productItem = doc(db, "products", id);
+        await updateDoc(productItem, {
+          name: newName,
+          color: newColor,
+          description: newDescription,
+          size: newSize,
+          price: newPrice,
+          image: newImage,
+        });
+        successMessage();
+        setInterval(() => {
+          goHomeHandler();
+        }, 2000);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      warningMessage();
+    }
   };
 
   const successMessage = () =>
@@ -76,6 +95,20 @@ const ModifyProduct = () => {
       progress: undefined,
       theme: "dark",
     });
+  const warningMessage = () =>
+    toast.warning(
+      "El producto no se ha agregado. Verifique que todos campos estén completos. Aclaración: el precio no puede ser 0",
+      {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
   return (
     <div className="containerModify">
       <div className="containerProduct">
@@ -121,7 +154,9 @@ const ModifyProduct = () => {
                       onChange={colorHandler}
                       defaultValue={productColor}
                     >
-                      <option value="selecciona">Seleccione un color</option>
+                      <option value="selecciona" disabled>
+                        Seleccione un color
+                      </option>
                       <option value="Rojo">Rojo</option>
                       <option value="Azul">Azul</option>
                       <option value="Gris">Gris</option>
@@ -138,7 +173,9 @@ const ModifyProduct = () => {
                       onChange={sizeHandler}
                       defaultValue={productSize}
                     >
-                      <option value="selecciona">Seleccione un talle</option>
+                      <option value="selecciona" disabled>
+                        Seleccione un talle
+                      </option>
                       <option value="S">S</option>
                       <option value="M">M</option>
                       <option value="L">L</option>
@@ -154,7 +191,7 @@ const ModifyProduct = () => {
                       id="lang3"
                       onChange={descriptionHandler}
                     >
-                      <option value="selectModifiedCategory">
+                      <option value="selectModifiedCategory" disabled>
                         Seleccione una categoría:
                       </option>
                       <option value="Mujer">Mujer</option>
