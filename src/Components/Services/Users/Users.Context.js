@@ -7,6 +7,7 @@ export const UsersContext = createContext();
 export const UsersContextProvider = ({ children }) => {
   const [userType, setUserType] = useState("");
   const [loading, setLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -16,6 +17,7 @@ export const UsersContextProvider = ({ children }) => {
             const data = doc.data();
             if (data) {
               setUserType(data.user_type);
+              setUserEmail(user.email);
             }
           }
           setLoading(false);
@@ -30,7 +32,7 @@ export const UsersContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UsersContext.Provider value={{ userType, loading }}>
+    <UsersContext.Provider value={{ userType, loading, userEmail }}>
       {children}
     </UsersContext.Provider>
   );

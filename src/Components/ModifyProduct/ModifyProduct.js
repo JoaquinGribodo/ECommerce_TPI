@@ -97,7 +97,7 @@ const ModifyProduct = () => {
     });
   const warningMessage = () =>
     toast.warning(
-      "El producto no se ha agregado. Verifique que todos campos estén completos. Aclaración: el precio no puede ser 0",
+      "El producto no se ha modificado. Verifique que todos campos estén completos. Aclaración: el precio no puede ser 0",
       {
         position: "top-left",
         autoClose: 5000,

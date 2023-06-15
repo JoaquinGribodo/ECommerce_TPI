@@ -31,6 +31,12 @@ const ContactUs = () => {
       emailRef.current.style.outline = "none";
       return;
     }
+    if (!email.includes("@") || !email.includes(".")) {
+      emailRef.current.focus();
+      emailRef.current.style.border = "solid red";
+      emailRef.current.style.outline = "none";
+      return;
+    }
     if (messageRef.current.value.length === 0) {
       messageRef.current.focus();
       messageRef.current.style.border = "solid red";

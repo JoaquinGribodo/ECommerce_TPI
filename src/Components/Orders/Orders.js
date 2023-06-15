@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { UsersContext } from "../Services/Users/Users.Context";
-import { deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Config/FireBase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ordersCollection } from "../Products/Products";
 import {
   faFolderPlus,
   faFolderMinus,
@@ -16,7 +17,7 @@ const Orders = () => {
   const location = useLocation();
   const orderList = location.state ? location.state.orderList : null;
   const [orders, setOrders] = useState(orderList);
-  const { userType } = useContext(UsersContext);
+  const { userType, userEmail } = useContext(UsersContext);
   const navigate = useNavigate();
 
   const removeOrderFromDb = async (id) => {
@@ -28,6 +29,26 @@ const Orders = () => {
     } else {
       warningMessage();
     }
+  };
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+  const getOrders = async () => {
+    let dbOrders;
+    if (userType === "superadmin" || userType === "admin") {
+      dbOrders = await getDocs(ordersCollection);
+    } else {
+      dbOrders = await getDocs(
+        query(ordersCollection, where("email", "==", userEmail))
+      );
+    }
+    const ordersData = dbOrders.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setOrders(ordersData);
   };
   const successMessage = () =>
     toast.success("El pedido se ha eliminado correctamente", {
@@ -56,8 +77,9 @@ const Orders = () => {
     navigate("/addOrder");
   };
 
-  const goToModifyOrder = () => {
-    navigate("/modifyOrder");
+  const goToModifyOrder = (order) => {
+    console.log("Order en Orders.js: ", order);
+    navigate("/modifyOrder", { state: { order } });
   };
 
   const goHomeHandler = () => {
@@ -66,17 +88,19 @@ const Orders = () => {
   return (
     <div>
       <div className="d-flex pr-4">
-        <button
-          className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
-          type="button"
-          onClick={goToAddOrder}
-        >
-          <FontAwesomeIcon
-            icon={faFolderPlus}
-            size="2xl"
-            style={{ color: "#00ff1e" }}
-          />
-        </button>
+        {(userType === "superadmin" || userType === "admin") && (
+          <button
+            className="bg-white-150 hover:bg-white-400 text-green font-bold m-1 pr-8"
+            type="button"
+            onClick={goToAddOrder}
+          >
+            <FontAwesomeIcon
+              icon={faFolderPlus}
+              size="2xl"
+              style={{ color: "#00ff1e" }}
+            />
+          </button>
+        )}
       </div>
       <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
         <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
@@ -111,23 +135,23 @@ const Orders = () => {
                         icon={faFilePen}
                         size="2xl"
                         style={{ color: "#005eff" }}
-                        onClick={goToModifyOrder}
+                        onClick={() => goToModifyOrder(order)}
                       />
                     </button>
                   </div>
                 )}
                 ;<p className="text-xl font-bold dark:text-green">Pedido:</p>
-                {order.items.map((item) => (
-                  <div key={item.id}>
+                {order.items.map((order) => (
+                  <div key={order.id}>
                     <img
-                      src={item.image}
-                      alt={item.name}
+                      src={order.image}
+                      alt={order.name}
                       width={50}
                       height={50}
                     />
-                    <p>Nombre: {item.name}</p>
-                    <p>Cantidad: {item.amount}</p>
-                    <p>Precio: {item.price}</p>
+                    <p>Nombre: {order.name}</p>
+                    <p>Cantidad: {order.amount}</p>
+                    <p>Precio: {order.price}</p>
                     <br />
                     <br />
                   </div>

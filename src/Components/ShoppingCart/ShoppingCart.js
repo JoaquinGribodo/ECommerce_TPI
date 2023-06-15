@@ -3,12 +3,15 @@ import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartContext } from "../Services/Cart/Cart.Context";
+import { UsersContext } from "../Services/Users/Users.Context";
 import { ordersCollection } from "../Products/Products";
 import { addDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../Config/FireBase";
 
 const ShoppingCart = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
+  const { userEmail } = useContext(UsersContext);
+
   const [cart, setCart] = useState(
     cartItems.map((item) => ({ ...item, amount: 1 }))
   );
@@ -45,10 +48,15 @@ const ShoppingCart = () => {
     }));
     if (cart.length !== 0) {
       try {
-        const docRef = await addDoc(ordersCollection, { items });
+        const docRef = await addDoc(ordersCollection, {
+          items,
+          email: userEmail,
+        });
         successMessage();
         getDocument(docRef.id.toString());
         navigate("/home");
+        setCart([]);
+        setCartItems([]);
       } catch (error) {
         console.error(error);
       }
