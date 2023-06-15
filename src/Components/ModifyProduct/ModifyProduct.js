@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router";
 import { updateDoc, doc } from "firebase/firestore";
 import { useLocation } from "react-router";
@@ -26,13 +26,14 @@ const ModifyProduct = () => {
   const [newPrice, setNewPrice] = useState(productPrice);
   const [newImage, setNewImage] = useState(productImage);
 
-  const descriptionHandler = (e) => {
+  const descriptionHandler = useCallback((e) => {
+    //La función se memoriza una vez y no vuelve a crearse en los siguientes renderizados.
     const firstOption = e.target.querySelector(
       'option[value="selectModifiedCategory"]'
     );
     firstOption.disabled = true;
     setNewDescription(e.target.value);
-  };
+  }, []);
 
   const colorHandler = (e) => {
     const firstOption = e.target.querySelector('option[value="selectColor"]');

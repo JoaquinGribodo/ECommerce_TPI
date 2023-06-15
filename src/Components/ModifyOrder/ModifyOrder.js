@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { db } from "../../Config/FireBase";
 import { updateDoc, doc } from "firebase/firestore";
@@ -11,12 +11,14 @@ const ModifyOrder = () => {
 
   const [items, setItems] = useState(order ? order.items : []);
 
-  const handleItemChange = (event, index) => {
+  const handleItemChange = useCallback((event, index) => {
     const { name, value } = event.target;
-    const newItems = [...items];
-    newItems[index][name] = value;
-    setItems(newItems);
-  };
+    setItems((prevItems) => {
+      const newItems = [...prevItems];
+      newItems[index][name] = value;
+      return newItems;
+    });
+  }, []);
 
   const navigate = useNavigate();
 
