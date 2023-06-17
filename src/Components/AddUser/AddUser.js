@@ -78,7 +78,6 @@ const AddUser = () => {
           password: password,
           user_type: userType,
         });
-        await createUserWithEmailAndPassword(auth, email, password);
         successMessage();
         getDocument(docRef.id.toString());
         setInterval(() => {
@@ -152,9 +151,7 @@ const AddUser = () => {
         <div className="card-body px-4 py-5 px-md-5">
           <form>
             <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Email:
-              </label>
+              <label className="form-label">Email:</label>
               <input
                 type="email"
                 className="form-control w-50"
@@ -164,9 +161,7 @@ const AddUser = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Contraseña:
-              </label>
+              <label className="form-label">Contraseña:</label>
               <input
                 type="password"
                 className="form-control w-50"
@@ -178,9 +173,7 @@ const AddUser = () => {
               />
             </div>
             <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Tipo de Usuario:
-              </label>
+              <label className="form-label">Tipo de Usuario:</label>
               <select name="colores" id="lang" onChange={userTypeHandler}>
                 <option value="selecciona">
                   Seleccione un tipo de usuario:

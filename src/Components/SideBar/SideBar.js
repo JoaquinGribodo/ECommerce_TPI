@@ -14,7 +14,11 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 
-const SideBar = ({ filterProductsByCategory, orderList }) => {
+const SideBar = ({
+  filterProductsByCategory,
+  orderList,
+  clearOrdersHandler,
+}) => {
   const [userLogged, setUserLogged] = useState(auth.currentUser);
   const { cartItems, setCartItems } = useContext(CartContext);
 
@@ -69,18 +73,6 @@ const SideBar = ({ filterProductsByCategory, orderList }) => {
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu"
             >
-              <li className="nav-item">
-                <a href="#" className="nav-link align-middle px-0">
-                  <i className="fs-4 bi-house"></i>{" "}
-                  <FontAwesomeIcon icon={faHouse} />
-                  <button
-                    onClick={() => navigate("/home")}
-                    className="ms-1 d-none d-sm-inline"
-                  >
-                    Inicio
-                  </button>
-                </a>
-              </li>
               <li>
                 <a
                   href="#submenu1"
@@ -129,7 +121,7 @@ const SideBar = ({ filterProductsByCategory, orderList }) => {
               </li>
               <li>
                 <button
-                  className="nav-link px-0 align-middle"
+                  className="nav-link px-0 mt-2 align-left"
                   onClick={handleWhoWeAreClickScroll}
                   type="button"
                 >
@@ -140,7 +132,7 @@ const SideBar = ({ filterProductsByCategory, orderList }) => {
               </li>
               <li>
                 <button
-                  className="nav-link px-0 align-middle"
+                  className="nav-link px-0 mt-2 align-left"
                   onClick={handleContactUsClickScroll}
                   type="button"
                 >

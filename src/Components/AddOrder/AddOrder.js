@@ -20,6 +20,19 @@ const AddOrder = () => {
     navigate("/home");
   };
 
+  const validateOrder = (order) => {
+    let isValid = true;
+    order.forEach((item) => {
+      if (!item.name || !item.image || !item.price) {
+        isValid = false;
+      }
+      if (isNaN(item.price) || item.price === 0) {
+        isValid = false;
+      }
+    });
+    return isValid;
+  };
+
   const handleQuantityChange = (event) => {
     const quantity = event.target.value;
     setQuantity(quantity);
@@ -43,6 +56,10 @@ const AddOrder = () => {
   };
 
   const addOrder = async () => {
+    if (!validateOrder(order)) {
+      errorMessage();
+      return;
+    }
     try {
       const docRef = await addDoc(ordersCollection, {
         id: "a",
@@ -72,16 +89,19 @@ const AddOrder = () => {
     });
 
   const errorMessage = () =>
-    toast.error("El pedido no se ha agregado.", {
-      position: "top-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    toast.error(
+      "El pedido no se ha agregado. Debe completar todos los campos y el precio no puede ser 0",
+      {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
 
   return (
     <div className="containerContainer">

@@ -60,9 +60,7 @@ const DeleteUser = () => {
         <div className="card-body px-4 py-5 px-md-5">
           <form>
             <div className="form-outline mb-5">
-              <label className="form-label" htmlFor="form3Example3">
-                Usuario:
-              </label>
+              <label className="form-label">Usuario:</label>
               <select name="users" id="lang" onChange={emailHandler}>
                 <option value="selecciona" disabled>
                   Seleccione un usuario

@@ -40,7 +40,7 @@ const LogIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       successMessage();
-      setInterval(() => {
+      setTimeout(() => {
         goHomeHandler();
       }, 2000);
     } catch (err) {
@@ -100,9 +100,7 @@ const LogIn = () => {
                       Ingrese su correo electrónico y su contraseña
                     </p>
 
-                    <label className="form-label" htmlFor="typeEmailX">
-                      Correo electrónico:
-                    </label>
+                    <label className="form-label">Correo electrónico:</label>
                     <div className="form-outline form-white mb-4">
                       <input
                         type="email"
@@ -113,9 +111,7 @@ const LogIn = () => {
                       />
                     </div>
 
-                    <label className="form-label" htmlFor="typePasswordX">
-                      Contraseña:
-                    </label>
+                    <label className="form-label">Contraseña:</label>
                     <div className="form-outline form-white mb-4">
                       <input
                         type="password"

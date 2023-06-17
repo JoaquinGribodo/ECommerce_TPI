@@ -88,7 +88,7 @@ const ShoppingCart = () => {
       progress: undefined,
       theme: "dark",
     });
-
+  console.log(cart);
   return (
     <div className="container mx-auto mt-10">
       <div className="flex shadow-md my-10">

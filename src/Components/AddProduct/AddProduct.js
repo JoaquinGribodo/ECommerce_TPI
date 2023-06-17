@@ -112,9 +112,7 @@ const AddProduct = () => {
           <div className="card-body px-4 py-5 px-md-5">
             <form>
               <div className="form-outline mb-5">
-                <label className="form-label" htmlFor="form3Example3">
-                  Nombre:
-                </label>
+                <label className="form-label">Nombre:</label>
                 <input
                   type="text"
                   className="form-control w-50"
@@ -123,9 +121,7 @@ const AddProduct = () => {
                 />
               </div>
               <div className="form-outline mb-5">
-                <label className="form-label" htmlFor="form3Example3">
-                  Imagen:
-                </label>
+                <label className="form-label">Imagen:</label>
                 <input
                   type="text"
                   className="form-control w-50"
@@ -134,9 +130,7 @@ const AddProduct = () => {
                 />
               </div>
               <div className="form-outline mb-5">
-                <label className="form-label" htmlFor="form3Example3">
-                  Color:
-                </label>
+                <label className="form-label">Color:</label>
                 <select name="colors" id="lang" onChange={colorHandler}>
                   <option value="selectColor">Seleccione un color</option>
                   <option value="Rojo">Rojo</option>
@@ -146,9 +140,7 @@ const AddProduct = () => {
                 </select>
               </div>
               <div className="form-outline mb-5">
-                <label className="form-label" htmlFor="form3Example3">
-                  Talle:
-                </label>
+                <label className="form-label">Talle:</label>
                 <select name="talles" id="lang" onChange={sizeHandler}>
                   <option value="selectSize">Seleccione un talle</option>
                   <option value="S">S</option>
@@ -158,9 +150,7 @@ const AddProduct = () => {
                 </select>
               </div>
               <div className="form-outline mb-5">
-                <label className="form-label" htmlFor="form3Example3">
-                  Descripción:
-                </label>
+                <label className="form-label">Descripción:</label>
                 <select
                   name="categories"
                   id="lang2"
@@ -175,9 +165,7 @@ const AddProduct = () => {
                 </select>
               </div>
               <div className="form-outline mb-5">
-                <label className="form-label" htmlFor="form3Example3">
-                  Precio:
-                </label>
+                <label className="form-label">Precio:</label>
                 <input
                   type="number"
                   className="form-control w-50 "

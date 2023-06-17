@@ -141,9 +141,7 @@ const ModifyUser = () => {
                 <div className="form-outline mb-5">
                   <h1>Usuario:</h1>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Id Usuario:
-                    </label>
+                    <label className="form-label">Id Usuario:</label>
                     <select
                       name="usersId"
                       id="lang"
@@ -161,9 +159,7 @@ const ModifyUser = () => {
                   </div>
 
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Email:
-                    </label>
+                    <label className="form-label">Email:</label>
                     <input
                       type="email"
                       className="form-control w-50"
@@ -174,9 +170,7 @@ const ModifyUser = () => {
                     />
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Contraseña:
-                    </label>
+                    <label className="form-label">Contraseña:</label>
                     <input
                       type="password"
                       className="form-control w-50"
@@ -189,9 +183,7 @@ const ModifyUser = () => {
                     />
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Tipo:
-                    </label>
+                    <label className="form-label">Tipo:</label>
                     <select
                       name="types"
                       id="lang1"

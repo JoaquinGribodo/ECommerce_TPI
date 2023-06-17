@@ -63,7 +63,7 @@ const SignUp = () => {
         goHomeHandler();
       }, 2000);
     } catch (error) {
-      console.error(error);  
+      console.error(error);
       errorMessage();
     }
   };
@@ -83,8 +83,8 @@ const SignUp = () => {
       progress: undefined,
       theme: "light",
     });
-    const errorMessage = () =>
-    toast.error("¡Registrado correctamente!", {
+  const errorMessage = () =>
+    toast.error("El usuario no se ha registrado", {
       position: "top-left",
       autoClose: 5000,
       hideProgressBar: false,

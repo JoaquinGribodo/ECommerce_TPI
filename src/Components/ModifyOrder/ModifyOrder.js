@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ModifyOrder = () => {
   const location = useLocation();
   const order = location.state ? location.state.order : null;
+  console.log(order.quantity);
 
   const [items, setItems] = useState(order ? order.items : []);
 
@@ -121,7 +122,7 @@ const ModifyOrder = () => {
               type="number"
               name="quantity"
               className="form-control w-50"
-              defaultValue={item.quantity}
+              defaultValue={item.amount}
               onChange={(event) => handleItemChange(event, index)}
               required
               min={1}

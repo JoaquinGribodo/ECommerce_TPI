@@ -36,12 +36,14 @@ const ModifyProduct = () => {
   }, []);
 
   const colorHandler = (e) => {
-    const firstOption = e.target.querySelector('option[value="selectColor"]');
+    console.log("Color: ", e.target);
+    const firstOption = e.target.querySelector('option[value="selecciona"]');
     firstOption.disabled = true;
     setNewColor(e.target.value);
   };
   const sizeHandler = (e) => {
-    const firstOption = e.target.querySelector('option[value="selectSize"]');
+    console.log("Size: ", e.target);
+    const firstOption = e.target.querySelector('option[value="selecciona"]');
     firstOption.disabled = true;
     setNewSize(e.target.value);
   };
@@ -122,9 +124,7 @@ const ModifyProduct = () => {
                   <h1>Producto:</h1>
 
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Nombre:
-                    </label>
+                    <label className="form-label">Nombre:</label>
                     <input
                       type="text"
                       className="form-control w-50"
@@ -134,9 +134,7 @@ const ModifyProduct = () => {
                     />
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Imagen:
-                    </label>
+                    <label className="form-label">Imagen:</label>
                     <input
                       type="text"
                       className="form-control w-50"
@@ -146,9 +144,7 @@ const ModifyProduct = () => {
                     />
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Color:
-                    </label>
+                    <label className="form-label">Color:</label>
                     <select
                       name="colores"
                       id="lang"
@@ -165,9 +161,7 @@ const ModifyProduct = () => {
                     </select>
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Talle:
-                    </label>
+                    <label className="form-label">Talle:</label>
                     <select
                       name="talles"
                       id="lang"
@@ -184,9 +178,7 @@ const ModifyProduct = () => {
                     </select>
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Descripción:
-                    </label>
+                    <label className="form-label">Descripción:</label>
                     <select
                       name="categories"
                       id="lang3"
@@ -201,9 +193,7 @@ const ModifyProduct = () => {
                     </select>
                   </div>
                   <div className="form-outline mb-5">
-                    <label className="form-label" htmlFor="form3Example3">
-                      Precio:
-                    </label>
+                    <label className="form-label">Precio:</label>
                     <input
                       type="number"
                       className="form-control w-50"
