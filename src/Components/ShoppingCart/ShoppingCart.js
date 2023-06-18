@@ -88,7 +88,6 @@ const ShoppingCart = () => {
       progress: undefined,
       theme: "dark",
     });
-  console.log(cart);
   return (
     <div className="container mx-auto mt-10">
       <div className="flex shadow-md my-10">
@@ -167,12 +166,12 @@ const ShoppingCart = () => {
             <span className="font-semibold text-sm">
               {cart
                 ? cart.map((item) => (
-                    <>
+                    <div key={item.name}>
                       <div className="d-flex justify-content-between m-3 p-2">
                         <p>{item.name}</p>
                         <p>${item.price * item.amount}</p>
                       </div>
-                    </>
+                    </div>
                   ))
                 : ""}
             </span>

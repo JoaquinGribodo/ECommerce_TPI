@@ -93,10 +93,36 @@ const Orders = () => {
   const goHomeHandler = () => {
     navigate("/home");
   };
+
+  const goLoginHandler = () => {
+    navigate("/login");
+  };
   return (
     <div>
       {loading ? (
         <p>Cargando...</p>
+      ) : userType !== "superadmin" &&
+        userType !== "admin" &&
+        userType !== "user" ? (
+        <div>
+          <h2 className="text-4xl font-extrabold dark:text-green">
+            Debe Iniciar Sesión para ver sus pedidos.
+          </h2>
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={goLoginHandler}
+          >
+            Ir a Iniciar Sesión
+          </button>
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={goHomeHandler}
+          >
+            Volver al Inicio
+          </button>
+        </div>
       ) : (
         <>
           <div className="d-flex pr-4">
@@ -154,7 +180,7 @@ const Orders = () => {
                     )}
                     <p className="text-xl font-bold dark:text-green">Pedido:</p>
                     {order.items.map((order) => (
-                      <div key={order.id}>
+                      <div key={order.name}>
                         <img
                           src={order.image}
                           alt={order.name}

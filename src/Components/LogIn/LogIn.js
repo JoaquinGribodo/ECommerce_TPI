@@ -40,9 +40,7 @@ const LogIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       successMessage();
-      setTimeout(() => {
-        goHomeHandler();
-      }, 2000);
+      navigate("/home");
     } catch (err) {
       errorMessage();
       console.error(err);
@@ -52,9 +50,6 @@ const LogIn = () => {
   const navigate = useNavigate();
   const goToSignUpHandler = () => {
     navigate("/signup");
-  };
-  const goHomeHandler = () => {
-    navigate("/home");
   };
 
   const successMessage = () =>

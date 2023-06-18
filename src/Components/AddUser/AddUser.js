@@ -21,6 +21,9 @@ const AddUser = () => {
 
   async function getDocument(email) {
     const docRef = doc(db, "users", email);
+    if (docRef.email === undefined) {
+      docRef.email = email;
+    }
     await updateDoc(docRef, { id: docRef.email });
   }
 

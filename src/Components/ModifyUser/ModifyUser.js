@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router";
 import "./ModifyUser.css";
 import { ToastContainer, toast } from "react-toastify";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, deleteDoc, setDoc } from "firebase/firestore";
 import { db } from "../../Config/FireBase";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -76,12 +76,28 @@ const ModifyUser = () => {
     }
 
     try {
-      const userItem = doc(db, "users", email);
-      await updateDoc(userItem, {
-        email: newEmail,
-        password: newPassword,
-        user_type: newType,
-      });
+      // Crea un objeto con los valores a actualizar
+      const updatedValues = {
+        email: newEmail || email,
+        password: newPassword || password,
+        user_type: newType || user_type,
+      };
+
+      // Si se actualiza el email, elimina el documento anterior y crea uno nuevo con la nueva id
+      if (newEmail) {
+        // Elimina el documento anterior
+        const oldUserItem = doc(db, "users", email);
+        await deleteDoc(oldUserItem);
+
+        // Crea un nuevo documento con la nueva id
+        const newUserItem = doc(db, "users", newEmail);
+        await setDoc(newUserItem, updatedValues);
+      } else {
+        // Si no se actualiza el email, solo actualiza los campos modificados
+        const userItem = doc(db, "users", email);
+        await updateDoc(userItem, updatedValues);
+      }
+
       successMessage();
       setInterval(() => {
         goHomeHandler();
