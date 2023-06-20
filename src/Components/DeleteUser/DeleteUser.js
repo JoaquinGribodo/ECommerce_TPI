@@ -74,6 +74,7 @@ const DeleteUser = () => {
                   : ""}
               </select>
               <div className="d-flex justify-content-center">
+                <div classname="button-container">
                 <button
                   id="delete-button"
                   type="button"
@@ -92,6 +93,7 @@ const DeleteUser = () => {
                 >
                   Volver al Inicio
                 </button>
+              </div>
               </div>
             </div>
           </form>
